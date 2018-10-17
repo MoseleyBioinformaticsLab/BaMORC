@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Getting started with BaMORC</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Getting started with BaMORC</h1>
+
+
+
+<div id="bamorc-quickstart-guide" class="section level1">
+<h1>BaMORC quickstart guide</h1>
+<p>The goal of this document is to get you up and running with BaMORC as quickly as possible. BaMORC is designed as Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra. For a detailed explanation of the algorithm please refer to “<a href="https://doi.org/10.1007/s10858-018-0202-5">Automatic 13C chemical shift reference correction for unassigned protein NMR spectra</a>”.</p>
+<p>There are two important parts to BaMORC: the <code>bamorc()</code>, reference correction function for assigned 13C protein NMR spectra, and the <code>unassigned_bamorc()</code>, reference correction function for unassigned 13C protein NMR spectra. In the first section, you’ll learn about the basics of running both of the functions. In the second section, you will dive into the basics of input data process, and in third section, you’ll learn a little more on functions of the behind-the-scenes of the BaMORC algorithm.</p>
+<div id="bamorc-basics" class="section level2">
+<h2>BaMORC basics</h2>
+<p>To make a correction, first load BaMORC, then call <code>bamorc()</code> or <code>unassigned_bamorc()</code> with correct arguments:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(BaMORC)</a></code></pre></div>
+<div id="for-assigned-protein-nmr-spectra" class="section level3">
+<h3>For assigned protein NMR spectra:</h3>
+<p>Here we will using the built-in data to demonstrate the arguments that will be passed in the <code>bamorc()</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## Arguments:</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">sequence =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>AA, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">secondary_structure =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>SS, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">chemical_shifts_input =<span class="st"> </span>RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]][, <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">from=<span class="st"> </span><span class="dv">-5</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">to =<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">## Running bamorc() function:</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw">bamorc</span>(sequence, secondary_structure, chemical_shifts_input, <span class="dt">from=</span><span class="op">-</span><span class="dv">5</span>, <span class="dt">to=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; [1] 0.0142443</span></a></code></pre></div>
+<ul>
+<li><code>sequence</code>: <string> the sequence of protein of interest with single-letter convention.</li>
+<li><code>secondary_structure</code>: <string> the secondary structure information of the protein with with single-letter convention.</li>
+<li><code>chemical_shifts_input</code>: &lt;data frame n by 2&gt; the carbon 13 chemical shift of the protein.</li>
+<li><code>from</code> and <code>to</code>: <numeric> the upper- and lower-bound of optimization range. Value assigned to <code>from</code> must be lower than <code>to</code>.</li>
+</ul>
+<p>The length of the <code>sequence</code> and <code>secondary_structure</code> should be the same, if not pleasue assign <code>secondary_structure = NULL</code>, however, the peaklist groups number could be more or less than the length of the sequence. Since commonly the output of the spectra should have a little deviate from the sequence information.</p>
+<p>Printing an argument object gives you some useful information: the actual format, the size, the object type, and if it’s a string.</p>
+</div>
+<div id="for-unassigned-protein-nmr-spectra" class="section level3">
+<h3>For unassigned protein NMR spectra:</h3>
+<p>Next we will using the built-in data to demonstrate the arguments that will be passed in the <code>unassigned_bamorc()</code>. The output will be slight different each time runs due to the randomness of the optimization.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">## Arguments:</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">sequence =<span class="st"> &quot;RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA&quot;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> <span class="st">&quot;ssc_sample&quot;</span>) <span class="co"># this will generate a temperary sample file and later will be removed.</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">file_path =<span class="st"> &quot;./bpti_HNcoCACB.txt&quot;</span> <span class="co"># temperary sample file path.</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">## Running unassigned_bamorc() function:</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">unassigned_bamorc</span>(<span class="dt">peakList_file_loc =</span> file_path, <span class="dt">sequence =</span> sequence, <span class="dt">secondary_structure =</span> <span class="ot">NULL</span>, <span class="dt">from =</span> <span class="dv">-5</span>, <span class="dt">to =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Your job will be submitted with the following parameters:</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; format: seq</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; skipPDB: on</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; file: </span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; seq: RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; email: </span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; name:</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; Created JPred job with jobid: jp_jHdVXqy</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; You can check the status of the job using the following URL: http://www.compbio.dundee.ac.uk/jpred4/cgi-bin/chklog?jp_jHdVXqy</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; Your job status will be checked with the following parameters:</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; Job id: jp_jHdVXqy</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; Get results: TRUE</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; Saving results to: /Users/bill/Documents/GitHub/BaMORC/vignettes/jp_jHdVXqy/jp_jHdVXqy</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; JPred is done.</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; The predicted secondary structure is: CCCCCCCCCCCCCCCCCBBBBBBBCCCCCBBBBBBBCCCCCCCCCHHHHHHHHHHCCC</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; Running grouping algorithm</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; docker run -v /Users/bill/Documents/GitHub/BaMORC/vignettes/bpti_HNcoCACB.txt:/ssc/test.txt -t moseleybioinformaticslab/ssc group --plpath=/ssc/test.txt --plformat=sparky --stype=HNcoCACB --dims=H,N,CA/CB --rdims=H,N --view --result=/ssc/result/</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; Running reference correction algorithm.</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; [1] 0.000788308</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">## Delete the temperary sample file.</span></a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="kw">unlink</span>(<span class="st">&quot;./bpti_HNcoCACB.txt&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+</div>
+<div id="the-data-processing" class="section level1">
+<h1>The data processing:</h1>
+<p>The data passed in both above functions should be pre-processed. Luckly, we provided a varity of helper functions. I’ll show you how to process the data as following.</p>
+<div id="the-sample-generating-functions" class="section level2">
+<h2>The sample generating functions:</h2>
+<p>There are three file reading functions within the BaMORC package: <code>read_raw_file()</code>, <code>read_NMRSTAR_file()</code>, and <code>read_DB_File()</code>. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the <code>sample_data_generator()</code> with following code:</p>
+<ul>
+<li><p>Delimiter of white space:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">input_type =<span class="st"> &quot;ws&quot;</span> </a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="st">&quot;sample_input_ws.txt&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;ws&quot;</span>))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;   X1 = col_double(),</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;   X2 = col_double()</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;       X1    X2</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; # ... with 22 more rows</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="kw">unlink</span>(<span class="st">&quot;sample_input_ws.txt&quot;</span>)</a></code></pre></div></li>
+<li><p>Delimiter of comma:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">input_type =<span class="st"> &quot;csv&quot;</span> </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="st">&quot;sample_input.csv&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;comma&quot;</span>))</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   X1 = col_double(),</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;   X2 = col_double()</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; Warning in rbind(names(probs), probs_f): number of columns of result is not</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; a multiple of vector length (arg 2)</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; Warning: 1 parsing failure.</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; row # A tibble: 1 x 5 col     row col   expected  actual    file               expected   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;              actual 1    33 &lt;NA&gt;  2 columns 1 columns 'sample_input.csv' file # A tibble: 1 x 5</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; # A tibble: 33 x 2</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;       X1    X2</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt; # ... with 23 more rows</span></a>
+<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="kw">unlink</span>(<span class="st">&quot;sample_input.csv&quot;</span>)</a></code></pre></div></li>
+<li><p>Delimiter of semicolon:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">input_type =<span class="st"> &quot;sc&quot;</span> </a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="st">&quot;sample_input_sc.txt&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;semicolon&quot;</span>))</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   X1 = col_double(),</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;   X2 = col_double()</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;       X1    X2</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; # ... with 22 more rows</span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="kw">unlink</span>(<span class="st">&quot;sample_input_sc.txt&quot;</span>)</a></code></pre></div></li>
+</ul>
+</div>
+<div id="the-reading-functions-will-return-sequence-and-chemical-shifts" class="section level2">
+<h2>The reading functions will return sequence and chemical shifts:</h2>
+<ul>
+<li><p><code>read_raw_file()</code>: parses user-provided file in customed format as show above examples.</p></li>
+<li><p><code>read_NMRSTAR_file()</code>: parses user-provided file in BMRB Star 2/3 format.</p></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">## Download a BMRB file</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">library</span>(BMRBr)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Loading required package: xml2</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; Loading required package: rvest</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">bmrb_download</span>(<span class="dv">4020</span>, <span class="dt">output_dir =</span> <span class="st">&quot;./&quot;</span>)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; [1] &quot;Downloading...&quot;</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; Processing: bmr4020[1] &quot;Downloaded: bmr4020&quot;</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">## Read in BMRB file and procec</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">file_path =<span class="st"> &quot;bmr4020.str&quot;</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw">head</span>(<span class="kw">read_NMRSTAR_file</span>(file_path))</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; [1] &quot;Please note down the ID:f3237b66edd8a96e4d78c580092fe5f2&quot;</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; [1] &quot;ID will expire on  2018-10-24 13:22:21&quot;</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt;  [1] &quot;N&quot; &quot;H&quot; &quot;Q&quot; &quot;D&quot; &quot;H&quot; &quot;N&quot; &quot;N&quot; &quot;F&quot; &quot;Q&quot; &quot;T&quot; &quot;L&quot; &quot;P&quot; &quot;Y&quot; &quot;V&quot; &quot;P&quot; &quot;C&quot; &quot;S&quot;</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt; [18] &quot;T&quot; &quot;C&quot; &quot;E&quot; &quot;G&quot; &quot;N&quot; &quot;L&quot; &quot;A&quot; &quot;C&quot; &quot;L&quot; &quot;S&quot; &quot;L&quot; &quot;C&quot; &quot;H&quot; &quot;I&quot; &quot;E&quot;</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt;      CA   CB</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt; 1    NA 38.6</span></a>
+<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co">#&gt; 12   NA 28.8</span></a>
+<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt; 23 56.3 30.4</span></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt; 27 54.4 41.3</span></a>
+<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt; 28   NA 28.8</span></a>
+<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt; 29 55.1 38.9</span></a>
+<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt; 30   NA 38.8</span></a>
+<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt; 31   NA 39.3</span></a>
+<a class="sourceLine" id="cb7-28" data-line-number="28"><span class="co">#&gt; 32   NA 30.3</span></a>
+<a class="sourceLine" id="cb7-29" data-line-number="29"><span class="co">#&gt; 2  62.1 69.8</span></a>
+<a class="sourceLine" id="cb7-30" data-line-number="30"><span class="co">#&gt; 3    NA 42.0</span></a>
+<a class="sourceLine" id="cb7-31" data-line-number="31"><span class="co">#&gt; 4  63.2 31.9</span></a>
+<a class="sourceLine" id="cb7-32" data-line-number="32"><span class="co">#&gt; 5    NA 39.2</span></a>
+<a class="sourceLine" id="cb7-33" data-line-number="33"><span class="co">#&gt; 6  60.7 33.6</span></a>
+<a class="sourceLine" id="cb7-34" data-line-number="34"><span class="co">#&gt; 7    NA 32.2</span></a>
+<a class="sourceLine" id="cb7-35" data-line-number="35"><span class="co">#&gt; 8    NA 40.2</span></a>
+<a class="sourceLine" id="cb7-36" data-line-number="36"><span class="co">#&gt; 9  60.8 62.3</span></a>
+<a class="sourceLine" id="cb7-37" data-line-number="37"><span class="co">#&gt; 10   NA 70.1</span></a>
+<a class="sourceLine" id="cb7-38" data-line-number="38"><span class="co">#&gt; 11   NA 35.2</span></a>
+<a class="sourceLine" id="cb7-39" data-line-number="39"><span class="co">#&gt; 13 56.8 27.5</span></a>
+<a class="sourceLine" id="cb7-40" data-line-number="40"><span class="co">#&gt; 14 45.4   NA</span></a>
+<a class="sourceLine" id="cb7-41" data-line-number="41"><span class="co">#&gt; 15 54.4 39.6</span></a>
+<a class="sourceLine" id="cb7-42" data-line-number="42"><span class="co">#&gt; 16 58.5 41.7</span></a>
+<a class="sourceLine" id="cb7-43" data-line-number="43"><span class="co">#&gt; 17 55.3 17.5</span></a>
+<a class="sourceLine" id="cb7-44" data-line-number="44"><span class="co">#&gt; 18 59.3 33.8</span></a>
+<a class="sourceLine" id="cb7-45" data-line-number="45"><span class="co">#&gt; 19 57.4 41.8</span></a>
+<a class="sourceLine" id="cb7-46" data-line-number="46"><span class="co">#&gt; 20 59.6 63.8</span></a>
+<a class="sourceLine" id="cb7-47" data-line-number="47"><span class="co">#&gt; 21 57.3 43.8</span></a>
+<a class="sourceLine" id="cb7-48" data-line-number="48"><span class="co">#&gt; 22 56.9 43.9</span></a>
+<a class="sourceLine" id="cb7-49" data-line-number="49"><span class="co">#&gt; 24   NA 30.4</span></a>
+<a class="sourceLine" id="cb7-50" data-line-number="50"><span class="co">#&gt; 25 62.0 38.9</span></a>
+<a class="sourceLine" id="cb7-51" data-line-number="51"><span class="co">#&gt; 26 55.9 29.6</span></a>
+<a class="sourceLine" id="cb7-52" data-line-number="52"></a>
+<a class="sourceLine" id="cb7-53" data-line-number="53"><span class="co">## Delete downloaded BMRB file</span></a>
+<a class="sourceLine" id="cb7-54" data-line-number="54"><span class="kw">unlink</span>(<span class="st">&quot;./bmr4020.str&quot;</span>)</a></code></pre></div>
+<ul>
+<li><code>read_DB_File()</code>: parses file from BMRB by a given entry ID.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">id =<span class="st"> </span><span class="dv">4022</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">output &lt;-<span class="st"> </span><span class="kw">read_DB_File</span>(id)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">head</span>(output[[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] &quot;A&quot; &quot;S&quot; &quot;P&quot; &quot;D&quot; &quot;W&quot; &quot;G&quot;</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">head</span>(output[[<span class="dv">2</span>]])</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;       CA   CB</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1   51.9 19.4</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 112 57.5 63.3</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 183 63.1 32.2</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 194 54.6 41.3</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 205 54.7 31.4</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 216 45.4   NA</span></a></code></pre></div>
+</div>
+<div id="estimating-econdary-structure-from-sequence" class="section level2">
+<h2>Estimating econdary structure from sequence:</h2>
+<p>One important part of the optmization for referencing correction value is through providing the secondary structue information basin protein sequence. This is done through the <a href="http://www.compbio.dundee.ac.uk/jpred/index.html">JPred</a> and jpredapi.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">protein_sequence &lt;-<span class="st"> &quot;MQVWPIEGIKKFETLSYLPPLTVEDLLKQI&quot;</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">secondary_structure &lt;-<span class="st"> </span><span class="kw">jpred_fetcher</span>(protein_sequence)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; Your job will be submitted with the following parameters:</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; format: seq</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; skipPDB: on</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; file: </span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; seq: MQVWPIEGIKKFETLSYLPPLTVEDLLKQI</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; email: </span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; name:</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; Created JPred job with jobid: jp_fDZS9Vg</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; You can check the status of the job using the following URL: http://www.compbio.dundee.ac.uk/jpred4/cgi-bin/chklog?jp_fDZS9Vg</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; Your job status will be checked with the following parameters:</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; Job id: jp_fDZS9Vg</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt; Get results: TRUE</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; Saving results to: /Users/bill/Documents/GitHub/BaMORC/vignettes/jp_fDZS9Vg/jp_fDZS9Vg</span></a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; JPred is done.</span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; The predicted secondary structure is: CCCCCCCCCCCCCBBCCCCCCCHHHHHHCC</span></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">secondary_structure</a>
+<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt; [1] &quot;CCCCCCCCCCCCCBBCCCCCCCHHHHHHCC&quot;</span></a></code></pre></div>
+</div>
+<div id="behind-the-scenes-functions" class="section level2">
+<h2>Behind-the-scenes functions</h2>
+<p>The BaMORC algorithms relys minimize the difference betwee the actual relative cummulative frequence (RCF) of the protein sequence and estimated RCF from the chemical shifts information. The functions make the algorithm possible are showing below with examples, for detailed function descriptions, please see the reference.:</p>
+<ul>
+<li><p><code>calculate_AA_Prob()</code>: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.</p></li>
+<li><p><code>calculate_chi_squared_stat()</code>: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures.</p></li>
+<li><p><code>calculate_RCF()</code>: calculates the relative cummulative freqeucny of amino acid and secondary structure combination.</p></li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">## Arguments:</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">sequence =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>AA, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">secondary_structure =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>SS, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">## Function:</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="kw">calculate_RCF</span>(sequence, secondary_structure)</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt;  [1] &quot;S-C&quot; &quot;I-C&quot; &quot;P-C&quot; &quot;C-B&quot; &quot;L-B&quot; &quot;L-B&quot; &quot;S-B&quot; &quot;P-C&quot; &quot;W-B&quot; &quot;S-B&quot; &quot;E-B&quot;</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; [12] &quot;W-B&quot; &quot;S-B&quot; &quot;D-C&quot; &quot;C-B&quot; &quot;S-B&quot; &quot;V-B&quot; &quot;T-C&quot; &quot;C-C&quot; &quot;K-B&quot; &quot;M-B&quot; &quot;R-B&quot;</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; [23] &quot;T-B&quot; &quot;R-B&quot; &quot;Q-B&quot; &quot;R-B&quot; &quot;M-B&quot; &quot;L-B&quot; &quot;K-B&quot; &quot;S-C&quot; &quot;L-C&quot; &quot;A-C&quot; &quot;E-C&quot;</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; [34] &quot;L-C&quot; &quot;D-C&quot; &quot;C-C&quot; &quot;N-C&quot; &quot;E-C&quot; &quot;D-C&quot; &quot;L-B&quot; &quot;E-B&quot; &quot;Q-B&quot; &quot;A-B&quot; &quot;E-B&quot;</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; [45] &quot;K-B&quot; &quot;C-B&quot; &quot;M-B&quot; &quot;L-B&quot; &quot;P-B&quot; &quot;E-B&quot; &quot;C-C&quot; &quot;P-C&quot;</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;    AA_SS       Freq</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; 1    A-B 0.01923077</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; 2    A-C 0.01923077</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; 3    C-B 0.05769231</span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; 4    C-C 0.05769231</span></a>
+<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; 5    D-C 0.05769231</span></a>
+<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; 6    E-B 0.07692308</span></a>
+<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; 7    E-C 0.03846154</span></a>
+<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt; 8    I-C 0.01923077</span></a>
+<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; 9    K-B 0.05769231</span></a>
+<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt; 10   L-B 0.09615385</span></a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; 11   L-C 0.03846154</span></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt; 12   M-B 0.05769231</span></a>
+<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; 13   N-C 0.01923077</span></a>
+<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt; 14   P-B 0.01923077</span></a>
+<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">#&gt; 15   P-C 0.05769231</span></a>
+<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; 16   Q-B 0.03846154</span></a>
+<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="co">#&gt; 17   R-B 0.05769231</span></a>
+<a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt; 18   S-B 0.07692308</span></a>
+<a class="sourceLine" id="cb10-34" data-line-number="34"><span class="co">#&gt; 19   S-C 0.03846154</span></a>
+<a class="sourceLine" id="cb10-35" data-line-number="35"><span class="co">#&gt; 20   T-B 0.01923077</span></a>
+<a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co">#&gt; 21   T-C 0.01923077</span></a>
+<a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#&gt; 22   V-B 0.01923077</span></a>
+<a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; 23   W-B 0.03846154</span></a></code></pre></div>
+<ul>
+<li><code>calculate_MSE()</code>: calculates mean squared error.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co">## chemicalShifts and aaFreq are predefined sample variables for demo purpose within the BaMORC Package.</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">calculate_MSE</span>(<span class="dt">step_ca=</span><span class="dv">1</span>, <span class="dt">step_cb=</span><span class="dv">1</span>, <span class="dt">dat_cacb=</span>chemicalShifts[, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)], <span class="dt">aa_Freq=</span>aaFreq)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; [1] 0.0003151677</span></a></code></pre></div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

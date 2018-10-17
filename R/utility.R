@@ -137,7 +137,6 @@ read_DB_File <- function(id){
 #' @export jpred_fetcher
 #'
 #' @examples
-#' library(jpredapir)
 #' protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"
 #' \dontrun{secondary_structure <- jpred_fetcher(protein_sequence)}
 

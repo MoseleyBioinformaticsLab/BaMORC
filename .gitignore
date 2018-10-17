@@ -1,4 +1,4 @@
 packrat/lib*/
 .Rproj.user
+vignettes/quickstart_cache
 
-inst/doc

@@ -46,3 +46,45 @@ sample_data_generator(input_type = input_type)
 head(read_raw_file("sample_input_sc.txt", delim = "semicolon"))
 unlink("sample_input_sc.txt")
 
+## ------------------------------------------------------------------------
+## Download a BMRB file
+library(BMRBr)
+bmrb_download(4020, output_dir = "./")
+
+## Read in BMRB file and procec
+file_path = "bmr4020.str"
+head(read_NMRSTAR_file(file_path))
+
+## Delete downloaded BMRB file
+unlink("./bmr4020.str")
+
+## ------------------------------------------------------------------------
+id = 4022
+output <- read_DB_File(id)
+head(output[[1]])
+head(output[[2]])
+
+## ------------------------------------------------------------------------
+protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"
+secondary_structure <- jpred_fetcher(protein_sequence)
+
+secondary_structure
+
+## ------------------------------------------------------------------------
+
+
+## ------------------------------------------------------------------------
+
+
+## ------------------------------------------------------------------------
+## Arguments:
+sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
+secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
+
+## Function:
+calculate_RCF(sequence, secondary_structure)
+
+## ------------------------------------------------------------------------
+## chemicalShifts and aaFreq are predefined sample variables for demo purpose within the BaMORC Package.
+calculate_MSE(step_ca=1, step_cb=1, dat_cacb=chemicalShifts[, c(3,4)], aa_Freq=aaFreq)
+

@@ -1,7 +1,24 @@
-# Bayesian Model Optimized Reference Correction  (BaMORC)
+# BaMORC: Bayesian Model Optimized Reference Correction
 
-# BaMORC <img src="man/figures/logo.png" height="20%" width="20%" align="right" />
+## <img src="man/figures/logo.png" height="20%" width="20%" align="right" />
 The BaMORC package was desinged to faciliate Protein NMR researchers with a easy tool revoluting the traditional protein NMR research pipeline by provide several new methods to allow detect and correct 13C referencing error at early data analysis step. 
+
+Key features:
+
+* Functions for data processing: 
+    * `read_raw_file()`, processing user-provided data file.
+    * `read_NMRSTAR_file()`, automatically process BMRB Star 2.0 and 3.0 files.
+    * `read_DB_File()`, automatically fetch BMRB data and output appropriate format via BMRB entry ID number.
+
+* Functions for calculating referencing correction value for assigned and unassigned carbon protein NMR spectra: `bamorc()` and `unassigned_bamorc()`.
+
+* JPred secondary structure estimation wrapper: `jpred_fetcher()`.
+
+* CLI functions for using shell.
+
+
+
+`BaMORC` wouldn't be possible without the hard work of the authors of [RBMRB](https://cran.r-project.org/package=RBMRB) and [jpredapi](https://github.com/MoseleyBioinformaticsLab/jpredapir). Thanks!
 
 ## Installation
 
@@ -18,18 +35,19 @@ The latest development version can be installed from github:
 devtools::install_github('xxxx/BaMORC')
 ```
 
-### Prerequisites
-To reference correct assigned protein NMR spectra, following packages are required.
+### Installing unassigned BaMORC dependencies:
 
-``` r
-install.packages(c("data.table", "dplyr", "DEoptim", "httr", "docopt"))
+To use unassigned protein NMR reference correction method, SSC (Variance informed DBSCAN for protein NMR spin system clustering.) docker image is required and user need to install docker and SSC docker image
+
+* Install Docker from [here](https://www.docker.com/products/docker-desktop).
+
+* Install SSC docker image after docker is installed by running following code:
+```
+docker pull moseleybioinformaticslab/ssc .
 ```
 
-To use unassigned protein NMR reference correction method, SSC is required and user need to run following code to get the R script
-
-#### For Mac and Linux:
-
-* Find the R CLI script location
+## Package usage:
+For detailed usage tutorial please refer to [Quick Start](inst/doc/quickstart.html)
 
 Open terminal and type the following code:
 ```
