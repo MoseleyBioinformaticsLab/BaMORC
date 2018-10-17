@@ -47,54 +47,27 @@ docker pull moseleybioinformaticslab/ssc .
 ```
 
 ## Package usage:
-For detailed usage tutorial please refer to [Quick Start](inst/doc/quickstart.html)
+For detailed usage tutorial please refer to [Quick Start](inst/doc/quickstart.pdf)
 
-Open terminal and type the following code:
-```
-> R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
+## CLI usage:
 
-```
+1. Open terminal and type the following code to find the CLI running script.
+   ```
+   > R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
+   ```
 
-You will see the R script location print out in the terminal as shown in following image.
-<img src="man/figures/script_loc.png" height="68%" width="68%" align="center" />
+   You will see the R script location print out in the terminal as shown in following image.
+   <img src="man/figures/script_loc.png" height="68%" width="68%" align="center" />
 
-And to test the R CLI script using the following pattern.
-```
-> <path to the R ClI scirpt>/bamorc.R -h
-```
+   And to test the R CLI script using the following pattern.
+    
+   ```
+   > <path to the R ClI scirpt>/bamorc.R -h
+   ```
 
-In the example code, it should be like:
-```
-/Users/bill/Library/R/3.5/library/BaMORC/exec/bamorc.R -h
-```
-
-
-
-* Install the SSC
-
-```
-
-```
-
-
-
-## BaMORC Examples
-```
-library(BaMORC)
-
-sequence <- paste(BaMORC::RefDB_data$carbonDat[[1]]$AA,collapse = "")
-secondaryStructure <- paste(BaMORC::RefDB_data$carbonDat[[1]]$SS,collapse = "")
-chemicaeclShifts_input <- BaMORC::RefDB_data$carbonDat[[1]][,c(4,5)]
-from=-5
-to=5
-
-BaMORC(sequence, secondaryStructure, chemicaeclShifts_input, from=-5, to=5)
-```
-And the expected result is:
-
-```
-[1] 0.07073937 # Expected output
-
-```
+   In my example code, it should be like:
+   ```
+   > /Users/bill/Library/R/3.5/library/BaMORC/exec/bamorc.R -h
+   ```
 
 
