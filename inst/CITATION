@@ -1,0 +1,22 @@
+citHeader("To cite BaMORC in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Automatic 13C chemical shift reference correction for unassigned protein NMR spectra.",
+  author       = personList(as.person("Xi Chen"),
+                   as.person("Andrey Smelter"),
+                   as.person("Hunter N. B. Moseley")),
+  journal      = "Journal of Biomolecular NMR",
+  year         = "2018",
+  volume       = "66",
+  number       = "3",
+  pages        = "339",
+  url          = "https://rdcu.be/4ly5",
+
+  textVersion  =
+  paste("Xi Chen, Andrey Smelter Hunter N. B. Moseley (2018).",
+        "Automatic 13C chemical shift reference correction for unassigned protein NMR spectra.",
+        "Journal of Biomolecular NMR, 66 (3), 339.",
+        "URL https://rdcu.be/4ly5")
+)
+
+
