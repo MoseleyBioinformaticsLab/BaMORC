@@ -16,14 +16,13 @@ Options:
         -d, --delimiter=<delim>                 Delimiter option can be 'comma', 'tab' and 'whitespace'.
         -p, --ppm_range=<range>                 The ppm search range for reference correction value. [default: '-5,5']
         -i, --id=<id>                           RefDB or BMRB ID.
-        -o, --output=<output_filename>          Filename of output of BaMORC result in csv format.
-        -g, --ssc=<path>                        Spin system creater. [default: moseleybioinformaticslab/ssc]
+        -o, --output=<output_file_path>         File path of the output from BaMORC result in csv format.
+        -g, --ssc=<ssc_path>                    Spin system creater. [default: moseleybioinformaticslab/ssc]
         -h, --help                              Show this help message.
         -v, --version                           Show api version
-        --bmrb                                  filepath fo BMRB file
+        --bmrb                                  file path of input BMRB file
+        -r, --report=<report_file_path>         Correction value report output file path
 
-        --report=<report_filename>
-        --grouped
 " -> doc
 
 # checking the first line for table. Check all the values. table 3rd 4rd column numerical.

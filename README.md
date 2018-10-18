@@ -51,7 +51,7 @@ For detailed usage tutorial please refer to [Quick Start](vignettes/quickstart.R
 
 ## CLI usage:
 
-Open terminal and type the following code to find the CLI running script.
+To use "BaMORC CLI", you need to find the CLI run-script. Open terminal and type the following code:
 ```
 > R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
 ```
