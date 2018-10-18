@@ -139,12 +139,8 @@ calculate_AA_Prob <- function(chi_squared_stat, df=2){
 
 #' Calculates a chi squared statistic(s).
 #'
-<<<<<<< HEAD
 #' \code{calculate_chi_squared_stat} Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chi squared statistics based on the combination of amino acid typings and secondary structures.
-=======
-#' \code{calculate_chi_squared_stat} Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chisquare statistics based on the combination of amino acid typings and secondary structures.
->>>>>>> 3f51f9f9c7f032a01412e344093c3dcc19241810
-#'
+#' 
 #' @param cacb_pair A pair of carbon chemical shifts \code{c(Ca, Cb)}
 #'
 #' @return A list of chi-squared statistics basing the combination of amino acid typings and secondary structures.
