@@ -1,10 +1,10 @@
 #'
-#' Calculates the referencing correction value forn unassigned protein NMR peaklists.
+#' Calculates the referencing correction value for unassigned protein NMR peaklists.
 #' \code{unassigned_bamorc()} will analyze unassigned protein NMR spectra, first groups the peaklist via SSC, then estimates the secondary structure via JPred, finally using BaMORC core function to calculate the reference correction value.
 #'
 #' @param peakList_file_loc NMR HNCACB file location
 #' @param sequence sequence string of protein of interest
-#' @param secondary_structure string of secondary struture if available
+#' @param secondary_structure string of secondary structure if available
 #' @param from the lower bound of the optimization
 #' @param to the upper bound of the optimization
 #' @param ssc location of ssc docker image

@@ -11,13 +11,13 @@ Authors@R: c( person("Xi", "Chen", email = "billchenxi@gmail.com",
            person("Hunter", "Moseley", email = "hunter.moseley@uky.edu",
                   role = "aut")
         )
-Description: BaMORC (Bayesian Model Optimized Reference Correction) is a R package utilizing Bayesian probabilistic framework to perform protein NMR referencing correction, currently for alpha and beta carbon-13 chemical shifts, without any resonance assignment and/or three-dimensional protein structure. 
+Description: BaMORC (Bayesian Model Optimized Reference Correction) is an R package utilizing Bayesian probabilistic framework to perform protein NMR referencing correction, currently for alpha and beta carbon-13 chemical shifts, without any resonance assignment and/or three-dimensional protein structure. 
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: data.table, dplyr, tidyr, DEoptim, httr, docopt, stringr, jsonlite, readr, jpredapir, devtools, RBMRB, BMRBr
+Imports: data.table, dplyr, tidyr, DEoptim, httr, docopt, stringr, jsonlite, readr, devtools, RBMRB, BMRBr
 RoxygenNote: 6.1.0
-Suggests: knitr, rmarkdown, testthat
+Suggests: knitr, rmarkdown, jpredapir
 VignetteBuilder: knitr
 NeedsCompilation: no
 Packaged: 2018; 

@@ -15,7 +15,7 @@ calculate_AA_Prob(chi_squared_stat, df = 2)
 Input can be a single value or a vector of values, the output will be probability density for each value.
 }
 \description{
-Function returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
+Function returns the probability (density) for a certain type of amino acid based on a chi-squared statistics with 2 degrees of freedom.
 }
 \examples{
 # Find density for a chi square parameter with 3 degrees of freedom

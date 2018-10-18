@@ -3,13 +3,13 @@
 \docType{data}
 \name{AvgCov.t}
 \alias{AvgCov.t}
-\title{Average covariance across three secondary structures for all amino acid typings (including oxydized cystine).}
+\title{Average covariance across three secondary structures for all amino acid typings (including oxidized cystine).}
 \format{A data frame with 20 rows and 2 columns.}
 \usage{
 AvgCov.t
 }
 \description{
-A dataset containing average covariance across three secondary structure for all amino acid typings (including oxydized cystine):
+A dataset containing average covariance across three secondary structure for all amino acid typings (including oxidized cystine):
 \itemize{
   \item AA. amino acid typing names
   \item AvgCov. average covariance value across three secondary structures

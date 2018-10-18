@@ -2,7 +2,7 @@
 % Please edit documentation in R/barmorc.R
 \name{calculate_RCF}
 \alias{calculate_RCF}
-\title{Calculates the relative cummulative frequency for amino acid and secondary structure.}
+\title{Calculates the relative cumulative frequency for amino acid and secondary structure.}
 \usage{
 calculate_RCF(sequence, secondary_structure)
 }
@@ -12,13 +12,13 @@ calculate_RCF(sequence, secondary_structure)
 \item{secondary_structure}{String of protein secondary structure with single letter convention}
 }
 \value{
-Relative cummulative frequency.
+Relative cumulative frequency.
 }
 \description{
-This function calculates the relative cummulative freqeucny of amino acid and secondary structure combination.
+This function calculates the relative cumulative frequency of amino acid and secondary structure combination.
 }
 \examples{
 sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
-relativeCummulativeFrequency = calculate_RCF(sequence, secondary_structure)
+relativeCumulativeFrequency = calculate_RCF(sequence, secondary_structure)
 }

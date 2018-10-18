@@ -9,7 +9,7 @@
 CBMuTable
 }
 \description{
-A dataset containing mean chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine and glycine):
+A dataset containing mean chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine and glycine):
 \itemize{
   \item Residue. amino acid typing name (single-letter convention)
   \item C. coil

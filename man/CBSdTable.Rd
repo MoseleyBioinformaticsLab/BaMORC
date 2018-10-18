@@ -9,7 +9,7 @@
 CBSdTable
 }
 \description{
-A dataset containing Standard deviation of chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine and glycine):
+A dataset containing Standard deviation of chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine and glycine):
 \itemize{
   \item Residue. amino acid typing (single-letter convention)
   \item C. coil

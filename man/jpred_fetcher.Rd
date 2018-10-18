@@ -2,7 +2,7 @@
 % Please edit documentation in R/utility.R
 \name{jpred_fetcher}
 \alias{jpred_fetcher}
-\title{Using JPred Mass-submission scheduler program to submit protein sequence and return secodary structure results.}
+\title{Using JPred Mass-submission scheduler program to submit protein sequence and return secondary structure results.}
 \usage{
 jpred_fetcher(protein_sequence)
 }
@@ -13,7 +13,7 @@ jpred_fetcher(protein_sequence)
 protein secondary structure information
 }
 \description{
-Using JPred Mass-submission scheduler program to submit protein sequence and return secodary structure results.
+Using JPred Mass-submission scheduler program to submit protein sequence and return secondary structure results.
 }
 \examples{
 protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"

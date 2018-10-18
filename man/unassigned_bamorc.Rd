@@ -2,7 +2,7 @@
 % Please edit documentation in R/unassigned_bamorc.R
 \name{unassigned_bamorc}
 \alias{unassigned_bamorc}
-\title{Calculates the referencing correction value forn unassigned protein NMR peaklists.
+\title{Calculates the referencing correction value for unassigned protein NMR peaklists.
 \code{unassigned_bamorc()} will analyze unassigned protein NMR spectra, first groups the peaklist via SSC, then estimates the secondary structure via JPred, finally using BaMORC core function to calculate the reference correction value.}
 \usage{
 unassigned_bamorc(peakList_file_loc, sequence,
@@ -15,7 +15,7 @@ unassigned_bamorc(peakList_file_loc, sequence,
 
 \item{sequence}{sequence string of protein of interest}
 
-\item{secondary_structure}{string of secondary struture if available}
+\item{secondary_structure}{string of secondary structure if available}
 
 \item{from}{the lower bound of the optimization}
 
@@ -29,7 +29,7 @@ unassigned_bamorc(peakList_file_loc, sequence,
 Reference correction value.
 }
 \description{
-Calculates the referencing correction value forn unassigned protein NMR peaklists.
+Calculates the referencing correction value for unassigned protein NMR peaklists.
 \code{unassigned_bamorc()} will analyze unassigned protein NMR spectra, first groups the peaklist via SSC, then estimates the secondary structure via JPred, finally using BaMORC core function to calculate the reference correction value.
 }
 \examples{
