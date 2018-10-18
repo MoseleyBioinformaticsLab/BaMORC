@@ -10,7 +10,7 @@ sample_data_generator(input_type)
 \item{input_type}{flag indicates what sample data will be generated}
 }
 \value{
-save a sample file in a temperary location for demonstration
+save a sample file in a temporary location for demonstration
 }
 \description{
 Generate sample data file for testing purpose. Depending the input_type, the following sample files will be generated:

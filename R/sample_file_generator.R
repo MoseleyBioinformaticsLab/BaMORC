@@ -12,7 +12,7 @@
 #'
 #' @param input_type flag indicates what sample data will be generated
 #'
-#' @return save a sample file in a temperary location for demonstration
+#' @return save a sample file in a temporary location for demonstration
 #' @export sample_data_generator
 #'
 #' @examples

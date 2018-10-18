@@ -119,7 +119,7 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
 
 #' Calculates an amino acid typing probability.
 #'
-#' Function returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
+#' Function returns the probability (density) for a certain type of amino acid based on a chi-squared statistics with 2 degrees of freedom.
 #'
 #' @param chi_squared_stat a single or a vector of chi-squared statistics
 #' @param df degrees of freedom, default is 2
@@ -139,11 +139,11 @@ calculate_AA_Prob <- function(chi_squared_stat, df=2){
 
 #' Calculates a chi squared statistic(s).
 #'
-#' \code{calculate_chi_squared_stat} Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures.
+#' \code{calculate_chi_squared_stat} Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chisquare statistics based on the combination of amino acid typings and secondary structures.
 #'
 #' @param cacb_pair A pair of carbon chemical shifts \code{c(Ca, Cb)}
 #'
-#' @return A list of chisquare statisitcs basing the combination of amino acid typings and secondary structures.
+#' @return A list of chi-squared statistics basing the combination of amino acid typings and secondary structures.
 #' @examples
 #' calculate_chi_squared_stat(c(54,45))
 #' @export calculate_chi_squared_stat
@@ -166,20 +166,20 @@ calculate_chi_squared_stat <- function(cacb_pair) {
 }
 
 
-#' Calculates the relative cummulative frequency for amino acid and secondary structure.
+#' Calculates the relative cumulative frequency for amino acid and secondary structure.
 #'
-#' This function calculates the relative cummulative freqeucny of amino acid and secondary structure combination.
+#' This function calculates the relative cumulative frequency of amino acid and secondary structure combination.
 #'
 #' @param sequence String of protein sequence with one letter convention
 #' @param secondary_structure String of protein secondary structure with single letter convention
 #'
-#' @return Relative cummulative frequency.
+#' @return Relative cumulative frequency.
 #' @export calculate_RCF
 #'
 #' @examples
 #' sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 #' secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
-#' relativeCummulativeFrequency = calculate_RCF(sequence, secondary_structure)
+#' relativeCumulativeFrequency = calculate_RCF(sequence, secondary_structure)
 
 calculate_RCF <- function(sequence, secondary_structure){
         # Check whether same length
@@ -222,7 +222,7 @@ calculate_RCF <- function(sequence, secondary_structure){
 #'
 #' @param step_ca Potential correction value for alpha carbon.
 #' @param step_cb Potential correction value for beta carbon.
-#' @param dat_cacb Chemical shift data fram of alpha and beta carbons.
+#' @param dat_cacb Chemical shift data frame of alpha and beta carbons.
 #' @param aa_Freq Actual amino acid typing and secondary structure frequency calculated basing on provided protein sequence.
 #'
 #' @return Mean squared error.

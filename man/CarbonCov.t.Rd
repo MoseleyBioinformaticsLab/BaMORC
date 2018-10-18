@@ -9,7 +9,7 @@
 CarbonCov.t
 }
 \description{
-A dataset containing covariance values of chemical shifts of alpha and beta carbons for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine but not glycine):
+A dataset containing covariance values of chemical shifts of alpha and beta carbons for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine but not glycine):
 \itemize{
   \item AA.SS. amino acid typing and secondary structure combination (single-letter convention)
   \item Value. covariance value

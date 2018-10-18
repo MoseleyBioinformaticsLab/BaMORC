@@ -4,7 +4,7 @@
 \name{inversedMatrices}
 \alias{inversedMatrices}
 \title{inversedMatrices.}
-\format{An object of inversed matrices wich their accessing functions.}
+\format{An object of inversed matrices with their accessing functions.}
 \usage{
 inversedMatrices
 }
@@ -13,7 +13,7 @@ A data set containing all the pre-calculated inversed matrices and the access fu
 \describe{
  \item{$getInvMatrix(name)}{get the inversed matrix basing on the name, which is the amino acid and secondary structure combination (single-letter naming convention)}
  \item{$getNames()}{get all the names of the inverse matrices}
- \item{$Matrices}{the data set of all the pre-calculated inversed matrixced}
+ \item{$Matrices}{the data set of all the pre-calculated inversed matricies}
 }
 }
 \keyword{datasets}

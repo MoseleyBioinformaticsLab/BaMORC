@@ -5,20 +5,20 @@
 
 #'
 #' \describe{
-#'     \item{$AminoAcid}{data set of 19 amino acid single-letter naming convention (excuding glycine)}
+#'     \item{$AminoAcid}{data set of 19 amino acid single-letter naming convention (excluding glycine)}
 #'     \item{$carbonDat}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format}
 #'     \item{$carbonDat_narm}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA removed}
-#'     \item{$carbonDat_rmGU}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA, glycine and undetermed secondary structure elements removed}
+#'     \item{$carbonDat_rmGU}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA, glycine and undetermined secondary structure elements removed}
 #'     \item{$DBID}{data set of all 1557 RefDB IDs}
 #'     \item{$getData(index = NA, ID = NA, type = "raw")}{function that return single dataset, (index or ID, only one is allowed)
 #'        \itemize{
 #'          \item index.          the index of the dataset
 #'          \item ID.             the RefDB ID number of the dataset
-#'          \item type            what kind of data will be fected. "raw": returns raw data; "datatable": return data in data frame format; "rmNA": return data with NA removed; "rmGU: return data with NA, glycine and undetermed secondary structure elements removed
+#'          \item type            what kind of data will be fetched. "raw": returns raw data; "datatable": return data in data frame format; "rmNA": return data with NA removed; "rmGU: return data with NA, glycine and undetermined secondary structure elements removed
 #'        }}
 #'     \item{$getFreq(index = NA, ID = NA)}{function that return amino acid relative cummulative frequence for each data set (index or ID, only one is allowed)}
 #'     \item{$getSecStr(index = NA, ID = NA)}{function that return secondary structure information for each data set (index or ID, only one is allowed)}
-#'     \item{$getSequence(index = NA, ID = NA)}{function that return portein sequence information for each data set (index or ID, only one is allowed)}
+#'     \item{$getSequence(index = NA, ID = NA)}{function that return protein sequence information for each data set (index or ID, only one is allowed)}
 #'     \item{$rawData}{the data set contains all the raw data from RefDB}
 #'
 #' }
@@ -95,7 +95,7 @@
 
 #' Single-letter amino acid naming convention.
 #'
-#' A vector containing amino acid names with all letters capitalized, (no glycine, but includes the oxydized cyctine), they are:
+#' A vector containing amino acid names with all letters capitalized, (no glycine, but includes the oxidized cystine), they are:
 #' "A", "B", "C", "D", "E", "F", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y".
 #'
 #' @docType data
@@ -117,9 +117,9 @@
 #' @format A vector of 19 elements.
 'aaCodes1Letter19'
 
-#' Average covariance across three secondary structures for all amino acid typings (including oxydized cystine).
+#' Average covariance across three secondary structures for all amino acid typings (including oxidized cystine).
 #'
-#' A dataset containing average covariance across three secondary structure for all amino acid typings (including oxydized cystine):
+#' A dataset containing average covariance across three secondary structure for all amino acid typings (including oxidized cystine):
 #' \itemize{
 #'   \item AA. amino acid typing names
 #'   \item AvgCov. average covariance value across three secondary structures
@@ -134,7 +134,7 @@
 
 #' Mean chemical shift values for alpha carbon .
 #'
-#' A dataset containing mean chemical shift values for alpha carbon for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine and glycine):
+#' A dataset containing mean chemical shift values for alpha carbon for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine and glycine):
 #' \itemize{
 #'   \item Residue. amino acid typing name (single-letter convention)
 #'   \item C. coil
@@ -152,7 +152,7 @@
 
 #' Standard deviation of chemical shift values for alpha carbon .
 #'
-#' A dataset containing Standard deviation of chemical shift values for alpha carbon for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine and glycine):
+#' A dataset containing Standard deviation of chemical shift values for alpha carbon for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine and glycine):
 #' \itemize{
 #'   \item Residue. amino acid typing name (single-letter convention)
 #'   \item C. coil
@@ -170,7 +170,7 @@
 
 #' Mean chemical shift values for beta carbon .
 #'
-#' A dataset containing mean chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine and glycine):
+#' A dataset containing mean chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine and glycine):
 #' \itemize{
 #'   \item Residue. amino acid typing name (single-letter convention)
 #'   \item C. coil
@@ -188,7 +188,7 @@
 
 #' Standard deviation of chemical shift values for beta carbon .
 #'
-#' A dataset containing Standard deviation of chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine and glycine):
+#' A dataset containing Standard deviation of chemical shift values for beta carbon for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine and glycine):
 #' \itemize{
 #'   \item Residue. amino acid typing (single-letter convention)
 #'   \item C. coil
@@ -206,7 +206,7 @@
 
 #' Covariance values of chemical shifts of alpha and beta carbons.
 #'
-#' A dataset containing covariance values of chemical shifts of alpha and beta carbons for each amino acid across three secondary structure for all amino acid typings (including oxydized cystine but not glycine):
+#' A dataset containing covariance values of chemical shifts of alpha and beta carbons for each amino acid across three secondary structure for all amino acid typings (including oxidized cystine but not glycine):
 #' \itemize{
 #'   \item AA.SS. amino acid typing and secondary structure combination (single-letter convention)
 #'   \item Value. covariance value
@@ -275,9 +275,9 @@
 #' @format A data frame with 21 rows and 9 columns.
 'RefDB.StatCB'
 
-#' All the amino acids and secontary structures combinations for easy access.
+#' All the amino acids and secondary structures combinations for easy access.
 #'
-#' A dataset containing all the amino acids and secontary structures combinations:
+#' A dataset containing all the amino acids and secondary structures combinations:
 #' A-H", "A-B", "A-C", "R-H", "R-B", "R-C", "N-H", "N-B", "N-C", "D-H", "D-B", "D-C", "B-H", "B-B", "B-C", "C-H", "C-B", "C-C", "Q-H", "Q-B", "Q-C", "E-H", "E-B", "E-C", "H-H", "H-B", "H-C", "I-H", "I-B", "I-C", "L-H", "L-B", "L-C", "K-H", "K-B", "K-C", "M-H", "M-B", "M-C", "F-H", "F-B", "F-C", "P-H", "P-B", "P-C", "S-H", "S-B", "S-C", "T-H", "T-B", "T-C", "Y-H", "Y-B", "Y-C", "W-H", "W-B", "W-C", "V-H", "V-B", "V-C".
 #' @docType data
 #' @keywords datasets
@@ -292,11 +292,11 @@
 #' \describe{
 #'  \item{$getInvMatrix(name)}{get the inversed matrix basing on the name, which is the amino acid and secondary structure combination (single-letter naming convention)}
 #'  \item{$getNames()}{get all the names of the inverse matrices}
-#'  \item{$Matrices}{the data set of all the pre-calculated inversed matrixced}
+#'  \item{$Matrices}{the data set of all the pre-calculated inversed matricies}
 #' }
 #' @docType class
 #' @name inversedMatrices
-#' @format An object of inversed matrices wich their accessing functions.
+#' @format An object of inversed matrices with their accessing functions.
 'inversedMatrices'
 
 

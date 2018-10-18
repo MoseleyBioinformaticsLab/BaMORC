@@ -11,7 +11,7 @@ calculate_MSE(step_ca, step_cb, dat_cacb, aa_Freq)
 
 \item{step_cb}{Potential correction value for beta carbon.}
 
-\item{dat_cacb}{Chemical shift data fram of alpha and beta carbons.}
+\item{dat_cacb}{Chemical shift data frame of alpha and beta carbons.}
 
 \item{aa_Freq}{Actual amino acid typing and secondary structure frequency calculated basing on provided protein sequence.}
 }

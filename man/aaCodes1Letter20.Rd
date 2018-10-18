@@ -9,7 +9,7 @@
 aaCodes1Letter20
 }
 \description{
-A vector containing amino acid names with all letters capitalized, (no glycine, but includes the oxydized cyctine), they are:
+A vector containing amino acid names with all letters capitalized, (no glycine, but includes the oxidized cystine), they are:
 "A", "B", "C", "D", "E", "F", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y".
 }
 \keyword{datasets}

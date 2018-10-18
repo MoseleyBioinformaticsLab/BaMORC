@@ -4,7 +4,7 @@
 \alias{read_raw_file}
 \title{Extracts data from a protein NMR experimental peak list.
 \code{read_raw_file()} function reads in a user provided protein NMR experimental peak list. It currently supports file format in csv, txt with deliminator of comma, whitespace or semicolon.
-Note: please don't leave space between seequence and chemical shifts data, otherwise it will report error.}
+Note: please don't leave space between sequence and chemical shifts data, otherwise it will report error.}
 \usage{
 read_raw_file(file_path, delim = "comma", assigned = FALSE)
 }
@@ -16,12 +16,12 @@ read_raw_file(file_path, delim = "comma", assigned = FALSE)
 \item{assigned}{Flag tell whether the input chemical shifts file is already assigned or not}
 }
 \value{
-A list contains potein sequence and chemical shift tabble.
+A list contains protein sequence and chemical shift table.
 }
 \description{
 Extracts data from a protein NMR experimental peak list.
 \code{read_raw_file()} function reads in a user provided protein NMR experimental peak list. It currently supports file format in csv, txt with deliminator of comma, whitespace or semicolon.
-Note: please don't leave space between seequence and chemical shifts data, otherwise it will report error.
+Note: please don't leave space between sequence and chemical shifts data, otherwise it will report error.
 }
 \examples{
 input_type = "ws" 

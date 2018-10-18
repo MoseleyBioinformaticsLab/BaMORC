@@ -1,11 +1,11 @@
 #' Extracts data from a protein NMR experimental peak list.
 #' \code{read_raw_file()} function reads in a user provided protein NMR experimental peak list. It currently supports file format in csv, txt with deliminator of comma, whitespace or semicolon.
-#' Note: please don't leave space between seequence and chemical shifts data, otherwise it will report error.
+#' Note: please don't leave space between sequence and chemical shifts data, otherwise it will report error.
 #' @param file_path     File path where input chemical shifts file is located
 #' @param delim         Delimiter for parsing file
 #' @param assigned      Flag tell whether the input chemical shifts file is already assigned or not
 #'
-#' @return              A list contains potein sequence and chemical shift tabble.
+#' @return              A list contains protein sequence and chemical shift table.
 #' @export              read_raw_file
 #'
 #' @examples
@@ -125,7 +125,7 @@ read_DB_File <- function(id){
         return(list(seq, cs_df))
 }
 
-#' Using JPred Mass-submission scheduler program to submit protein sequence and return secodary structure results.
+#' Using JPred Mass-submission scheduler program to submit protein sequence and return secondary structure results.
 #'
 #' @param protein_sequence protein sequence
 #' @importFrom utils installed.packages
