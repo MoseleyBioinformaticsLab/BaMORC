@@ -22,8 +22,5 @@ RoxygenNote: 6.1.0
 Suggests: knitr, rmarkdown, jpredapir
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018; 
-Author: Xi Chen [aut, cre],
-  Andrey Smelter [aut],
-  Hunter Moseley [aut]
+Packaged: 2018
 Maintainer: Xi Chen <billchenxi@gmail.com>
