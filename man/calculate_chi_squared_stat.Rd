@@ -13,7 +13,11 @@ calculate_chi_squared_stat(cacb_pair)
 A list of chi-squared statistics basing the combination of amino acid typings and secondary structures.
 }
 \description{
+<<<<<<< HEAD
 \code{calculate_chi_squared_stat} Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chi squared statistics based on the combination of amino acid typings and secondary structures.
+=======
+\code{calculate_chi_squared_stat} Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chisquare statistics based on the combination of amino acid typings and secondary structures.
+>>>>>>> 3f51f9f9c7f032a01412e344093c3dcc19241810
 }
 \examples{
 calculate_chi_squared_stat(c(54,45))

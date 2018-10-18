@@ -292,12 +292,21 @@
 #' \describe{
 #'  \item{$getInvMatrix(name)}{get the inverse matrix basing on the name, which is the amino acid and secondary structure combination (single-letter naming convention)}
 #'  \item{$getNames()}{get all the names of the inverse matrices}
+<<<<<<< HEAD
 #'  \item{$Matrices}{the data set of all the pre-calculated inverse matrices}
 #' }
 #' @docType class
 #' @name inverseMatrices
 #' @format An object of inverse matrices with their accessing functions.
 'inverseMatrices'
+=======
+#'  \item{$Matrices}{the data set of all the pre-calculated inversed matricies}
+#' }
+#' @docType class
+#' @name inversedMatrices
+#' @format An object of inversed matrices with their accessing functions.
+'inversedMatrices'
+>>>>>>> 3f51f9f9c7f032a01412e344093c3dcc19241810
 
 
 #' Pre-defined sample chemical shifts data.
