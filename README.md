@@ -1,7 +1,7 @@
 # BaMORC: Bayesian Model Optimized Reference Correction
 
 ## <img src="man/figures/logo.png" height="20%" width="20%" align="right" />
-The BaMORC package was desinged to faciliate Protein NMR researchers with a easy tool revoluting the traditional protein NMR research pipeline by provide several new methods to allow detect and correct 13C referencing error at early data analysis step. 
+The BaMORC package is designed to facilitate protein NMR research with an easy-to-use tool that detects and corrects 13C referencing errors before and after the protein resonance assignment step. 
 
 Key features:
 
@@ -32,7 +32,7 @@ The latest development version can be installed from github:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github('xxxx/BaMORC')
+devtools::install_github('https://github.com/MoseleyBioinformaticsLab/BaMORC')
 ```
 
 ### Installing unassigned BaMORC dependencies:
@@ -51,23 +51,24 @@ For detailed usage tutorial please refer to [Quick Start](inst/doc/quickstart.pd
 
 ## CLI usage:
 
-1. Open terminal and type the following code to find the CLI running script.
-   ```
-   > R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
-   ```
+Open terminal and type the following code to find the CLI running script.
+```
+> R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
+```
 
-   You will see the R script location print out in the terminal as shown in following image.
-   <img src="man/figures/script_loc.png" height="68%" width="68%" align="center" />
+You will see the R script location print out in the terminal as shown in following image.
+<img src="man/figures/script_loc.png" height="68%" width="68%" align="center" />
 
-   And to test the R CLI script using the following pattern.
-    
-   ```
-   > <path to the R ClI scirpt>/bamorc.R -h
-   ```
+And to test the R CLI script using the following pattern.
 
-   In my example code, it should be like:
-   ```
-   > /Users/bill/Library/R/3.5/library/BaMORC/exec/bamorc.R -h
-   ```
+```
+> <path to the R ClI scirpt>/bamorc.R -h
+```
 
+In my example code, it should be like:
+```
+> /Users/bill/Library/R/3.5/library/BaMORC/exec/bamorc.R -h
+```
+
+For detailed documation please refere to [CLI guide](inst/doc/cli_guide.pdf)
 

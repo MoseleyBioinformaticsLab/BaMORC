@@ -1,7 +1,5 @@
 #!/usr/bin/env Rscript
-
 "
-
 Usage:
         bamorc.R assigned   (--table=<csv> | --bmrb=<bmrb> | --id=<id>)  [--ppm_range=<range>] [--output=<output_filename>] [--delimiter=<delim>] [--report=<report_filename>]
 
