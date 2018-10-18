@@ -11,4 +11,24 @@ RefDB_data
 \description{
 Collection of data from Re-referenced Protein Chemical shift Database (RefDB) and their access functions.
 }
+\details{
+\describe{
+    \item{$AminoAcid}{data set of 19 amino acid single-letter naming convention (excuding glycine)}
+    \item{$carbonDat}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format}
+    \item{$carbonDat_narm}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA removed}
+    \item{$carbonDat_rmGU}{data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA, glycine and undetermed secondary structure elements removed}
+    \item{$DBID}{data set of all 1557 RefDB IDs}
+    \item{$getData(index = NA, ID = NA, type = "raw")}{function that return single dataset, (index or ID, only one is allowed)
+       \itemize{
+         \item index.          the index of the dataset
+         \item ID.             the RefDB ID number of the dataset
+         \item type            what kind of data will be fected. "raw": returns raw data; "datatable": return data in data frame format; "rmNA": return data with NA removed; "rmGU: return data with NA, glycine and undetermed secondary structure elements removed
+       }}
+    \item{$getFreq(index = NA, ID = NA)}{function that return amino acid relative cummulative frequence for each data set (index or ID, only one is allowed)}
+    \item{$getSecStr(index = NA, ID = NA)}{function that return secondary structure information for each data set (index or ID, only one is allowed)}
+    \item{$getSequence(index = NA, ID = NA)}{function that return portein sequence information for each data set (index or ID, only one is allowed)}
+    \item{$rawData}{the data set contains all the raw data from RefDB}
+
+}
+}
 \keyword{datasets}

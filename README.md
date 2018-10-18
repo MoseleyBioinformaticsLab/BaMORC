@@ -47,7 +47,7 @@ docker pull moseleybioinformaticslab/ssc .
 ```
 
 ## Package usage:
-For detailed usage tutorial please refer to [Quick Start](inst/doc/quickstart.pdf)
+For detailed usage tutorial please refer to [Quick Start](vignettes/quickstart.Rmd)
 
 ## CLI usage:
 
@@ -70,5 +70,5 @@ In my example code, it should be like:
 > /Users/bill/Library/R/3.5/library/BaMORC/exec/bamorc.R -h
 ```
 
-For detailed documation please refere to [CLI guide](inst/doc/cli_guide.pdf)
+For detailed documation please refere to [CLI guide](vignettes/CLI_guide.Rmd)
 

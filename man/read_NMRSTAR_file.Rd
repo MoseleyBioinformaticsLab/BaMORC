@@ -20,11 +20,11 @@ Extracts data from BMRB STAR 3.0 file.
 \examples{
 ## Download a BMRB file
 library(BMRBr)
-bmrb_download(4020, output_dir = "./")
+\dontrun{bmrb_download(id_list = "4020", output_dir = "./", verbose = F)}
 
 ## Read in BMRB file and procec
 file_path = "bmr4020.str"
-head(read_NMRSTAR_file(file_path))
+\dontrun{head(read_NMRSTAR_file(file_path))}
 
 ## Delete downloaded BMRB file
 unlink("./bmr4020.str")

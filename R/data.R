@@ -20,7 +20,6 @@
 #'     \item{$getSecStr(index = NA, ID = NA)}{function that return secondary structure information for each data set (index or ID, only one is allowed)}
 #'     \item{$getSequence(index = NA, ID = NA)}{function that return portein sequence information for each data set (index or ID, only one is allowed)}
 #'     \item{$rawData}{the data set contains all the raw data from RefDB}
-#'     }
 #'
 #' }
 #'

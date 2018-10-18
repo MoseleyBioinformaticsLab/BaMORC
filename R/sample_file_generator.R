@@ -16,7 +16,7 @@
 #' @export sample_data_generator
 #'
 #' @examples
-#' input_type = "ws" # white space could include tab, so if tab doesn't work, please try using "ws" option
+#' input_type = "ws" 
 #' sample_data_generator(input_type = input_type)
 #' head(read_raw_file("sample_input_ws.txt", delim="ws"))
 #' unlink("sample_input_ws.txt")

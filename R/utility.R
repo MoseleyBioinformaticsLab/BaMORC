@@ -9,8 +9,7 @@
 #' @export              read_raw_file
 #'
 #' @examples
-#'
-#' input_type = "ws" # white space could include tab, so if tab doesn't work, please try using "ws" option
+#' input_type = "ws" 
 #' sample_data_generator(input_type = input_type)
 #' head(read_raw_file("sample_input_ws.txt", delim="ws"))
 #' unlink("sample_input_ws.txt")
@@ -66,11 +65,11 @@ read_raw_file <- function(file_path, delim="comma", assigned=FALSE){
 #' @examples
 #' ## Download a BMRB file
 #' library(BMRBr)
-#' bmrb_download(4020, output_dir = "./")
+#' \dontrun{bmrb_download(id_list = "4020", output_dir = "./", verbose = F)}
 #'
 #' ## Read in BMRB file and procec
 #' file_path = "bmr4020.str"
-#' head(read_NMRSTAR_file(file_path))
+#' \dontrun{head(read_NMRSTAR_file(file_path))}
 #'
 #' ## Delete downloaded BMRB file
 #' unlink("./bmr4020.str")

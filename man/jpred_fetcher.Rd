@@ -16,7 +16,6 @@ protein secondary structure information
 Using JPred Mass-submission scheduler program to submit protein sequence and return secodary structure results.
 }
 \examples{
-library(jpredapir)
 protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"
 \dontrun{secondary_structure <- jpred_fetcher(protein_sequence)}
 }

@@ -1,7 +1,6 @@
 ---
 title: "CLI Guide"
-output: 
-        pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Getting started with httr}
   %\VignetteEngine{knitr::rmarkdown}
@@ -38,7 +37,7 @@ R language has its own CLI command pattern via the functionality of `R CMD BATCH
 
    The patters is simple: `R CMD BATCH [arguments-to-pass] [path-of-script.R] $` 
    
-Here arguments are in the `-` format, for example `-ppm_range`. More detail refer to [Argument session](# Arguments to pass in the R script)
+Here arguments are in the `-` format, for example `-ppm_range`. More detail refer to [Argument session](## Arguments to pass in the R script)
 
 ### Linux CLI
 
@@ -46,10 +45,16 @@ The standard Linux CLI follows the `Docopt` convention.
 
    The pattern is: `[path-of-script.R] [command] [arguments-to-pass]`
 
+The command in the Linux CLI is either `assigned`, `unassigned` or `valid_ids`. The arguments are in `--` format, for example `--ppm_range`. More detail refer to [Argument session](## Arguments to pass in the R script) 
 
 
-### Arguments to pass in the R script
+## Arguments and examples
 
+### R CMD BATCH
+Using the `R CMD BATCH` will allow interactive, aka. after call the R script with argument, the terminal will not wait the script finishing, so no print-out no result will show in terminal window. In order to veiw the results, you need to find the output file saved on the location you provided.
 ```{r}
 library(BaMORC)
 ```
+
+
+### Linux CLI
