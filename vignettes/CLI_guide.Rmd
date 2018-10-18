@@ -1,5 +1,5 @@
 ---
-title: "Getting started with BaMORC"
+title: "CLI Guide"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Getting started with httr}
@@ -13,15 +13,29 @@ opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-# BaMORC quickstart guide
+# BaMORC CLI guide
 
-The goal of this document is to get you up and running with BaMORC as quickly as possible. BaMORC is designed as Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra. For a detailed explanation of the algorithm please refer to "[Automatic 13C chemical shift reference correction for unassigned protein NMR spectra](https://doi.org/10.1007/s10858-018-0202-5)".
+So you want to using `BaMORC` in shell no matter linux or windows? This document walks through each command line functions built-in the `BaMORC` package.
 
-There are two important parts to BaMORC: the `bamorc()`, reference correction function for assigned 13C protein  NMR spectra, and the `unassigned_bamorc()`, reference correction function for unassigned 13C protein NMR spectra. In the first section, you'll learn about the basics of running both of the functions. In the second section, you will dive into the basics of input data process, and in third section, you'll learn a little more on functions of the behind-the-scenes of the BaMORC algorithm.
+## Over all CLI design
 
-## BaMORC basics
+CLIs vary widely. Before diving into the actual command, it is important to understand the general patter of the CLI commands so that you can construct a complete and coherent command for utilizing `BaMORC` funcationalities.
 
-To make a correction, first load BaMORC, then call `bamorc()` or `unassigned_bamorc()` with correct arguments:
+The key features of any CLI is the structre of the command. A CLI consists of the following paters:
+
+1. Language interpreter,
+2. A script for doing something,
+3. Arguments that need to pass in the script.
+
+You need to be able to constructure a command with these components in order to perform the desired CLI call.
+
+`BaMORC` supports two type of CLI calls: innate `R CMD BATCH`, which supports all OS platforms, and Linux CLI.
+
+### R CMD BATCH (Windows-friendly)
+
+R language has its own CLI command pattern via the functionality of `R CMD BATCH`. At the very beginning of R history, `R CMD BATCH` was the function handle all the non-interactive calls through the shell. 
+
+The patter is simple: 
 
 ```{r}
 library(BaMORC)
@@ -31,7 +45,7 @@ library(BaMORC)
 
 Here we will using the built-in data to demonstrate the arguments that will be passed in the `bamorc()`.
 
-```{r, cache=TRUE}
+```{r cache=TRUE}
 ## Arguments:
 sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
@@ -40,7 +54,7 @@ from= -5
 to = 5
 
 ## Running bamorc() function:
-bamorc(sequence = sequence, secondary_structure = secondary_structure, chemical_shifts_input = chemical_shifts_input, from=-5, to=5)
+bamorc(sequence, secondary_structure, chemical_shifts_input, from=-5, to=5)
 ```
 
 * `sequence`: <string> the sequence of protein of interest with single-letter convention.
@@ -56,10 +70,10 @@ Printing an argument object gives you some useful information: the actual format
 
 Next we will using the built-in data to demonstrate the arguments that will be passed in the `unassigned_bamorc()`. The output will be slight different each time runs due to the randomness of the optimization.
 
-```{r, cache=TRUE}
-## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
+```{r cache=TRUE}
+## Arguments:
 sequence = "RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA"
-sample_data_generator(input_type = "ssc_sample")
+sample_data_generator(input_type = "ssc_sample") # this will generate a temperary sample file and later will be removed.
 file_path = "./bpti_HNcoCACB.txt" # temperary sample file path.
 
 ## Running unassigned_bamorc() function:
@@ -80,34 +94,25 @@ There are three file reading functions within the BaMORC package: `read_raw_file
 
 * Delimiter of white space:
     ```{r}
-    ## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
     input_type = "ws" 
     sample_data_generator(input_type = input_type)
-    
-    ## Running reading function
-    head(read_raw_file(file_path = "sample_input_ws.txt", delim = "ws"))
+    head(read_raw_file("sample_input_ws.txt", delim = "ws"))
     unlink("sample_input_ws.txt")
     ```
 
 * Delimiter of comma:
     ```{r}
-    ## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
     input_type = "csv" 
     sample_data_generator(input_type = input_type)
-    
-    ## Running reading function
-    head(read_raw_file(file_path = "sample_input.csv", delim = "comma"))
+    head(read_raw_file("sample_input.csv", delim = "comma"))
     unlink("sample_input.csv")
     ```
     
 * Delimiter of semicolon:
     ```{r}
-    ## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
     input_type = "sc" 
     sample_data_generator(input_type = input_type)
-    
-    ## Running reading function
-    head(read_raw_file(file_path = "sample_input_sc.txt", delim = "semicolon"))
+    head(read_raw_file("sample_input_sc.txt", delim = "semicolon"))
     unlink("sample_input_sc.txt")
     ```
 
@@ -122,7 +127,7 @@ bmrb_download(4020, output_dir = "./")
 
 ## Read in BMRB file and procec
 file_path = "bmr4020.str"
-head(read_NMRSTAR_file(file_path = file_path))
+head(read_NMRSTAR_file(file_path))
 
 ## Delete downloaded BMRB file
 unlink("./bmr4020.str")
@@ -131,7 +136,7 @@ unlink("./bmr4020.str")
 * `read_DB_File()`: parses file from BMRB by a given entry ID.
 ```{r}
 id = 4022
-output <- read_DB_File(id = id)
+output <- read_DB_File(id)
 head(output[[1]])
 head(output[[2]])
 ```
@@ -142,7 +147,7 @@ One important part of the optmization for referencing correction value is throug
 
 ```{r}
 protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"
-secondary_structure <- jpred_fetcher(protein_sequence = protein_sequence)
+secondary_structure <- jpred_fetcher(protein_sequence)
 
 secondary_structure
 ```
@@ -154,13 +159,13 @@ The BaMORC algorithms relys minimize the difference betwee the actual relative c
 * `calculate_AA_Prob()`: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
 
 ```{r}
-calculate_AA_Prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
+
 ```
 
 
-* `calculate_chi_squared_stat()`: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures. Here we illustrate with a pair of chemical shifts from alpha and beta carbon.
+* `calculate_chi_squared_stat()`: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures.
 ```{r}
-calculate_chi_squared_stat(cacb_pair = c(54,45))
+
 ```
 
 
@@ -171,11 +176,11 @@ sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
 
 ## Function:
-calculate_RCF(sequence = sequence, secondary_structure = secondary_structure)
+calculate_RCF(sequence, secondary_structure)
 ```
 
-* `calculate_MSE()`: calculates mean squared error for each correction value (step).
+* `calculate_MSE()`: calculates mean squared error.
 ```{r}
 ## chemicalShifts and aaFreq are predefined sample variables for demo purpose within the BaMORC Package.
-calculate_MSE(step_ca = 1, step_cb = 1, dat_cacb = chemicalShifts[, c(3,4)], aa_Freq = aaFreq)
+calculate_MSE(step_ca=1, step_cb=1, dat_cacb=chemicalShifts[, c(3,4)], aa_Freq=aaFreq)
 ```

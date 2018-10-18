@@ -8,7 +8,8 @@ vignette: >
 ---
 
 ```{r, echo = FALSE}
-library(httr)
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
@@ -30,7 +31,7 @@ library(BaMORC)
 
 Here we will using the built-in data to demonstrate the arguments that will be passed in the `bamorc()`.
 
-```{r cache=TRUE}
+```{r, cache=TRUE}
 ## Arguments:
 sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
@@ -39,7 +40,7 @@ from= -5
 to = 5
 
 ## Running bamorc() function:
-bamorc(sequence, secondary_structure, chemical_shifts_input, from=-5, to=5)
+bamorc(sequence = sequence, secondary_structure = secondary_structure, chemical_shifts_input = chemical_shifts_input, from=-5, to=5)
 ```
 
 * `sequence`: <string> the sequence of protein of interest with single-letter convention.
@@ -55,10 +56,10 @@ Printing an argument object gives you some useful information: the actual format
 
 Next we will using the built-in data to demonstrate the arguments that will be passed in the `unassigned_bamorc()`. The output will be slight different each time runs due to the randomness of the optimization.
 
-```{r cache=TRUE}
-## Arguments:
+```{r, cache=TRUE}
+## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
 sequence = "RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA"
-sample_data_generator(input_type = "ssc_sample") # this will generate a temperary sample file and later will be removed.
+sample_data_generator(input_type = "ssc_sample")
 file_path = "./bpti_HNcoCACB.txt" # temperary sample file path.
 
 ## Running unassigned_bamorc() function:
@@ -79,25 +80,34 @@ There are three file reading functions within the BaMORC package: `read_raw_file
 
 * Delimiter of white space:
     ```{r}
+    ## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
     input_type = "ws" 
     sample_data_generator(input_type = input_type)
-    head(read_raw_file("sample_input_ws.txt", delim = "ws"))
+    
+    ## Running reading function
+    head(read_raw_file(file_path = "sample_input_ws.txt", delim = "ws"))
     unlink("sample_input_ws.txt")
     ```
 
 * Delimiter of comma:
     ```{r}
+    ## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
     input_type = "csv" 
     sample_data_generator(input_type = input_type)
-    head(read_raw_file("sample_input.csv", delim = "comma"))
+    
+    ## Running reading function
+    head(read_raw_file(file_path = "sample_input.csv", delim = "comma"))
     unlink("sample_input.csv")
     ```
     
 * Delimiter of semicolon:
     ```{r}
+    ## Arguments:enerate a temperary sample NMR spectra file and later will be removed.
     input_type = "sc" 
     sample_data_generator(input_type = input_type)
-    head(read_raw_file("sample_input_sc.txt", delim = "semicolon"))
+    
+    ## Running reading function
+    head(read_raw_file(file_path = "sample_input_sc.txt", delim = "semicolon"))
     unlink("sample_input_sc.txt")
     ```
 
@@ -112,7 +122,7 @@ bmrb_download(4020, output_dir = "./")
 
 ## Read in BMRB file and procec
 file_path = "bmr4020.str"
-head(read_NMRSTAR_file(file_path))
+head(read_NMRSTAR_file(file_path = file_path))
 
 ## Delete downloaded BMRB file
 unlink("./bmr4020.str")
@@ -121,7 +131,7 @@ unlink("./bmr4020.str")
 * `read_DB_File()`: parses file from BMRB by a given entry ID.
 ```{r}
 id = 4022
-output <- read_DB_File(id)
+output <- read_DB_File(id = id)
 head(output[[1]])
 head(output[[2]])
 ```
@@ -132,7 +142,7 @@ One important part of the optmization for referencing correction value is throug
 
 ```{r}
 protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"
-secondary_structure <- jpred_fetcher(protein_sequence)
+secondary_structure <- jpred_fetcher(protein_sequence = protein_sequence)
 
 secondary_structure
 ```
@@ -144,13 +154,13 @@ The BaMORC algorithms relys minimize the difference betwee the actual relative c
 * `calculate_AA_Prob()`: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
 
 ```{r}
-
+calculate_AA_Prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
 ```
 
 
-* `calculate_chi_squared_stat()`: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures.
+* `calculate_chi_squared_stat()`: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures. Here we illustrate with a pair of chemical shifts from alpha and beta carbon.
 ```{r}
-
+calculate_chi_squared_stat(cacb_pair = c(54,45))
 ```
 
 
@@ -161,11 +171,11 @@ sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
 
 ## Function:
-calculate_RCF(sequence, secondary_structure)
+calculate_RCF(sequence = sequence, secondary_structure = secondary_structure)
 ```
 
-* `calculate_MSE()`: calculates mean squared error.
+* `calculate_MSE()`: calculates mean squared error for each correction value (step).
 ```{r}
 ## chemicalShifts and aaFreq are predefined sample variables for demo purpose within the BaMORC Package.
-calculate_MSE(step_ca=1, step_cb=1, dat_cacb=chemicalShifts[, c(3,4)], aa_Freq=aaFreq)
+calculate_MSE(step_ca = 1, step_cb = 1, dat_cacb = chemicalShifts[, c(3,4)], aa_Freq = aaFreq)
 ```
