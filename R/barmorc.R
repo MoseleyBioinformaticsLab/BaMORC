@@ -71,13 +71,13 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
                 ca_x <- x[1]
                 cb_x <- x[2]
                 InvDet_v <- sapply(AA_SS, function(aass){
-                        det(BaMORC::inversedMatrices$getInvMatrix(aass))
+                        det(BaMORC::inverseMatrices$getInvMatrix(aass))
                 })
                 est_prob <- unlist(lapply(c(1:nrow(chemical_shifts)), function(i){
                         cacb_cs <- unlist(c(chemical_shifts[i,3] + ca_x, chemical_shifts[i,4] + cb_x))
                         aa <- as.character(unlist(chemical_shifts[i,1]))
                         ss <- as.character(unlist(chemical_shifts[i,2]))
-                        inv_matrices <- BaMORC::inversedMatrices$getInvMatrix(paste(aa, ss, sep = "-"))
+                        inv_matrices <- BaMORC::inverseMatrices$getInvMatrix(paste(aa, ss, sep = "-"))
 
                         chi_str <- t(as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss]))) %*%
                                 inv_matrices %*%
@@ -86,7 +86,7 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
                         if(aa == "C"){
                                 aa <- "B"
                                 ss <- unlist(chemical_shifts[i,2])
-                                inv_matrices <- BaMORC::inversedMatrices$getInvMatrix(paste(aa, ss, sep = "-"))
+                                inv_matrices <- BaMORC::inverseMatrices$getInvMatrix(paste(aa, ss, sep = "-"))
                                 chi_str <- t(as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss]))) %*%
                                         inv_matrices %*%
                                         (as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss])))
@@ -150,12 +150,12 @@ calculate_AA_Prob <- function(chi_squared_stat, df=2){
 #'
 #'
 calculate_chi_squared_stat <- function(cacb_pair) {
-        chiSquaredStat.v <- unlist(lapply(BaMORC::inversedMatrices$getNames(), function(name){
+        chiSquaredStat.v <- unlist(lapply(BaMORC::inverseMatrices$getNames(), function(name){
                 aa <- strsplit(name, "-")[[1]][1]
                 ss <- strsplit(name, "-")[[1]][2]
-                chi_str <- t(as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss]))) %*% BaMORC::inversedMatrices$getInvMatrix(name) %*% (as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss])))
+                chi_str <- t(as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss]))) %*% BaMORC::inverseMatrices$getInvMatrix(name) %*% (as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss])))
                 cacb_pair <- rev(cacb_pair)
-                chi_str_rev <- t(as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss]))) %*% BaMORC::inversedMatrices$getInvMatrix(name) %*% (as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss])))
+                chi_str_rev <- t(as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss]))) %*% BaMORC::inverseMatrices$getInvMatrix(name) %*% (as.matrix(cacb_pair) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue == aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue == aa, ss])))
                 return(min(chi_str, chi_str_rev))
         }))
         #print(chi_str.v)
