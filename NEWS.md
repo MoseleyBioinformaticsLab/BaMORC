@@ -4,4 +4,4 @@
 
 ## Major changes
 
-- initial preparatin for CRAN submission on CRAN 2018-10-18.
+- initial preparation for CRAN submission on CRAN 2018-10-18.
