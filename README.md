@@ -21,7 +21,7 @@ Key features:
 
 
 
-`BaMORC` wouldn't be possible without the hard work of the authors of [RBMRB](https://cran.r-project.org/package=RBMRB) and [jpredapi](https://github.com/MoseleyBioinformaticsLab/jpredapir). Thanks!
+`BaMORC` wouldn't be possible without the hard work of the authors of [RBMRB](https://cran.r-project.org/package=RBMRB) and [jpredapir](https://github.com/MoseleyBioinformaticsLab/jpredapir). Thanks!
 
 ## Installation
 
