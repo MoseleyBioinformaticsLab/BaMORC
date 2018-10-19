@@ -15,13 +15,13 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 
 # BaMORC quickstart guide
 
-The goal of this document is to get you up and running with BaMORC as quickly as possible. BaMORC is designed as Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra. For a detailed explanation of the algorithm please refer to "[Automatic 13C chemical shift reference correction for unassigned protein NMR spectra](https://doi.org/10.1007/s10858-018-0202-5)".
+The goal of this document is to get you up and running with BaMORC as quickly as possible. BaMORC stands for the Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra. For a detailed explanation of the algorithm, please refer to "[Automatic 13C chemical shift reference correction for unassigned protein NMR spectra](https://doi.org/10.1007/s10858-018-0202-5)".
 
-There are two important parts to BaMORC: the `bamorc()`, reference correction function for assigned 13C protein  NMR spectra, and the `unassigned_bamorc()`, reference correction function for unassigned 13C protein NMR spectra. In the first section, you'll learn about the basics of running both of the functions. In the second section, you will dive into the basics of input data process, and in third section, you'll learn a little more on functions of the behind-the-scenes of the BaMORC algorithm.
+There are two important parts to BaMORC: the `bamorc()` reference correction function for assigned 13C protein  NMR spectra, and the `unassigned_bamorc()` reference correction function for unassigned 13C protein NMR spectra. In the first section, you'll learn about the basics of running both of these functions. In the second section, you will dive into the basics of input data process, and in third section, you'll learn a little more about the functions used behind-the-scenes by the BaMORC algorithm.
 
 ## BaMORC basics
 
-To make a correction, first load BaMORC, then call `bamorc()` or `unassigned_bamorc()` with correct arguments:
+To make a correction, first load BaMORC, then call `bamorc()` or `unassigned_bamorc()` with the correct arguments:
 
 ```{r}
 library(BaMORC)
@@ -29,7 +29,7 @@ library(BaMORC)
 
 ### For assigned protein NMR spectra:
 
-Here we will using the built-in data to demonstrate the arguments that will be passed in the `bamorc()`.
+Here we will using the built-in data to demonstrate the arguments that will be passed into `bamorc()`.
 
 ```{r}
 ## Arguments:
@@ -49,13 +49,13 @@ bamorc(sequence = sequence, secondary_structure = secondary_structure,
 * `chemical_shifts_input`: <data frame n by 2> the carbon 13 chemical shift of the protein.
 * `from` and `to`: <numeric> the upper- and lower-bound of optimization range. Value assigned to `from` must be lower than `to`.
 
-The length of the `sequence` and `secondary_structure` should be the same, if not pleasue assign `secondary_structure = NULL`, however, the peaklist groups number could be more or less than the length of the sequence. Since commonly the output of the spectra should have a little deviate from the sequence information.
+The length of the `sequence` and `secondary_structure` should be the same, if not please assign `secondary_structure = NULL`, however, the peaklist groups number could be more or less than the length of the sequence. Often peak lists will have fewer CA/CB pairs than the length of the protein sequence.
 
 Printing an argument object gives you some useful information: the actual format, the size, the object type, and if it's a string. 
 
 ### For unassigned protein NMR spectra:
 
-Next we will using the built-in data to demonstrate the arguments that will be passed in the `unassigned_bamorc()`. The output will be slight different each time runs due to the randomness of the optimization.
+Next, we will use the built-in data to demonstrate the arguments that will be passed in the `unassigned_bamorc()`. The output will be slightly different each time it runs, due to the randomness of the optimization.
 
 ```{r, eval= FALSE}
 ## Arguments:enerate a temperary sample NMR spectra file and later will be 
@@ -76,11 +76,11 @@ unlink("./bpti_HNcoCACB.txt")
 
 # The data processing:
 
-The data passed in both above functions should be pre-processed. Luckly, we provided a varity of helper functions. I'll show you how to process the data as following.
+The data passed in both above functions should be pre-processed. Luckly, we provide a variety of helper functions. See the following on how to process the data.
 
 ## The sample generating functions:
 
-There are three file reading functions within the BaMORC package: `read_raw_file()`, `read_nmrstar_file()`, and `read_db_file()`. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the `sample_data_generator()` with following code:
+There are three file parsing functions within the BaMORC package: `read_raw_file()`, `read_nmrstar_file()`, and `read_db_file()`. These functions handle a wide range of the input files. You can check the sample file using the `sample_data_generator()` for a recommended format:
 
 * Delimiter of white space:
     ```{r}
@@ -145,7 +145,7 @@ head(output[[2]])
 
 ## Estimating econdary structure from sequence:
 
-One important part of the optmization for referencing correction value is through providing the secondary structue information basin protein sequence. This is done through the [JPred](http://www.compbio.dundee.ac.uk/jpred/index.html) and jpredapi.
+Secondary structure information predicted based on the protein sequence is required for the optimization. This is predicted through the [JPred](http://www.compbio.dundee.ac.uk/jpred/index.html) and jpredapi.
 
 ```{r, eval= FALSE}
 protein_sequence <- "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"
@@ -156,7 +156,7 @@ secondary_structure
 
 ## Behind-the-scenes functions
 
-The BaMORC algorithms relys minimize the difference betwee the actual relative cummulative frequence (RCF) of the protein sequence and estimated RCF from the chemical shifts information. The functions make the algorithm possible are showing below with examples, for detailed function descriptions, please see the reference.:
+The BaMORC algorithm minimizes the difference between the actual relative cummulative frequency (RCF) of the protein sequence and the estimated RCF predicted from the chemical shifts information. The statistical functions used by the algorithm are shown below with examples. For detailed function descriptions, please see the reference:
 
 * `calculate_aa_prob()`: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
 
@@ -165,7 +165,7 @@ calculate_aa_prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
 ```
 
 
-* `calculate_chi_squared_stat()`: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures. Here we illustrate with a pair of chemical shifts from alpha and beta carbon.
+* `calculate_chi_squared_stat()`: given a pair of alpha and beta carbons chemical shifts, this function will return a list of calculated chi-squared statistics based on the combination of amino acid typings and secondary structures. Here we illustrate with a pair of chemical shifts from alpha and beta carbon.
 ```{r}
 calculate_chi_squared_stat(cacb_pair = c(54,45))
 ```
