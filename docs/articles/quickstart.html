@@ -147,7 +147,7 @@
 <div id="the-sample-generating-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-sample-generating-functions" class="anchor"></a>The sample generating functions:</h2>
-<p>There are three file reading functions within the BaMORC package: <code><a href="../reference/read_raw_file.html">read_raw_file()</a></code>, <code><a href="../reference/read_NMRSTAR_file.html">read_NMRSTAR_file()</a></code>, and <code><a href="../reference/read_DB_File.html">read_DB_File()</a></code>. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the <code><a href="../reference/sample_data_generator.html">sample_data_generator()</a></code> with following code:</p>
+<p>There are three file reading functions within the BaMORC package: <code><a href="../reference/read_raw_file.html">read_raw_file()</a></code>, <code><a href="../reference/read_nmrstar_file.html">read_nmrstar_file()</a></code>, and <code><a href="../reference/read_db_file.html">read_db_file()</a></code>. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the <code><a href="../reference/sample_data_generator.html">sample_data_generator()</a></code> with following code:</p>
 <ul>
 <li>
 <p>Delimiter of white space:</p>
@@ -262,7 +262,7 @@
 <a href="#the-reading-functions-will-return-sequence-and-chemical-shifts" class="anchor"></a>The reading functions will return sequence and chemical shifts:</h2>
 <ul>
 <li><p><code><a href="../reference/read_raw_file.html">read_raw_file()</a></code>: parses user-provided file in customed format as show above examples.</p></li>
-<li><p><code><a href="../reference/read_NMRSTAR_file.html">read_NMRSTAR_file()</a></code>: parses user-provided file in BMRB Star 2/3 format.</p></li>
+<li><p><code><a href="../reference/read_nmrstar_file.html">read_nmrstar_file()</a></code>: parses user-provided file in BMRB Star 2/3 format.</p></li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">## Download a BMRB file</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">library</span>(BMRBr)</a>
@@ -270,16 +270,16 @@
 <a class="sourceLine" id="cb7-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">## Read in BMRB file and procec</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6">file_path =<span class="st"> "bmr4020.str"</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw">head</span>(<span class="kw"><a href="../reference/read_NMRSTAR_file.html">read_NMRSTAR_file</a></span>(<span class="dt">file_path =</span> file_path))</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw">head</span>(<span class="kw"><a href="../reference/read_nmrstar_file.html">read_nmrstar_file</a></span>(<span class="dt">file_path =</span> file_path))</a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">## Delete downloaded BMRB file</span></a>
 <a class="sourceLine" id="cb7-10" data-line-number="10"><span class="kw">unlink</span>(<span class="st">"./bmr4020.str"</span>)</a></code></pre></div>
 <ul>
 <li>
-<code><a href="../reference/read_DB_File.html">read_DB_File()</a></code>: parses file from BMRB by a given entry ID.</li>
+<code><a href="../reference/read_db_file.html">read_db_file()</a></code>: parses file from BMRB by a given entry ID.</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">id =<span class="st"> </span><span class="dv">4022</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">output &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_DB_File.html">read_DB_File</a></span>(<span class="dt">id =</span> id)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">output &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_db_file.html">read_db_file</a></span>(<span class="dt">id =</span> id)</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">head</span>(output[[<span class="dv">1</span>]])</a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "A" "S" "P" "D" "W" "G"</span></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">head</span>(output[[<span class="dv">2</span>]])</a>
