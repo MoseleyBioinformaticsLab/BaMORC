@@ -13,21 +13,21 @@ opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-# BaMORC CLI guide
+# BaMORC Command Line Interface (CLI) guide
 
-So you want to using `BaMORC` in shell no matter linux or windows? This document walks through each command line functions built-in the `BaMORC` package.
+This document describes each command line function built into the `BaMORC` package.
 
 ## Over all CLI design
 
-CLIs vary widely. Before diving into the actual command, it is important to understand the general patter of the CLI commands so that you can construct a complete and coherent command for utilizing `BaMORC` funcationalities.
+CLIs vary widely. Before diving into the actual command, it is important to understand the general pattern of the CLI commands so that you can construct a complete and coherent command for utilizing `BaMORC` functions.
 
-The key features of any CLI is the structre of the command. A CLI consists of the following paters:
+The key features of any CLI is the structure of the command. A CLI consists of the following patterns:
 
 1. Language interpreter,
 2. A script for doing something,
-3. Arguments that need to pass in the script.
+3. Arguments needed for the script to execute.
 
-You need to be able to constructure a command with these components in order to perform the desired CLI call.
+You need to be able to construct a command with these components in order to perform the desired CLI call.
 
 `BaMORC` supports two type of CLI calls: innate `R CMD BATCH`, which supports all OS platforms, and Linux CLI. 
 
@@ -38,7 +38,7 @@ To use "BaMORC CLI", you need to find the CLI run-script. Open terminal and type
 > R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
 ```
 
-You will see the R script location print out in the terminal as shown in following image.
+You will see the R script location printed out in the terminal as shown in following image.
 <img src="../man/figures/script_loc.png" height="68%" width="68%" align="center" />
 
 The standard Linux CLI follows the `Docopt` convention. 
@@ -49,50 +49,51 @@ CLI syntex: `bamorc.R <job> <arguments>`
 #### The available tasks in the Linux CLI
 Following job can be used:
 
-* `assigned`: calculating reference correction value for assinged carbon 13 protein NMR spectra.
-* `unassigned`: calculating reference correction value for unassinged carbon 13 protein NMR spectra.
-* `valid_ids`: printing out all valid IDs for BMRB entries.
+* `assigned`: calculate the reference correction value for assigned carbon-13 protein NMR spectra.
+* `unassigned`: calculate the reference correction value for unassigned carbon-13 protein NMR spectra.
+* `valid_ids`: print out all the valid BMRB entry IDs.
 
-Valid full CLI commands are as following, we will explain the arguments in next session:
+Valid CLI commands are described below. We will explain the arguments in next session.
 
-* For assigned carbon 13 protein NMR spectra
+* For assigned carbon-13 protein NMR spectra:
 
         bamorc.R assigned   (--table=<csv> | --bmrb=<bmrb> | --id=<id>)  [--ppm_range=<range>] [--output=<output_filename>] [--delimiter=<delim>] [--report=<report_filename>]
         
-* For assigned carbon 13 protein NMR spectra
+* For assigned carbon-13 protein NMR spectra:
 
         bamorc.R unassigned (--table=<csv>) (--seq=<sequence>) [--ppm_range=<range>] [--output=<output_filename>] [--delimiter=<delim>] [--report=<report_filename>] [--ssc=<path>]
         
-* Printing out all valid IDs
+* For printing out all valid IDs:
 
         bamorc.R valid_ids
 
-#### Arguments syntex, please dont leave space before and after `=`:
+#### Argument syntax: please don't leave a space before or after the `=`.
 
 The arguments are in `--` or `-` format, for example `--ppm_range=<value>` and `-h`. 
 
 The helper commands are:
-* `bamorc.R -h | --help`: printing out manual of the CLI.
-* `bamorc.R -v | --version`: priting out package verion.
+* `bamorc.R -h | --help`: print out this CLI help information.
+* `bamorc.R -v | --version`: print out package version.
 
-Other arguments are divided in required or optional:
+Other arguments are divided into required or optional:
 
 * Required arguments for assigned protein NMR spectra referencing correction: `--table=<csv>` or `--bmrb=<bmrb>` or `--id=<id>`, just one of them.
-   + `--table=<csv>`: Input file path (can be shorten as `-s=<csv>`)
+   + `--table=<csv>`: Input file path (can be shortened as `-s=<csv>`)
    + `--bmrb`: file path of input BMRB file
-   + `--id=<id>`: RefDB or BMRB ID. (can be shorten as `-i=<id>`)
-   + `--seq=<sequence>`: Sequence of Protein of interest, if protein sequence file is not provided. (Can be shorten as `-s=<sequence>`)
+   + `--id=<id>`: RefDB or BMRB ID. (can be shortened as `-i=<id>`)
+   + `--seq=<sequence>`: Sequence of protein of interest, if protein sequence file is not provided. (Can be shortened as `-s=<sequence>`)
 
 * Required arguments for unassigned protein NMR spectra referencing correction: `--table=<csv>` and `--seq=<sequence>`.
-   + `--table=<csv>`: Input file path (can be shorten as `-s=<csv>`)
-   + `--seq=<sequence>`: Sequence of Protein of interest, if protein sequence file is not provided. (Can be shorten as `-s=<sequence>`)
+   + `--table=<csv>`: Input file path (can be shortened as `-s=<csv>`)
+   + `--seq=<sequence>`: Sequence of protein of interest, if protein sequence file is not provided. (Can be shortened as `-s=<sequence>`)
+   
 * Optional arguments:
 
-   + `--delimiter=<delim>`: Delimiter option can be 'comma', 'tab' and 'whitespace'. (Can be shorten as `-d=<delim>`)
-   + `--ppm_range=<range>`: The ppm search range for reference correction value, default value is '-5,5'. (Can be shorten as `-p=<range>`)
-   + `--output=<output_file_path>`: File path of the output from BaMORC result in csv format. (Can be shorten as `-o=<output_file_path>`)
-   + `--ssc=<ssc_path>`: Spin system creater, default value is `moseleybioinformaticslab/ssc`. (Can be shorten as `-g=<ssc_path>`)
-   + `--report=<report_file_path>`: Correction value report output file path. (Can be shorten as `-r=<report_file_path>`)
+   + `--delimiter=<delim>`: Delimiter option can be 'comma', 'tab' and 'whitespace'. (Can be shortened as `-d=<delim>`)
+   + `--ppm_range=<range>`: The ppm search range for reference correction value, default value is '-5,5'. (Can be shortened as `-p=<range>`)
+   + `--output=<output_file_path>`: File path of the output from BaMORC result in csv format. (Can be shortened as `-o=<output_file_path>`)
+   + `--ssc=<ssc_path>`: Spin system creater, default value is `moseleybioinformaticslab/ssc`. (Can be shortened as `-g=<ssc_path>`)
+   + `--report=<report_file_path>`: Correction value report output file path. (Can be shortened as `-r=<report_file_path>`)
 
 #### Examples:
 
