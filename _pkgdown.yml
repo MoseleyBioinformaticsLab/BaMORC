@@ -1,0 +1,55 @@
+template:
+  params:
+    bootswatch: cosmo
+
+navbar:
+  title: "BaMORC"
+  left:
+    - text: "Installation"
+      href: articles/BaMORC.html
+    - text: "Tutorial"
+      href: news/index.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "ChangeLog"
+      href:
+
+
+  right:
+   - icon: fa-github
+     href: https://github.com/billchenxi/BaMORC
+
+home:
+  links:
+  - text: Ask a question:
+    href: billchenxi@gmail.com
+
+articles:
+  - title: "Getting Started"
+    desc: >
+      These vignettes provide an introduction to how to use BaMORC for assginged and unassigned protein NMR chemical shifts.
+    contents:
+      - Using BaMORC to correct unassigned protein NMR chemical shifts.
+
+reference:
+  - title: "Read-in Functions"
+    desc: >
+      BaMORC currently support file delimiters of comma, semicolon and whitespace. For users who want to run analysis on existing dataset from BMRB (NMR-STAR version 3), they can use either the read_NMRSTAR_file function with parameter of local file path or the readDBFile function with parameters of BMRB ID and flag that indicates whether data is assigned or unassigned. If readDBFile is used, BaMORC will utilize the BMRB web API to fetch the corresponding BMRB entry matching the ID.
+    contents:
+      - starts_with("read")
+
+  - title: "Calculation Functions"
+    desc: >
+      Funcations calculate necessary statsitical values that essential for BaMORC analysis.
+    contents:
+      - starts_with("calculate")
+
+  - title: "BaMORC Analysis Function"
+    desc: >
+      Fundamental core function for BaMORC analysis, which requires the secondary structure information.
+    contents:
+      - BaMORC
+
+  - title: "Other Utility Functions"
+    contents:
+      - check_version
