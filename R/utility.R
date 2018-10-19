@@ -131,7 +131,6 @@ read_DB_File <- function(id){
 #' @importFrom utils installed.packages
 #' @importFrom utils untar
 #' @importFrom utils read.csv2
-#' @importFrom utils installed.packages
 #' @return protein secondary structure information
 #' @export jpred_fetcher
 #'
@@ -140,30 +139,60 @@ read_DB_File <- function(id){
 #' \dontrun{secondary_structure <- jpred_fetcher(protein_sequence)}
 
 jpred_fetcher <- function(protein_sequence){
-        if(!is.element("jpredapir", installed.packages()[,1])){
-                devtools::install_github("MoseleyBioinformaticsLab/jpredapir")
+        if(is.null(protein_sequence) | protein_sequence==""){
+                stop("Please provide protein sequence.")
         }
-        submit_respnse <- jpredapir::submit(mode="single", user_format="raw", seq=protein_sequence)
-        result_url <- httr::headers(submit_respnse)$location
-        jobid <- stringr::str_match(string = result_url, pattern = "(jp_.*)$")[2]
-        jpredapir::get_results(jobid = jobid)
-        message(paste("JPred is done."))
+        host = "http://www.compbio.dundee.ac.uk/jpred4/cgi-bin/rest/job"
+        
+        query <- paste("skipPDB=on", "format=seq", paste0(">query\n", protein_sequence), sep = "\u00a3\u20ac\u00a3\u20ac")
+        response <- httr::POST(host, body = query, httr::add_headers("Content-type" = "text/txt"))
+        
+        if(response$status_code == 202 & grepl(pattern = "created jpred job", tolower(httr::content(response, "text")))){
+                result_url <- httr::headers(response)$location
+                jobid <- stringr::str_match(string = result_url, pattern = "(jp_.*)$")[2]
+        }
+        else{
+                stop(paste(message(httr::content(response, "text")), response$status_code))
+        }
+        
+        job_url <- paste(host, "id", jobid, sep = "/")
+        result_url <- httr::headers(response)$location
 
-        # Need to process the Secondary Structure result
-        jpred_result_loc <- paste0(paste(getwd(), jobid, jobid, jobid, sep = "/"), ".tar.gz")
-        jpred_target_file <- paste0(jobid, ".jnet")
-        untar(jpred_result_loc, files=jpred_target_file)
-
-        secondary_structure <- read.csv2(jpred_target_file, header = F)[[1]][1]
-        secondary_structure <- gsub("jnetpred:|,", "", secondary_structure)
-        secondary_structure <- gsub("E", "B", secondary_structure)
-        secondary_structure <- gsub("-", "C", secondary_structure)
-
-        message(paste("The predicted secondary structure is:", secondary_structure))
-
-        # Remove all the jpred downloaded files.
-        garbage_file <- list.files(pattern = ".jnet")
-        file.remove(garbage_file)
-        unlink(jobid, recursive=TRUE)
-        return(secondary_structure)
+        
+        for(i in c(0:60)) {
+                # check whether it's done or not
+                if (grepl(pattern = "finished", tolower(httr::content(httr::GET(job_url), "text")))){
+                        
+                        # Download results
+                        archive_url <- paste("http://www.compbio.dundee.ac.uk/jpred4", "results", jobid, paste0(jobid, ".tar.gz"), sep = "/") # where file located on-line
+                        dir.create("temp_jpred")
+                        jpred_saved_loc <- file.path(paste0("temp_jpred/", jobid, ".tar.gz")) # declare where to save
+                        download.file(archive_url, jpred_saved_loc)
+                        jpred_target_file <- paste0(jobid, ".jnet") # declare what file to get in the tar arch
+                        untar(jpred_saved_loc, files=jpred_target_file) # save the file in root
+                        
+                        # Remove downloaded tar file
+                        unlink("temp_jpred", recursive=TRUE)
+                        
+                        # Need to process the Secondary Structure result
+                        secondary_structure <- read.csv2(jpred_target_file, header = F)[[1]][1]
+                        secondary_structure <- gsub("jnetpred:|,", "", secondary_structure)
+                        secondary_structure <- gsub("E", "B", secondary_structure)
+                        secondary_structure <- gsub("-", "C", secondary_structure)
+                        
+                        # Remove jnet file after get the secondary structure.
+                        garbage_file <- list.files(pattern = ".jnet")
+                        file.remove(garbage_file)
+                        
+                        message(paste("The predicted secondary structure is:", secondary_structure))
+                        
+                        return(secondary_structure)
+                }
+                # if not done, wait
+                else {
+                        Sys.sleep(60)
+                }
+        }
+        
+        
 }
