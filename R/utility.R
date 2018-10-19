@@ -94,20 +94,20 @@ read_NMRSTAR_file <- function(file_path){
 }
 
 # Extracts data from exisitng database entry.
-#' \code{read_DB_file()} reads in data from existing database that included in the BaMORC package. This database was extracted from RefDB database.
+#' \code{read_db_file()} reads in data from existing database that included in the BaMORC package. This database was extracted from RefDB database.
 #'
 #' @param id BMRB or RefDB entry ID.
 #' @importFrom RBMRB fetch_entry_chemical_shifts
 #' @importFrom tidyr spread
 #' @importFrom stringr str_replace_all
 #' @return Protein sequence, secondary structure information and chemical shifts dataframe.
-#' @export read_DB_File
+#' @export read_db_file
 #'
 #' @examples
 #' id = 4022
-#' head(read_DB_File(id))
+#' head(read_db_file(id))
 
-read_DB_File <- function(id){
+read_db_file <- function(id){
         raw_data <- RBMRB::fetch_entry_chemical_shifts(id)[,c("Seq_ID", "Comp_ID", "Atom_ID", "Val")]
         raw_data_carbon <- raw_data[which(raw_data$Atom_ID=="CA" | raw_data$Atom_ID=="CB"),]
 

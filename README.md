@@ -8,12 +8,12 @@ The BaMORC package is designed to facilitate protein NMR research with an easy-t
 
 Key features:
 
+* Functions for calculating referencing correction value for assigned and unassigned carbon protein NMR spectra: `bamorc()` and `unassigned_bamorc()`.
+
 * Functions for data processing: 
     * `read_raw_file()`, processing user-provided data file.
-    * `read_NMRSTAR_file()`, automatically process BMRB Star 2.0 and 3.0 files.
-    * `read_DB_File()`, automatically fetch BMRB data and output appropriate format via BMRB entry ID number.
-
-* Functions for calculating referencing correction value for assigned and unassigned carbon protein NMR spectra: `bamorc()` and `unassigned_bamorc()`.
+    * `read_nmrstar_file()`, automatically process BMRB Star 2.0 and 3.0 files.
+    * `read_db_file()`, automatically fetch BMRB data and output appropriate format via BMRB entry ID number.
 
 * JPred secondary structure estimation wrapper: `jpred_fetcher()`.
 
