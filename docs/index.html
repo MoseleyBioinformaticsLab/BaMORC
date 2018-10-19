@@ -19,7 +19,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -66,11 +66,9 @@
 
       
       </header><div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     
 
-    
-    
 <div id="bamorc-bayesian-model-optimized-reference-correction" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#bamorc-bayesian-model-optimized-reference-correction" class="anchor"></a>BaMORC: Bayesian Model Optimized Reference Correction</h1></div>
@@ -113,13 +111,13 @@
 <li><p>Install Docker from <a href="https://www.docker.com/products/docker-desktop">here</a>.</p></li>
 <li>Install SSC docker image after docker is installed by running following code:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">docker</span> pull moseleybioinformaticslab/ssc .</a></code></pre></div>
+<pre><code>docker pull moseleybioinformaticslab/ssc .</code></pre>
 </div>
 </div>
 <div id="package-usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#package-usage" class="anchor"></a>Package usage:</h2>
-<p>For detailed usage tutorial please refer to <a href="vignettes/quickstart.Rmd">Quick Start</a></p>
+<p>For detailed usage tutorial please refer to <a href="https://moseleybioinformaticslab.github.io/BaMORC/articles/quickstart.html">Quick Start</a></p>
 </div>
 <div id="cli-usage" class="section level2">
 <h2 class="hasAnchor">
@@ -131,12 +129,13 @@
 <pre><code>&gt; &lt;path to the R ClI scirpt&gt;/bamorc.R -h</code></pre>
 <p>In my example code, it should be like:</p>
 <pre><code>&gt; /Users/bill/Library/R/3.5/library/BaMORC/exec/bamorc.R -h</code></pre>
-<p>For detailed documation please refere to <a href="vignettes/CLI_guide.Rmd">CLI guide</a></p>
+<p>For detailed documation please refere to <a href="https://moseleybioinformaticslab.github.io/BaMORC/articles/CLI_guide.html">CLI guide</a></p>
 </div>
 </div>
+
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3" id="sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
@@ -170,8 +169,14 @@
 </ul>
 </div>
 
-      </div>
-
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.org/MoseleyBioinformaticsLab/BaMORC"><img src="https://travis-ci.org/MoseleyBioinformaticsLab/BaMORC.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://cran.r-project.org/package=BaMORC"><img src="https://cranlogs.r-pkg.org/badges/BaMORC"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
