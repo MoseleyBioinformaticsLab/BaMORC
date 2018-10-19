@@ -1,9 +1,9 @@
 Package: BaMORC
 Type: Package
-Title: Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra
+Title: Bayesian Model Optimized Reference Correction Method for Assigned and Unassigned Protein NMR Spectra
 Version: 1.0
 Depends: R (>= 3.1.0)
-Date: 2018
+Date: 2018-10-18
 Authors@R: c( person("Xi", "Chen", email = "billchenxi@gmail.com", comment = c(ORCID="0000-0001-7094-6748"),
                   role = c("aut", "cre")), 
            person("Andrey", "Smelter", email = "andrey.smeltor@gmail.com",
@@ -11,7 +11,7 @@ Authors@R: c( person("Xi", "Chen", email = "billchenxi@gmail.com", comment = c(O
            person("Hunter", "Moseley", email = "hunter.moseley@uky.edu",
                   role = "aut")
         )
-Description: Provides reference correction for protein NMR spectra. Bayesian Model Optimized Reference Correction (BaMORC) is utilizing Bayesian probabilistic framework to perform protein NMR referencing correction, currently for alpha and beta carbon-13 chemical shifts, without any resonance assignment and/or three-dimensional protein structure. 
+Description: Provides reference correction for protein NMR spectra. Bayesian Model Optimized Reference Correction (BaMORC) is utilizing Bayesian probabilistic framework to perform protein NMR referencing correction, currently for alpha and beta carbon-13 chemical shifts, without any resonance assignment and/or three-dimensional protein structure. <doi: 10.1007/s10858-018-0202-5>
 URL: https://github.com/MoseleyBioinformaticsLab/BaMORC
 BugReports: https://github.com/MoseleyBioinformaticsLab/BaMORC/issues
 License: BSD_3_clause + file LICENSE

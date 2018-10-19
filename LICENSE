@@ -1,4 +1,12 @@
-Copyright (c) 2018, Xi Chen, Andrey Smelter, Hunter N.B. Moseley
+YEAR: 2018
+COPYRIGHT HOLDER: Xi Chen, Andrey Smelter, Hunter N.B. Moseley
+ORGANIZATION: Moseley's Lab
+
+and specify as
+
+License: BSD_3_clause + file LICENSE
+
+Copyright (c) <YEAR>, <COPYRIGHT HOLDER>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
