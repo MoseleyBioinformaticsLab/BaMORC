@@ -5,14 +5,14 @@ template:
 navbar:
   title: "BaMORC"
   left:
-    - text: "Installation"
-      href: articles/BaMORC.html
-    - text: "Tutorial"
-      href: news/index.html
+    - text: "Quickstart"
+      href: articles/quickstart.html
+    - text: "CLI Guide"
+      href: articles/CLI_guide.html
     - text: "Reference"
       href: reference/index.html
     - text: "ChangeLog"
-      href:
+      href: news/index.html
 
 
   right:
@@ -21,18 +21,16 @@ navbar:
 
 home:
   links:
-  - text: Ask a question:
+  - text: Ask a question
     href: billchenxi@gmail.com
 
 articles:
-  - title: "Getting Started"
-    desc: >
-      These vignettes provide an introduction to how to use BaMORC for assginged and unassigned protein NMR chemical shifts.
-    contents:
-      - Using BaMORC to correct unassigned protein NMR chemical shifts.
+  - title: "Quickstart"
+    desc: "Quickstart with BaMORC"
+
 
 reference:
-  - title: "Read-in Functions"
+  - title: "Data Processing Functions"
     desc: >
       BaMORC currently support file delimiters of comma, semicolon and whitespace. For users who want to run analysis on existing dataset from BMRB (NMR-STAR version 3), they can use either the read_NMRSTAR_file function with parameter of local file path or the readDBFile function with parameters of BMRB ID and flag that indicates whether data is assigned or unassigned. If readDBFile is used, BaMORC will utilize the BMRB web API to fetch the corresponding BMRB entry matching the ID.
     contents:
@@ -48,8 +46,43 @@ reference:
     desc: >
       Fundamental core function for BaMORC analysis, which requires the secondary structure information.
     contents:
-      - BaMORC
+      - bamorc
+      - unassigned_bamorc
 
-  - title: "Other Utility Functions"
+  - title: "Utility Functions"
+    desc: >
+      Utility functions used by BaMORC analysis.
     contents:
-      - check_version
+     - jpred_fetcher
+     - sample_data_generator
+  - title: "Data Objects"
+    contents:
+     - AA57OLMatrix
+     - AA57OLWeights
+     - CAMuTable
+     - CASdTable
+     - CBMuTable
+     - CBSdTable
+     - AvgCov.t
+     - CarbonCov.t
+     
+     - RefDB.StatCA
+     - RefDB.StatCB
+     - RefDB_data
+     
+     - inverseMatrices
+     
+     - aaCodes1Letter19
+     - aaCodes1Letter20
+     - aaCodes3Letter1stCap
+     - aaCodes3LetterAllCap
+     
+     - ID
+     - cname
+     
+  - title: "Built-in Sample"
+    contents:
+    - chemicalShifts
+    - aaFreq
+    
+

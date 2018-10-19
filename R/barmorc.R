@@ -21,7 +21,7 @@
 #' from=-5
 #' to=5
 #'
-#' \dontrun{bamorc(sequence, secondary_structure, chemical_shifts_input, from=-5, to=5))
+#' \dontrun{bamorc(sequence, secondary_structure, chemical_shifts_input, from=-5, to=5)}
 #'
 #' # Expected output
 #' # [1] 0.0142443

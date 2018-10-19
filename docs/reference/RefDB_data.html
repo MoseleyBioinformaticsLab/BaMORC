@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RefDB Data Sets (R6 class object). — RefDB_data • BaMORC</title>
+<title>RefDB object — RefDB_data • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,13 +30,9 @@
 
 
 
-<meta property="og:title" content="RefDB Data Sets (R6 class object). — RefDB_data" />
+<meta property="og:title" content="RefDB object — RefDB_data" />
 
-<meta property="og:description" content="Collection of data from Re-referenced Protein Chemical shift Database (RefDB). Each data entry in
-the database represent one protein and the corresponding chemical shifts from NMR experiment for
-that protein. The original data are from the BioMagRes Bank, and all the data here are carefully
-corrected or re-referenced using X-ray or NMR coordinate data via SHIFTX and then comparing those
- predictions to the observed shifts reported in the BMRB (via SHIFTCOR) [1]." />
+<meta property="og:description" content="Collection of data from Re-referenced Protein Chemical shift Database (RefDB) and their access functions." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -74,15 +70,17 @@ corrected or re-referenced using X-ray or NMR coordinate data via SHIFTX and the
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/BaMORC.html">Installation</a>
+  <a href="../articles/quickstart.html">Quickstart</a>
 </li>
 <li>
-  <a href="../news/index.html">Tutorial</a>
+  <a href="../articles/CLI_guide.html">CLI Guide</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown-header">ChangeLog</li>
+<li>
+  <a href="../news/index.html">ChangeLog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -104,18 +102,14 @@ corrected or re-referenced using X-ray or NMR coordinate data via SHIFTX and the
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>RefDB Data Sets (R6 class object).</h1>
-    
+    <h1>RefDB object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/data.R'><code>R/data.R</code></a></small>
     <div class="hidden name"><code>RefDB_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Collection of data from Re-referenced Protein Chemical shift Database (RefDB). Each data entry in
-the database represent one protein and the corresponding chemical shifts from NMR experiment for
-that protein. The original data are from the BioMagRes Bank, and all the data here are carefully
-corrected or re-referenced using X-ray or NMR coordinate data via SHIFTX and then comparing those
- predictions to the observed shifts reported in the BMRB (via SHIFTCOR) [1].</p>
+    <p>Collection of data from Re-referenced Protein Chemical shift Database (RefDB) and their access functions.</p>
     
     </div>
 
@@ -123,28 +117,27 @@ corrected or re-referenced using X-ray or NMR coordinate data via SHIFTX and the
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 1557 13C data sets:</p><dl class='dl-horizontal'>
-  <dt>entry</dt><dd><p>ID, BMRB ID</p></dd>
-  <dt>table</dt><dd><p>table contains ID, AA, SS, CA, CB, which represent
-  ID: Residue Potition of Protein,
-  AA: Amino Acid Typing,
-  SS: Secondary Structure,
-  CA: Alpha Carbon Chemical Shifts,
-  CB: Beta Carbon Chemical Shifts</p></dd>
-  <dt>usage</dt><dd><p>RefDB_data$</p></dd>
-</dl>
-    
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='http://refdb.wishartlab.com/'>http://refdb.wishartlab.com/</a></p>
+    <p>A class contains 1557 13C datasets and access functions.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Currently there are 2162 entry in the RefDB, but we only use 1557 of them which contain carbon
- chemical shifts.</p>
-<p>Reference:</p>
-<p>[1] Haiyan Zhang, Stephen Neal and David Wishart (2003) "RefDB: A database of uniformly
- referenced protein chemical shifts" Journal of Biomolecular NMR, 25: 173-195</p>
+    <dl class='dl-horizontal'>
+    <dt>$AminoAcid</dt><dd><p>data set of 19 amino acid single-letter naming convention (excluding glycine)</p></dd>
+    <dt>$carbonDat</dt><dd><p>data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format</p></dd>
+    <dt>$carbonDat_narm</dt><dd><p>data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA removed</p></dd>
+    <dt>$carbonDat_rmGU</dt><dd><p>data set (list) of all 1557 RefDB carbon 13 raw data pre-processed in data frame format with NA, glycine and undetermined secondary structure elements removed</p></dd>
+    <dt>$DBID</dt><dd><p>data set of all 1557 RefDB IDs</p></dd>
+    <dt>$getData(index = NA, ID = NA, type = "raw")</dt><dd><p>function that return single dataset, (index or ID, only one is allowed)
+       <ul>
+<li><p>index.          the index of the dataset</p></li>
+<li><p>ID.             the RefDB ID number of the dataset</p></li>
+<li><p>type            what kind of data will be fetched. "raw": returns raw data; "datatable": return data in data frame format; "rmNA": return data with NA removed; "rmGU: return data with NA, glycine and undetermined secondary structure elements removed</p></li>
+</ul></p></dd>
+    <dt>$getFreq(index = NA, ID = NA)</dt><dd><p>function that return amino acid relative cumulative frequency for each data set (index or ID, only one is allowed)</p></dd>
+    <dt>$getSecStr(index = NA, ID = NA)</dt><dd><p>function that return secondary structure information for each data set (index or ID, only one is allowed)</p></dd>
+    <dt>$getSequence(index = NA, ID = NA)</dt><dd><p>function that return protein sequence information for each data set (index or ID, only one is allowed)</p></dd>
+    <dt>$rawData</dt><dd><p>the data set contains all the raw data from RefDB</p></dd>
+    </dl>
     
 
   </div>
@@ -153,8 +146,6 @@ corrected or re-referenced using X-ray or NMR coordinate data via SHIFTX and the
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#format">Format</a></li>
-
-      <li><a href="#source">Source</a></li>
 
       <li><a href="#details">Details</a></li>
           </ul>

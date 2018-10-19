@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculates the referencing correction value. — bamorc • BaMORC</title>
+<title>Statistics of chemical shifts values of beta carbons from RefDB. — RefDB.StatCB • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,19 @@
 
 
 
-<meta property="og:title" content="Calculates the referencing correction value. — bamorc" />
+<meta property="og:title" content="Statistics of chemical shifts values of beta carbons from RefDB. — RefDB.StatCB" />
 
-<meta property="og:description" content="The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts." />
+<meta property="og:description" content="A dataset containing statistics of chemical shifts of beta carbons for each amino acid from RefDB data:
+Residue. amino acid typing (single-letter convention)
+Coil.mu. mean value of beta carbon in coil
+Coil.sd. mean value of beta carbon in coil
+Helix.mu. mean value of beta carbon in helix
+Helix.sd. standard deviation value of beta carbon in helix
+Beta.mu. mean value of beta carbon in coil
+Beta.sd. standard deviation value of beta carbon in coil
+Avg.mu. average of mean values of beta carbon across three secondary structures
+Avg.sd. average of standard deviation values of beta carbon across three secondary structures
+" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -102,57 +112,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculates the referencing correction value.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/barmorc.R'><code>R/barmorc.R</code></a></small>
-    <div class="hidden name"><code>bamorc.Rd</code></div>
+    <h1>Statistics of chemical shifts values of beta carbons from RefDB.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>RefDB.StatCB.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts.</p>
+    <p>A dataset containing statistics of chemical shifts of beta carbons for each amino acid from RefDB data:</p><ul>
+<li><p>Residue. amino acid typing (single-letter convention)</p></li>
+<li><p>Coil.mu. mean value of beta carbon in coil</p></li>
+<li><p>Coil.sd. mean value of beta carbon in coil</p></li>
+<li><p>Helix.mu. mean value of beta carbon in helix</p></li>
+<li><p>Helix.sd. standard deviation value of beta carbon in helix</p></li>
+<li><p>Beta.mu. mean value of beta carbon in coil</p></li>
+<li><p>Beta.sd. standard deviation value of beta carbon in coil</p></li>
+<li><p>Avg.mu. average of mean values of beta carbon across three secondary structures</p></li>
+<li><p>Avg.sd. average of standard deviation values of beta carbon across three secondary structures</p></li>
+</ul>
     
     </div>
 
-    <pre class="usage"><span class='fu'>bamorc</span>(<span class='no'>sequence</span>, <span class='kw'>secondary_structure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>chemical_shifts_input</span>,
-  <span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>5</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>sequence</th>
-      <td><p>string of sequence</p></td>
-    </tr>
-    <tr>
-      <th>secondary_structure</th>
-      <td><p>string of secondary structure (optional)</p></td>
-    </tr>
-    <tr>
-      <th>chemical_shifts_input</th>
-      <td><p>table of alpha and beta carbon chemical shift pairs in data.frame</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>the lower bound of the optimization search window</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>the upper bound of the optimization search window</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>RefDB.StatCB</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Carbon-13 reference correction value that should be applied (added) to the input carbon chemical shifts data.</p>
+    <p>A data frame with 21 rows and 9 columns.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
           </ul>
 
   </div>

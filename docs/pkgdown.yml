@@ -2,5 +2,6 @@ pandoc: 2.2.3.2
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
-  BaMORC: BaMORC.html
+  CLI_guide: CLI_guide.html
+  quickstart: quickstart.html
 

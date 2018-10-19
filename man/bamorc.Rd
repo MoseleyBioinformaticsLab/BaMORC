@@ -24,3 +24,26 @@ Carbon-13 reference correction value that should be applied (added) to the input
 \description{
 The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts.
 }
+\examples{
+sequence <- paste(RefDB_data$carbonDat[[1]]$AA,collapse = "")
+secondary_structure <- paste(RefDB_data$carbonDat[[1]]$SS,collapse = "")
+chemical_shifts_input <- RefDB_data$carbonDat[[1]][,c(4,5)]
+from=-5
+to=5
+
+\dontrun{bamorc(sequence, secondary_structure, chemical_shifts_input, from=-5, to=5)}
+
+# Expected output
+# [1] 0.0142443
+
+
+sequence <- paste(BaMORC::RefDB_data$carbonDat[[1]]$AA,collapse = "")
+chemical_shifts_input <- BaMORC::RefDB_data$carbonDat[[1]][,c(4,5)]
+from=-5
+to=5
+
+
+\dontrun{bamorc(sequence=sequence, chemical_shifts_input=chemical_shifts_input, from=-5, to=5)}
+# Expected output
+# [1] 0.009805279
+}

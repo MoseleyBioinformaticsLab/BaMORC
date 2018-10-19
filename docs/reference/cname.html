@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculates the referencing correction value. — bamorc • BaMORC</title>
+<title>All the amino acids and secondary structures combinations for easy access. — cname • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Calculates the referencing correction value. — bamorc" />
+<meta property="og:title" content="All the amino acids and secondary structures combinations for easy access. — cname" />
 
-<meta property="og:description" content="The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts." />
+<meta property="og:description" content="A dataset containing all the amino acids and secondary structures combinations:
+A-H&quot;, &quot;A-B&quot;, &quot;A-C&quot;, &quot;R-H&quot;, &quot;R-B&quot;, &quot;R-C&quot;, &quot;N-H&quot;, &quot;N-B&quot;, &quot;N-C&quot;, &quot;D-H&quot;, &quot;D-B&quot;, &quot;D-C&quot;, &quot;B-H&quot;, &quot;B-B&quot;, &quot;B-C&quot;, &quot;C-H&quot;, &quot;C-B&quot;, &quot;C-C&quot;, &quot;Q-H&quot;, &quot;Q-B&quot;, &quot;Q-C&quot;, &quot;E-H&quot;, &quot;E-B&quot;, &quot;E-C&quot;, &quot;H-H&quot;, &quot;H-B&quot;, &quot;H-C&quot;, &quot;I-H&quot;, &quot;I-B&quot;, &quot;I-C&quot;, &quot;L-H&quot;, &quot;L-B&quot;, &quot;L-C&quot;, &quot;K-H&quot;, &quot;K-B&quot;, &quot;K-C&quot;, &quot;M-H&quot;, &quot;M-B&quot;, &quot;M-C&quot;, &quot;F-H&quot;, &quot;F-B&quot;, &quot;F-C&quot;, &quot;P-H&quot;, &quot;P-B&quot;, &quot;P-C&quot;, &quot;S-H&quot;, &quot;S-B&quot;, &quot;S-C&quot;, &quot;T-H&quot;, &quot;T-B&quot;, &quot;T-C&quot;, &quot;Y-H&quot;, &quot;Y-B&quot;, &quot;Y-C&quot;, &quot;W-H&quot;, &quot;W-B&quot;, &quot;W-C&quot;, &quot;V-H&quot;, &quot;V-B&quot;, &quot;V-C&quot;." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -102,57 +103,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculates the referencing correction value.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/barmorc.R'><code>R/barmorc.R</code></a></small>
-    <div class="hidden name"><code>bamorc.Rd</code></div>
+    <h1>All the amino acids and secondary structures combinations for easy access.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>cname.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts.</p>
+    <p>A dataset containing all the amino acids and secondary structures combinations:
+A-H", "A-B", "A-C", "R-H", "R-B", "R-C", "N-H", "N-B", "N-C", "D-H", "D-B", "D-C", "B-H", "B-B", "B-C", "C-H", "C-B", "C-C", "Q-H", "Q-B", "Q-C", "E-H", "E-B", "E-C", "H-H", "H-B", "H-C", "I-H", "I-B", "I-C", "L-H", "L-B", "L-C", "K-H", "K-B", "K-C", "M-H", "M-B", "M-C", "F-H", "F-B", "F-C", "P-H", "P-B", "P-C", "S-H", "S-B", "S-C", "T-H", "T-B", "T-C", "Y-H", "Y-B", "Y-C", "W-H", "W-B", "W-C", "V-H", "V-B", "V-C".</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>bamorc</span>(<span class='no'>sequence</span>, <span class='kw'>secondary_structure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>chemical_shifts_input</span>,
-  <span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>5</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>sequence</th>
-      <td><p>string of sequence</p></td>
-    </tr>
-    <tr>
-      <th>secondary_structure</th>
-      <td><p>string of secondary structure (optional)</p></td>
-    </tr>
-    <tr>
-      <th>chemical_shifts_input</th>
-      <td><p>table of alpha and beta carbon chemical shift pairs in data.frame</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>the lower bound of the optimization search window</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>the upper bound of the optimization search window</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>cname</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Carbon-13 reference correction value that should be applied (added) to the input carbon chemical shifts data.</p>
+    <p>A vector with 60 elements.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
           </ul>
 
   </div>

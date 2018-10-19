@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculates the referencing correction value. — bamorc • BaMORC</title>
+<title>Calculates the relative cumulative frequency for amino acid and secondary structure. — calculate_RCF • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Calculates the referencing correction value. — bamorc" />
+<meta property="og:title" content="Calculates the relative cumulative frequency for amino acid and secondary structure. — calculate_RCF" />
 
-<meta property="og:description" content="The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts." />
+<meta property="og:description" content="This function calculates the relative cumulative frequency of amino acid and secondary structure combination." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -102,50 +102,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculates the referencing correction value.</h1>
+    <h1>Calculates the relative cumulative frequency for amino acid and secondary structure.</h1>
     <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/barmorc.R'><code>R/barmorc.R</code></a></small>
-    <div class="hidden name"><code>bamorc.Rd</code></div>
+    <div class="hidden name"><code>calculate_RCF.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts.</p>
+    <p>This function calculates the relative cumulative frequency of amino acid and secondary structure combination.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>bamorc</span>(<span class='no'>sequence</span>, <span class='kw'>secondary_structure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>chemical_shifts_input</span>,
-  <span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>5</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_RCF</span>(<span class='no'>sequence</span>, <span class='no'>secondary_structure</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sequence</th>
-      <td><p>string of sequence</p></td>
+      <td><p>String of protein sequence with one letter convention</p></td>
     </tr>
     <tr>
       <th>secondary_structure</th>
-      <td><p>string of secondary structure (optional)</p></td>
-    </tr>
-    <tr>
-      <th>chemical_shifts_input</th>
-      <td><p>table of alpha and beta carbon chemical shift pairs in data.frame</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>the lower bound of the optimization search window</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>the upper bound of the optimization search window</p></td>
+      <td><p>String of protein secondary structure with single letter convention</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Carbon-13 reference correction value that should be applied (added) to the input carbon chemical shifts data.</p>
+    <p>Relative cumulative frequency.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>sequence</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='no'>RefDB_data</span>$<span class='no'>carbonDat</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>AA</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>""</span>)
+<span class='no'>secondary_structure</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='no'>RefDB_data</span>$<span class='no'>carbonDat</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>SS</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>""</span>)
+<span class='no'>relativeCumulativeFrequency</span> <span class='kw'>=</span> <span class='fu'>calculate_RCF</span>(<span class='no'>sequence</span>, <span class='no'>secondary_structure</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +144,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

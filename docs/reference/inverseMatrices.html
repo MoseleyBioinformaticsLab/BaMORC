@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculates the referencing correction value. — bamorc • BaMORC</title>
+<title>inverseMatrices. — inverseMatrices • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,13 @@
 
 
 
-<meta property="og:title" content="Calculates the referencing correction value. — bamorc" />
+<meta property="og:title" content="inverseMatrices. — inverseMatrices" />
 
-<meta property="og:description" content="The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts." />
+<meta property="og:description" content="A data set containing all the pre-calculated inverse matrices and the access functions.
+ $getInvMatrix(name)get the inverse matrix basing on the name, which is the amino acid and secondary structure combination (single-letter naming convention)
+ $getNames()get all the names of the inverse matrices
+ $Matricesthe data set of all the pre-calculated inverse matrices
+" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -102,57 +106,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculates the referencing correction value.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/barmorc.R'><code>R/barmorc.R</code></a></small>
-    <div class="hidden name"><code>bamorc.Rd</code></div>
+    <h1>inverseMatrices.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>inverseMatrices.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts.</p>
+    <p>A data set containing all the pre-calculated inverse matrices and the access functions.</p><dl class='dl-horizontal'>
+ <dt>$getInvMatrix(name)</dt><dd><p>get the inverse matrix basing on the name, which is the amino acid and secondary structure combination (single-letter naming convention)</p></dd>
+ <dt>$getNames()</dt><dd><p>get all the names of the inverse matrices</p></dd>
+ <dt>$Matrices</dt><dd><p>the data set of all the pre-calculated inverse matrices</p></dd>
+</dl>
     
     </div>
 
-    <pre class="usage"><span class='fu'>bamorc</span>(<span class='no'>sequence</span>, <span class='kw'>secondary_structure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>chemical_shifts_input</span>,
-  <span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>5</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>sequence</th>
-      <td><p>string of sequence</p></td>
-    </tr>
-    <tr>
-      <th>secondary_structure</th>
-      <td><p>string of secondary structure (optional)</p></td>
-    </tr>
-    <tr>
-      <th>chemical_shifts_input</th>
-      <td><p>table of alpha and beta carbon chemical shift pairs in data.frame</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>the lower bound of the optimization search window</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>the upper bound of the optimization search window</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>inverseMatrices</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Carbon-13 reference correction value that should be applied (added) to the input carbon chemical shifts data.</p>
+    <p>An object of inverse matrices with their accessing functions.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
           </ul>
 
   </div>

@@ -68,15 +68,17 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/BaMORC.html">Installation</a>
+  <a href="../articles/quickstart.html">Quickstart</a>
 </li>
 <li>
-  <a href="../news/index.html">Tutorial</a>
+  <a href="../articles/CLI_guide.html">CLI Guide</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown-header">ChangeLog</li>
+<li>
+  <a href="../news/index.html">ChangeLog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -112,32 +114,31 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-read-in-functions" class="hasAnchor"><a href="#section-read-in-functions" class="anchor"></a>Read-in Functions</h2>
+          <h2 id="section-data-processing-functions" class="hasAnchor"><a href="#section-data-processing-functions" class="anchor"></a>Data Processing Functions</h2>
           <p class="section-desc"><p>BaMORC currently support file delimiters of comma, semicolon and whitespace. For users who want to run analysis on existing dataset from BMRB (NMR-STAR version 3), they can use either the read_NMRSTAR_file function with parameter of local file path or the readDBFile function with parameters of BMRB ID and flag that indicates whether data is assigned or unassigned. If readDBFile is used, BaMORC will utilize the BMRB web API to fetch the corresponding BMRB entry matching the ID.</p></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="readDBFile.html">readDBFile()</a></code> </p>
+          <p><code><a href="read_DB_File.html">read_DB_File()</a></code> </p>
         </td>
-        <td><p>readDBFile
-<code>readDBFile</code> is the function that parses BMRB STAR 3.0 file. It will extract sequence information and chemical shifts for both alpha carbon and beta carbon.</p></td>
+        <td><p><code>read_DB_file()</code> reads in data from existing database that included in the BaMORC package. This database was extracted from RefDB database.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="read_BMRB_file.html">read_BMRB_file()</a></code> </p>
+          <p><code><a href="read_NMRSTAR_file.html">read_NMRSTAR_file()</a></code> </p>
         </td>
-        <td><p>read_BMRB_file
-<code>read_BMRB_file</code> is the function that parses BMRB STAR 3.0 file. It will extract sequence information and chemical shifts for both alpha carbon and beta carbon.</p></td>
+        <td><p>Extracts data from BMRB STAR 3.0 file.
+<code>read_NMRSTAR_file()</code> parses BMRB STAR 3.0 file. It will extract sequence information and chemical shifts for both alpha and beta carbons.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="read_file.html">read_file()</a></code> </p>
+          <p><code><a href="read_raw_file.html">read_raw_file()</a></code> </p>
         </td>
-        <td><p>read_file
-Reading in file that user upload it.
-please don't leave space between seequence and chemical shifts data, it will report error, but still working.</p></td>
+        <td><p>Extracts data from a protein NMR experimental peak list.
+<code>read_raw_file()</code> function reads in a user provided protein NMR experimental peak list. It currently supports file format in csv, txt with deliminator of comma, whitespace or semicolon.
+Note: please don't leave space between sequence and chemical shifts data, otherwise it will report error.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -149,28 +150,27 @@ please don't leave space between seequence and chemical shifts data, it will rep
       <tr>
         
         <td>
-          <p><code><a href="calculateAAProb.html">calculateAAProb()</a></code> </p>
+          <p><code><a href="calculate_AA_Prob.html">calculate_AA_Prob()</a></code> </p>
         </td>
-        <td><p>calculateAAProb</p></td>
+        <td><p>Calculates an amino acid typing probability.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="calculateChiSquaredStat.html">calculateChiSquaredStat()</a></code> </p>
+          <p><code><a href="calculate_MSE.html">calculate_MSE()</a></code> </p>
         </td>
-        <td><p>calculateChiSquaredStat</p></td>
+        <td><p>Calculates mean squared error</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="calculateMSE.html">calculateMSE()</a></code> </p>
+          <p><code><a href="calculate_RCF.html">calculate_RCF()</a></code> </p>
         </td>
-        <td><p>calculateMSE</p></td>
+        <td><p>Calculates the relative cumulative frequency for amino acid and secondary structure.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="calculateRCF.html">calculateRCF()</a></code> </p>
+          <p><code><a href="calculate_chi_squared_stat.html">calculate_chi_squared_stat()</a></code> </p>
         </td>
-        <td><p>calculateRCF
-Function calculate the relative cummulative freqeucney of amino acid and secondary structure combination.</p></td>
+        <td><p>Calculates a chi squared statistic(s).</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -182,24 +182,172 @@ Function calculate the relative cummulative freqeucney of amino acid and seconda
       <tr>
         
         <td>
-          <p><code><a href="BaMORC.html">BaMORC()</a></code> </p>
+          <p><code><a href="bamorc.html">bamorc()</a></code> </p>
         </td>
-        <td><p>BaMORC
-Protein NMR carbon 13 referencing correction function.  <code>BaMORC</code> uses protein sequence and secondary structure information along with the grouped chemical shift peaklists to correct the reference values. The output of this function is the correction value that need to include in the chemical shifts.</p></td>
+        <td><p>Calculates the referencing correction value.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="unassigned_bamorc.html">unassigned_bamorc()</a></code> </p>
+        </td>
+        <td><p>Calculates the referencing correction value for unassigned protein NMR peaklists.
+<code>unassigned_bamorc()</code> will analyze unassigned protein NMR spectra, first groups the peaklist via SSC, then estimates the secondary structure via JPred, finally using BaMORC core function to calculate the reference correction value.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-other-utility-functions" class="hasAnchor"><a href="#section-other-utility-functions" class="anchor"></a>Other Utility Functions</h2>
+          <h2 id="section-utility-functions" class="hasAnchor"><a href="#section-utility-functions" class="anchor"></a>Utility Functions</h2>
+          <p class="section-desc"><p>Utility functions used by BaMORC analysis.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="jpred_fetcher.html">jpred_fetcher()</a></code> </p>
+        </td>
+        <td><p>Using JPred Mass-submission scheduler program to submit protein sequence and return secondary structure results.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sample_data_generator.html">sample_data_generator()</a></code> </p>
+        </td>
+        <td><p>sample_data_generator</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data-objects" class="hasAnchor"><a href="#section-data-objects" class="anchor"></a>Data Objects</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="check_version.html">check_version()</a></code> </p>
+          <p><code><a href="AA57OLMatrix.html">AA57OLMatrix</a></code> </p>
         </td>
-        <td><p>check_version()</p></td>
+        <td><p>Overlapping Matrix for 57 amino acid and secondary structure combinations.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="AA57OLWeights.html">AA57OLWeights</a></code> </p>
+        </td>
+        <td><p>Overlapping weights for 57 amino acid and secondary structure combinations.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="CAMuTable.html">CAMuTable</a></code> </p>
+        </td>
+        <td><p>Mean chemical shift values for alpha carbon .</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="CASdTable.html">CASdTable</a></code> </p>
+        </td>
+        <td><p>Standard deviation of chemical shift values for alpha carbon .</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="CBMuTable.html">CBMuTable</a></code> </p>
+        </td>
+        <td><p>Mean chemical shift values for beta carbon .</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="CBSdTable.html">CBSdTable</a></code> </p>
+        </td>
+        <td><p>Standard deviation of chemical shift values for beta carbon .</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="AvgCov.t.html">AvgCov.t</a></code> </p>
+        </td>
+        <td><p>Average covariance across three secondary structures for all amino acid typings (including oxidized cystine).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="CarbonCov.t.html">CarbonCov.t</a></code> </p>
+        </td>
+        <td><p>Covariance values of chemical shifts of alpha and beta carbons.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="RefDB.StatCA.html">RefDB.StatCA</a></code> </p>
+        </td>
+        <td><p>Statistics of chemical shifts values of alpha carbons from RefDB.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="RefDB.StatCB.html">RefDB.StatCB</a></code> </p>
+        </td>
+        <td><p>Statistics of chemical shifts values of beta carbons from RefDB.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="RefDB_data.html">RefDB_data</a></code> </p>
+        </td>
+        <td><p>RefDB object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="inverseMatrices.html">inverseMatrices</a></code> </p>
+        </td>
+        <td><p>inverseMatrices.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aaCodes1Letter19.html">aaCodes1Letter19</a></code> </p>
+        </td>
+        <td><p>Single-letter amino acid naming convention.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aaCodes1Letter20.html">aaCodes1Letter20</a></code> </p>
+        </td>
+        <td><p>Single-letter amino acid naming convention.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aaCodes3Letter1stCap.html">aaCodes3Letter1stCap</a></code> </p>
+        </td>
+        <td><p>Three-letter amino acid naming convention with first letter capitalized.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aaCodes3LetterAllCap.v.html">aaCodes3LetterAllCap.v</a></code> </p>
+        </td>
+        <td><p>Three-letter amino acid naming convention with all letters capitalized.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ID.html">ID</a></code> </p>
+        </td>
+        <td><p>RefDB ID included in the BaMORC package.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cname.html">cname</a></code> </p>
+        </td>
+        <td><p>All the amino acids and secondary structures combinations for easy access.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-built-in-sample" class="hasAnchor"><a href="#section-built-in-sample" class="anchor"></a>Built-in Sample</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="chemicalShifts.html">chemicalShifts</a></code> </p>
+        </td>
+        <td><p>Pre-defined sample chemical shifts data.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aaFreq.html">aaFreq</a></code> </p>
+        </td>
+        <td><p>Pre-defined amino acid frequency data.</p></td>
       </tr>
     </tbody>
     </table>
@@ -208,10 +356,12 @@ Protein NMR carbon 13 referencing correction function.  <code>BaMORC</code> uses
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-read-in-functions">Read-in Functions</a></li>
+      <li><a href="#section-data-processing-functions">Data Processing Functions</a></li>
       <li><a href="#section-calculation-functions">Calculation Functions</a></li>
       <li><a href="#section-bamorc-analysis-function">BaMORC Analysis Function</a></li>
-      <li><a href="#section-other-utility-functions">Other Utility Functions</a></li>
+      <li><a href="#section-utility-functions">Utility Functions</a></li>
+      <li><a href="#section-data-objects">Data Objects</a></li>
+      <li><a href="#section-built-in-sample">Built-in Sample</a></li>
     </ul>
   </div>
 </div>

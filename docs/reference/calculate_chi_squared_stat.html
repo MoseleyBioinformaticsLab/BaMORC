@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculates the referencing correction value. — bamorc • BaMORC</title>
+<title>Calculates a chi squared statistic(s). — calculate_chi_squared_stat • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Calculates the referencing correction value. — bamorc" />
+<meta property="og:title" content="Calculates a chi squared statistic(s). — calculate_chi_squared_stat" />
 
-<meta property="og:description" content="The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts." />
+<meta property="og:description" content="calculate_chi_squared_stat Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chi squared statistics based on the combination of amino acid typings and secondary structures." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -102,50 +102,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculates the referencing correction value.</h1>
+    <h1>Calculates a chi squared statistic(s).</h1>
     <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/barmorc.R'><code>R/barmorc.R</code></a></small>
-    <div class="hidden name"><code>bamorc.Rd</code></div>
+    <div class="hidden name"><code>calculate_chi_squared_stat.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The core package function that calculates the carbon-13 reference correction using an input protein sequence with associated secondary structure information along with a table of alpha and beta carbon chemical shift  pairs. The output of this function is the correction value that should be added to the input carbon chemical shifts.</p>
+    <p><code>calculate_chi_squared_stat</code> Given a pair of C_alpha and C_beta chemical shifts, this function will return a list of calculated chi squared statistics based on the combination of amino acid typings and secondary structures.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>bamorc</span>(<span class='no'>sequence</span>, <span class='kw'>secondary_structure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>chemical_shifts_input</span>,
-  <span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>5</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_chi_squared_stat</span>(<span class='no'>cacb_pair</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>sequence</th>
-      <td><p>string of sequence</p></td>
-    </tr>
-    <tr>
-      <th>secondary_structure</th>
-      <td><p>string of secondary structure (optional)</p></td>
-    </tr>
-    <tr>
-      <th>chemical_shifts_input</th>
-      <td><p>table of alpha and beta carbon chemical shift pairs in data.frame</p></td>
-    </tr>
-    <tr>
-      <th>from</th>
-      <td><p>the lower bound of the optimization search window</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>the upper bound of the optimization search window</p></td>
+      <th>cacb_pair</th>
+      <td><p>A pair of carbon chemical shifts <code>c(Ca, Cb)</code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Carbon-13 reference correction value that should be applied (added) to the input carbon chemical shifts data.</p>
+    <p>A list of chi-squared statistics basing the combination of amino acid typings and secondary structures.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>calculate_chi_squared_stat</span>(<span class='fu'>c</span>(<span class='fl'>54</span>,<span class='fl'>45</span>))</div><div class='output co'>#&gt;     AA                H                 B                C
+#&gt;  1:  A 1023.16868895477  169.099242775473 469.048336795045
+#&gt;  2:  B 180.178895468627  54.4937018085712 74.2438106347521
+#&gt;  3:  C 24.0426461856623  6.02618817827703 23.2477754200126
+#&gt;  4:  D 14.4848786940741  2.79850128029531 10.2715883462805
+#&gt;  5:  E 13.3897615181103  1.88818580572447 4.60208889084118
+#&gt;  6:  F 165.514869003217  77.9438324817418 62.5815610717518
+#&gt;  7:  H 321.477487110107  53.4257171238817 91.6072511229365
+#&gt;  8:  I 253.099344063356  44.4933903131377 94.8605497904786
+#&gt;  9:  K 128.989994525817  35.9002492383691 39.0974374716513
+#&gt; 10:  L 100.123349476134  19.1632752720135 22.6939781262421
+#&gt; 11:  M 14.8396700069463 0.383003397426531 2.60892370474794
+#&gt; 12:  N 222.558693666307  34.5192736984713 53.7891077582836
+#&gt; 13:  P 89.4591494720313    19.26900894692 26.5279676961367
+#&gt; 14:  Q 40.3446974047416  5.81357432329253 11.1635747587969
+#&gt; 15:  R 267.220874922648  179.412483703255 236.676686103036
+#&gt; 16:  S 203.258956942293  177.779740165393 190.175848300641
+#&gt; 17:  T 451.922344250779  363.817995197962 408.684228724244
+#&gt; 18:  V 58.3956321465275  6.77558973670799 13.8132678105348
+#&gt; 19:  W 127.135809610673  63.1703556188059 77.6629767003917
+#&gt; 20:  Y 358.237467618581  47.5540232633832 80.5896644421314</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +158,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
