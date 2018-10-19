@@ -1,3 +1,5 @@
+[![](https://cranlogs.r-pkg.org/badges/BaMORC)](https://cran.r-project.org/package=BaMORC)
+
 # BaMORC: Bayesian Model Optimized Reference Correction
 
 ## <img src="man/figures/logo.png" height="20%" width="20%" align="right" />

@@ -17,9 +17,9 @@ BugReports: https://github.com/MoseleyBioinformaticsLab/BaMORC/issues
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: data.table, dplyr, tidyr, DEoptim, httr, docopt, stringr, jsonlite, readr, devtools, RBMRB, BMRBr
+Imports: tidyr, DEoptim, httr, docopt, stringr, jsonlite, readr, devtools, RBMRB, BMRBr
 RoxygenNote: 6.1.0
-Suggests: knitr, rmarkdown, jpredapir
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
 Packaged: 2018
