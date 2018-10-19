@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculates the relative cumulative frequency for amino acid and secondary structure. — calculate_RCF • BaMORC</title>
+<title>Calculates the relative cumulative frequency for amino acid and secondary structure. — calculate_rcf • BaMORC</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Calculates the relative cumulative frequency for amino acid and secondary structure. — calculate_RCF" />
+<meta property="og:title" content="Calculates the relative cumulative frequency for amino acid and secondary structure. — calculate_rcf" />
 
 <meta property="og:description" content="This function calculates the relative cumulative frequency of amino acid and secondary structure combination." />
 
@@ -104,7 +104,7 @@
     <div class="page-header">
     <h1>Calculates the relative cumulative frequency for amino acid and secondary structure.</h1>
     <small class="dont-index">Source: <a href='https://github.com/MoseleyBioinformaticsLab/BaMORC/blob/master/R/barmorc.R'><code>R/barmorc.R</code></a></small>
-    <div class="hidden name"><code>calculate_RCF.Rd</code></div>
+    <div class="hidden name"><code>calculate_rcf.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -113,7 +113,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_RCF</span>(<span class='no'>sequence</span>, <span class='no'>secondary_structure</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_rcf</span>(<span class='no'>sequence</span>, <span class='no'>secondary_structure</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,7 +136,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>sequence</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='no'>RefDB_data</span>$<span class='no'>carbonDat</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>AA</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>""</span>)
 <span class='no'>secondary_structure</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='no'>RefDB_data</span>$<span class='no'>carbonDat</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>SS</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>""</span>)
-<span class='no'>relativeCumulativeFrequency</span> <span class='kw'>=</span> <span class='fu'>calculate_RCF</span>(<span class='no'>sequence</span>, <span class='no'>secondary_structure</span>)</div></pre>
+<span class='no'>relativeCumulativeFrequency</span> <span class='kw'>=</span> <span class='fu'>calculate_rcf</span>(<span class='no'>sequence</span>, <span class='no'>secondary_structure</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

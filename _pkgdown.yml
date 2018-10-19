@@ -40,7 +40,10 @@ reference:
     desc: >
       Funcations calculate necessary statsitical values that essential for BaMORC analysis.
     contents:
-      - starts_with("calculate")
+      - calculate_aa_prob
+      - calculate_chi_squared_stat
+      - calculate_mse
+      - calculate_rcf
 
   - title: "BaMORC Analysis Function"
     desc: >
