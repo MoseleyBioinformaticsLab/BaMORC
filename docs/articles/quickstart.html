@@ -306,9 +306,9 @@
 <p>The BaMORC algorithms relys minimize the difference betwee the actual relative cummulative frequence (RCF) of the protein sequence and estimated RCF from the chemical shifts information. The functions make the algorithm possible are showing below with examples, for detailed function descriptions, please see the reference.:</p>
 <ul>
 <li>
-<code><a href="../reference/calculate_AA_Prob.html">calculate_AA_Prob()</a></code>: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.</li>
+<code><a href="http://www.rdocumentation.org/packages/BaMORC/topics/calculate_aa_prob">calculate_aa_prob()</a></code>: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/calculate_AA_Prob.html">calculate_AA_Prob</a></span>(<span class="dt">chi_squared_stat =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>), <span class="dt">df =</span> <span class="dv">2</span>)</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/BaMORC/topics/calculate_aa_prob">calculate_aa_prob</a></span>(<span class="dt">chi_squared_stat =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>), <span class="dt">df =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; [1] 0.4876550 0.4756147 0.3894004</span></a></code></pre></div>
 <ul>
 <li>
@@ -338,14 +338,14 @@
 <a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt; 20:  Y 358.237467618581  47.5540232633832 80.5896644421314</span></a></code></pre></div>
 <ul>
 <li>
-<code><a href="../reference/calculate_RCF.html">calculate_RCF()</a></code>: calculates the relative cummulative freqeucny of amino acid and secondary structure combination.</li>
+<code><a href="http://www.rdocumentation.org/packages/BaMORC/topics/calculate_rcf">calculate_rcf()</a></code>: calculates the relative cummulative freqeucny of amino acid and secondary structure combination.</li>
 </ul>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co">## Arguments:</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">sequence =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>AA, <span class="dt">collapse =</span> <span class="st">""</span>)</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">secondary_structure =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>SS, <span class="dt">collapse =</span> <span class="st">""</span>)</a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">## Function:</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="kw"><a href="../reference/calculate_RCF.html">calculate_RCF</a></span>(<span class="dt">sequence =</span> sequence, <span class="dt">secondary_structure =</span> secondary_structure)</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="kw"><a href="http://www.rdocumentation.org/packages/BaMORC/topics/calculate_rcf">calculate_rcf</a></span>(<span class="dt">sequence =</span> sequence, <span class="dt">secondary_structure =</span> secondary_structure)</a>
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt;  [1] "S-C" "I-C" "P-C" "C-B" "L-B" "L-B" "S-B" "P-C" "W-B" "S-B" "E-B"</span></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; [12] "W-B" "S-B" "D-C" "C-B" "S-B" "V-B" "T-C" "C-C" "K-B" "M-B" "R-B"</span></a>
@@ -380,11 +380,11 @@
 <a class="sourceLine" id="cb12-38" data-line-number="38"><span class="co">#&gt; 23   W-B 0.03846154</span></a></code></pre></div>
 <ul>
 <li>
-<code><a href="../reference/calculate_MSE.html">calculate_MSE()</a></code>: calculates mean squared error for each correction value (step).</li>
+<code><a href="http://www.rdocumentation.org/packages/BaMORC/topics/calculate_mse">calculate_mse()</a></code>: calculates mean squared error for each correction value (step).</li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co">## chemicalShifts and aaFreq are predefined sample variables</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">## for demo purpose within the BaMORC Package.</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw"><a href="../reference/calculate_MSE.html">calculate_MSE</a></span>(<span class="dt">step_ca =</span> <span class="dv">1</span>, <span class="dt">step_cb =</span> <span class="dv">1</span>, <span class="dt">dat_cacb =</span> chemicalShifts[, </a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw"><a href="http://www.rdocumentation.org/packages/BaMORC/topics/calculate_mse">calculate_mse</a></span>(<span class="dt">step_ca =</span> <span class="dv">1</span>, <span class="dt">step_cb =</span> <span class="dv">1</span>, <span class="dt">dat_cacb =</span> chemicalShifts[, </a>
 <a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)], <span class="dt">aa_Freq =</span> aaFreq)</a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; [1] 0.0003151677</span></a></code></pre></div>
 </div>
