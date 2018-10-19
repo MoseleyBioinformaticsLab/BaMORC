@@ -131,6 +131,7 @@ read_DB_File <- function(id){
 #' @importFrom utils installed.packages
 #' @importFrom utils untar
 #' @importFrom utils read.csv2
+#' @importFrom utils download.file
 #' @return protein secondary structure information
 #' @export jpred_fetcher
 #'
