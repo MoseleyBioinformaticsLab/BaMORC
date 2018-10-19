@@ -19,7 +19,7 @@ Encoding: UTF-8
 LazyData: true
 Imports: tidyr, DEoptim, httr, docopt, stringr, jsonlite, readr, devtools, RBMRB, BMRBr
 RoxygenNote: 6.1.0
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, jpredapir
 VignetteBuilder: knitr
 NeedsCompilation: no
 Packaged: 2018
