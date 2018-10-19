@@ -57,7 +57,7 @@ unassigned_bamorc <- function(peakList_file_loc, sequence, secondary_structure=N
 
 
         # Unassigned BaMORC
-        RCF <- BaMORC::calculate_RCF(sequence, secondary_structure)
+        RCF <- BaMORC::calculate_rcf(sequence, secondary_structure)
 
         AA_SS <- RCF[[1]]
         actual_RCF <- RCF[[2]]

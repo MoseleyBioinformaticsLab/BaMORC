@@ -88,7 +88,7 @@ head(output[[2]])
 #  secondary_structure
 
 ## ------------------------------------------------------------------------
-calculate_AA_Prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
+calculate_aa_prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
 
 ## ------------------------------------------------------------------------
 calculate_chi_squared_stat(cacb_pair = c(54,45))
@@ -99,11 +99,11 @@ sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
 
 ## Function:
-calculate_RCF(sequence = sequence, secondary_structure = secondary_structure)
+calculate_rcf(sequence = sequence, secondary_structure = secondary_structure)
 
 ## ------------------------------------------------------------------------
 ## chemicalShifts and aaFreq are predefined sample variables for demo purpose 
 ## within the BaMORC Package.
-calculate_MSE(step_ca = 1, step_cb = 1, dat_cacb = chemicalShifts[, c(3,4)], 
+calculate_mse(step_ca = 1, step_cb = 1, dat_cacb = chemicalShifts[, c(3,4)], 
               aa_Freq = aaFreq)
 

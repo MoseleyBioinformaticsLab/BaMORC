@@ -303,7 +303,7 @@
 
 #' Pre-defined sample chemical shifts data.
 #'
-#' Sample data for testing \code{calculate_MSE()} function.
+#' Sample data for testing \code{calculate_mse()} function.
 #' \itemize{
 #'   \item AA. amino acid typing (single-letter convention)
 #'   \item SS. secondary structure (single-letter convention)
@@ -320,7 +320,7 @@
 
 #' Pre-defined amino acid frequency data.
 #'
-#' Sample data for testing \code{calculate_MSE()} function.
+#' Sample data for testing \code{calculate_mse()} function.
 #' \itemize{
 #'   \item AA_SS. amino acid typing and secondary structure naming combination (single-letter convention)
 #'   \item Freq. relative cumulated frequency

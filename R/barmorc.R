@@ -45,7 +45,7 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
         }
 
         secondary_structure <- gsub("U", "C", secondary_structure)
-        temp_result <- calculate_RCF(sequence, secondary_structure)
+        temp_result <- calculate_rcf(sequence, secondary_structure)
 
         AA_SS <- temp_result[[2]]$AA_SS
         actual_RCF <- temp_result[[2]]$Freq
@@ -82,7 +82,7 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
                         chi_str <- t(as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss]))) %*%
                                 inv_matrices %*%
                                 (as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss])))
-                        den <-  calculate_AA_Prob(chi_str)
+                        den <-  calculate_aa_prob(chi_str)
                         if(aa == "C"){
                                 aa <- "B"
                                 ss <- unlist(chemical_shifts[i,2])
@@ -90,8 +90,8 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
                                 chi_str <- t(as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss]))) %*%
                                         inv_matrices %*%
                                         (as.matrix(cacb_cs) - as.matrix(c(BaMORC::CAMuTable[BaMORC::CAMuTable$Residue==aa, ss], BaMORC::CBMuTable[BaMORC::CBMuTable$Residue==aa, ss])))
-                                if(calculate_AA_Prob(chi_str) > den) {
-                                        den <- calculate_AA_Prob(chi_str)
+                                if(calculate_aa_prob(chi_str) > den) {
+                                        den <- calculate_aa_prob(chi_str)
                                         InvDet_v[i] <- det(inv_matrices)
                                 }
 
@@ -127,12 +127,12 @@ bamorc <- function(sequence, secondary_structure=NULL, chemical_shifts_input, fr
 #' @return Input can be a single value or a vector of values, the output will be probability density for each value.
 #' @examples
 #' # Find density for a chi square parameter with 3 degrees of freedom
-#' calculate_AA_Prob(0.314, df=3)
+#' calculate_aa_prob(0.314, df=3)
 #' # Find density for a list of (chi square statistics) with 2 degrees of freedom
-#' calculate_AA_Prob(c(0.05, 0.1, 0.5), 2)
-#' @export calculate_AA_Prob
+#' calculate_aa_prob(c(0.05, 0.1, 0.5), 2)
+#' @export calculate_aa_prob
 
-calculate_AA_Prob <- function(chi_squared_stat, df=2){
+calculate_aa_prob <- function(chi_squared_stat, df=2){
         return(dchisq(chi_squared_stat, df=df))
 }
 
@@ -174,14 +174,14 @@ calculate_chi_squared_stat <- function(cacb_pair) {
 #' @param secondary_structure String of protein secondary structure with single letter convention
 #'
 #' @return Relative cumulative frequency.
-#' @export calculate_RCF
+#' @export calculate_rcf
 #'
 #' @examples
 #' sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 #' secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
-#' relativeCumulativeFrequency = calculate_RCF(sequence, secondary_structure)
+#' relativeCumulativeFrequency = calculate_rcf(sequence, secondary_structure)
 
-calculate_RCF <- function(sequence, secondary_structure){
+calculate_rcf <- function(sequence, secondary_structure){
         # Check whether same length
         if(nchar(secondary_structure) !=nchar(sequence)){
                 stop("Sequence and secondary structure must have the same length!")
@@ -229,18 +229,18 @@ calculate_RCF <- function(sequence, secondary_structure){
 #' @examples
 #' # chemicalShifts and aaFreq are predefined sample variables for demo purpose.
 #'
-#' calculate_MSE(step_ca=1, step_cb=1, dat_cacb=chemicalShifts[, c(3,4)], aa_Freq=aaFreq)
+#' calculate_mse(step_ca=1, step_cb=1, dat_cacb=chemicalShifts[, c(3,4)], aa_Freq=aaFreq)
 #'
-#' @export calculate_MSE
+#' @export calculate_mse
 
-calculate_MSE <- function(step_ca, step_cb, dat_cacb, aa_Freq) {
+calculate_mse <- function(step_ca, step_cb, dat_cacb, aa_Freq) {
 
         sum_AA_Prob_v <- apply(
                 do.call(cbind, lapply(c(1:nrow(dat_cacb)), function(i){
 
                         cacb_cs <- unlist(c(dat_cacb[i,1] + step_ca, dat_cacb[i,2] + step_cb))
                         chiStar_v <- as.numeric(as.vector(t(BaMORC::calculate_chi_squared_stat(cacb_cs)[,c(2:4)])))
-                        density_v <- BaMORC::calculate_AA_Prob(chiStar_v)
+                        density_v <- BaMORC::calculate_aa_prob(chiStar_v)
                         names(density_v) <- BaMORC::cname
                         # remove B (cyctine)
                         density_v[grep("C-", BaMORC::cname)] <- density_v[grep("C-", BaMORC::cname)] + density_v[grep("B-", BaMORC::cname)]

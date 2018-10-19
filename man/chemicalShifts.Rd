@@ -9,7 +9,7 @@
 chemicalShifts
 }
 \description{
-Sample data for testing \code{calculate_MSE()} function.
+Sample data for testing \code{calculate_mse()} function.
 \itemize{
   \item AA. amino acid typing (single-letter convention)
   \item SS. secondary structure (single-letter convention)

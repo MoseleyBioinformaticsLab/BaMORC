@@ -2,3 +2,8 @@ packrat/lib*/
 .Rproj.user
 vignettes/quickstart_cache
 cran-comments.md
+vignettes/.DS_Store
+inst/.DS_Store
+.Rhistory
+.RData
+.DS_Store

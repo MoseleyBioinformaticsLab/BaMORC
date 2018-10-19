@@ -158,10 +158,10 @@ secondary_structure
 
 The BaMORC algorithms relys minimize the difference betwee the actual relative cummulative frequence (RCF) of the protein sequence and estimated RCF from the chemical shifts information. The functions make the algorithm possible are showing below with examples, for detailed function descriptions, please see the reference.:
 
-* `calculate_AA_Prob()`: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
+* `calculate_aa_prob()`: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.
 
 ```{r}
-calculate_AA_Prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
+calculate_aa_prob(chi_squared_stat = c(0.05, 0.1, 0.5), df = 2)
 ```
 
 
@@ -171,20 +171,20 @@ calculate_chi_squared_stat(cacb_pair = c(54,45))
 ```
 
 
-* `calculate_RCF()`: calculates the relative cummulative freqeucny of amino acid and secondary structure combination.
+* `calculate_rcf()`: calculates the relative cummulative freqeucny of amino acid and secondary structure combination.
 ```{r}
 ## Arguments:
 sequence = paste(RefDB_data$carbonDat[[1]]$AA, collapse = "")
 secondary_structure = paste(RefDB_data$carbonDat[[1]]$SS, collapse = "")
 
 ## Function:
-calculate_RCF(sequence = sequence, secondary_structure = secondary_structure)
+calculate_rcf(sequence = sequence, secondary_structure = secondary_structure)
 ```
 
-* `calculate_MSE()`: calculates mean squared error for each correction value (step).
+* `calculate_mse()`: calculates mean squared error for each correction value (step).
 ```{r}
 ## chemicalShifts and aaFreq are predefined sample variables for demo purpose 
 ## within the BaMORC Package.
-calculate_MSE(step_ca = 1, step_cb = 1, dat_cacb = chemicalShifts[, c(3,4)], 
+calculate_mse(step_ca = 1, step_cb = 1, dat_cacb = chemicalShifts[, c(3,4)], 
               aa_Freq = aaFreq)
 ```

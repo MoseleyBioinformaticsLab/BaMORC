@@ -9,7 +9,7 @@
 aaFreq
 }
 \description{
-Sample data for testing \code{calculate_MSE()} function.
+Sample data for testing \code{calculate_mse()} function.
 \itemize{
   \item AA_SS. amino acid typing and secondary structure naming combination (single-letter convention)
   \item Freq. relative cumulated frequency
