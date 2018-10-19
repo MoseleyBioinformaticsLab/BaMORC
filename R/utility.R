@@ -51,7 +51,7 @@ read_raw_file <- function(file_path, delim="comma", assigned=FALSE){
 
 
 #' Extracts data from BMRB STAR 3.0 file.
-#' \code{read_NMRSTAR_file()} parses BMRB STAR 3.0 file. It will extract sequence information and chemical shifts for both alpha and beta carbons.
+#' \code{read_nmrstar_file()} parses BMRB STAR 3.0 file. It will extract sequence information and chemical shifts for both alpha and beta carbons.
 #'
 #' @param file_path     File path where input chemical shifts file is located
 #' @importFrom BMRBr bmrb_download
@@ -60,7 +60,7 @@ read_raw_file <- function(file_path, delim="comma", assigned=FALSE){
 #' @importFrom tidyr spread
 #' @importFrom stringr str_replace_all
 #' @return Protein sequence and chemical shifts dataframe.
-#' @export read_NMRSTAR_file
+#' @export read_nmrstar_file
 #'
 #' @examples
 #' ## Download a BMRB file
@@ -69,12 +69,12 @@ read_raw_file <- function(file_path, delim="comma", assigned=FALSE){
 #'
 #' ## Read in BMRB file and procec
 #' file_path = "bmr4020.str"
-#' \dontrun{head(read_NMRSTAR_file(file_path))}
+#' \dontrun{head(read_nmrstar_file(file_path))}
 #'
 #' ## Delete downloaded BMRB file
 #' unlink("./bmr4020.str")
 #'
-read_NMRSTAR_file <- function(file_path){
+read_nmrstar_file <- function(file_path){
 
         token <- RBMRB::export_star_data(file_path)
         raw_data <- RBMRB::fetch_entry_chemical_shifts(token)[,c("Seq_ID", "Comp_ID", "Atom_ID", "Val")]

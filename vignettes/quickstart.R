@@ -70,14 +70,14 @@ unlink("sample_input_sc.txt")
 #  
 #  ## Read in BMRB file and procec
 #  file_path = "bmr4020.str"
-#  head(read_NMRSTAR_file(file_path = file_path))
+#  head(read_nmrstar_file(file_path = file_path))
 #  
 #  ## Delete downloaded BMRB file
 #  unlink("./bmr4020.str")
 
 ## ------------------------------------------------------------------------
 id = 4022
-output <- read_DB_File(id = id)
+output <- read_db_file(id = id)
 head(output[[1]])
 head(output[[2]])
 

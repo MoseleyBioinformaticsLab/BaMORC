@@ -80,7 +80,7 @@ The data passed in both above functions should be pre-processed. Luckly, we prov
 
 ## The sample generating functions:
 
-There are three file reading functions within the BaMORC package: `read_raw_file()`, `read_NMRSTAR_file()`, and `read_DB_File()`. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the `sample_data_generator()` with following code:
+There are three file reading functions within the BaMORC package: `read_raw_file()`, `read_nmrstar_file()`, and `read_db_file()`. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the `sample_data_generator()` with following code:
 
 * Delimiter of white space:
     ```{r}
@@ -121,7 +121,7 @@ There are three file reading functions within the BaMORC package: `read_raw_file
 ## The reading functions will return sequence and chemical shifts:
 * `read_raw_file()`: parses user-provided file in customed format as show above examples. 
 
-* `read_NMRSTAR_file()`: parses user-provided file in BMRB Star 2/3 format.
+* `read_nmrstar_file()`: parses user-provided file in BMRB Star 2/3 format.
 ```{r, eval= FALSE}
 ## Download a BMRB file
 library(BMRBr)
@@ -129,16 +129,16 @@ bmrb_download(4020, output_dir = "./")
 
 ## Read in BMRB file and procec
 file_path = "bmr4020.str"
-head(read_NMRSTAR_file(file_path = file_path))
+head(read_nmrstar_file(file_path = file_path))
 
 ## Delete downloaded BMRB file
 unlink("./bmr4020.str")
 ```
 
-* `read_DB_File()`: parses file from BMRB by a given entry ID.
+* `read_db_file()`: parses file from BMRB by a given entry ID.
 ```{r}
 id = 4022
-output <- read_DB_File(id = id)
+output <- read_db_file(id = id)
 head(output[[1]])
 head(output[[2]])
 ```
