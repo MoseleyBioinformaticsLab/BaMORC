@@ -45,7 +45,7 @@ reference:
       - calculate_mse
       - calculate_rcf
 
-  - title: "BaMORC Analysis Function"
+  - title: "BaMORC Analysis Functions"
     desc: >
       Fundamental core function for BaMORC analysis, which requires the secondary structure information.
     contents:
@@ -83,7 +83,7 @@ reference:
      - ID
      - cname
      
-  - title: "Built-in Sample"
+  - title: "Built-in Samples"
     contents:
     - chemicalShifts
     - aaFreq
