@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/MoseleyBioinformaticsLab/BaMORC.svg?branch=master)](https://travis-ci.org/MoseleyBioinformaticsLab/BaMORC)
+[![CRAN](https://img.shields.io/cran/l/devtools.svg)](https://cran.r-project.org/web/packages/BaMORC)
 [![](https://cranlogs.r-pkg.org/badges/BaMORC)](https://cran.r-project.org/package=BaMORC)
 
 # BaMORC: Bayesian Model Optimized Reference Correction
