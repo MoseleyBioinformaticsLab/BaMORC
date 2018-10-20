@@ -17,7 +17,7 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 
 This document describes each command line function built into the `BaMORC` package.
 
-## Over all CLI design
+## Overall CLI design
 
 CLIs vary widely. Before diving into the actual command, it is important to understand the general pattern of the CLI commands so that you can construct a complete and coherent command for utilizing `BaMORC` functions.
 
