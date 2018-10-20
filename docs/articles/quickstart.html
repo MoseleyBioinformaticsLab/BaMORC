@@ -81,17 +81,17 @@
 <div id="bamorc-quickstart-guide" class="section level1">
 <h1 class="hasAnchor">
 <a href="#bamorc-quickstart-guide" class="anchor"></a>BaMORC quickstart guide</h1>
-<p>The goal of this document is to get you up and running with BaMORC as quickly as possible. BaMORC is designed as Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra. For a detailed explanation of the algorithm please refer to “<a href="https://doi.org/10.1007/s10858-018-0202-5">Automatic 13C chemical shift reference correction for unassigned protein NMR spectra</a>”.</p>
-<p>There are two important parts to BaMORC: the <code><a href="../reference/bamorc.html">bamorc()</a></code>, reference correction function for assigned 13C protein NMR spectra, and the <code><a href="../reference/unassigned_bamorc.html">unassigned_bamorc()</a></code>, reference correction function for unassigned 13C protein NMR spectra. In the first section, you’ll learn about the basics of running both of the functions. In the second section, you will dive into the basics of input data process, and in third section, you’ll learn a little more on functions of the behind-the-scenes of the BaMORC algorithm.</p>
+<p>The goal of this document is to get you up and running with BaMORC as quickly as possible. BaMORC stands for the Bayesian Model Optimized Reference Correction (BaMORC) Method for Assigned and Unassigned Protein NMR Spectra. For a detailed explanation of the algorithm, please refer to “<a href="https://doi.org/10.1007/s10858-018-0202-5">Automatic 13C chemical shift reference correction for unassigned protein NMR spectra</a>”.</p>
+<p>There are two important parts to BaMORC: the <code><a href="../reference/bamorc.html">bamorc()</a></code> reference correction function for assigned 13C protein NMR spectra, and the <code><a href="../reference/unassigned_bamorc.html">unassigned_bamorc()</a></code> reference correction function for unassigned 13C protein NMR spectra. In the first section, you’ll learn about the basics of running both of these functions. In the second section, you will dive into the basics of input data process, and in third section, you’ll learn a little more about the functions used behind-the-scenes by the BaMORC algorithm.</p>
 <div id="bamorc-basics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bamorc-basics" class="anchor"></a>BaMORC basics</h2>
-<p>To make a correction, first load BaMORC, then call <code><a href="../reference/bamorc.html">bamorc()</a></code> or <code><a href="../reference/unassigned_bamorc.html">unassigned_bamorc()</a></code> with correct arguments:</p>
+<p>To make a correction, first load BaMORC, then call <code><a href="../reference/bamorc.html">bamorc()</a></code> or <code><a href="../reference/unassigned_bamorc.html">unassigned_bamorc()</a></code> with the correct arguments:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(BaMORC)</a></code></pre></div>
 <div id="for-assigned-protein-nmr-spectra" class="section level3">
 <h3 class="hasAnchor">
 <a href="#for-assigned-protein-nmr-spectra" class="anchor"></a>For assigned protein NMR spectra:</h3>
-<p>Here we will using the built-in data to demonstrate the arguments that will be passed in the <code><a href="../reference/bamorc.html">bamorc()</a></code>.</p>
+<p>Here we will using the built-in data to demonstrate the arguments that will be passed into <code><a href="../reference/bamorc.html">bamorc()</a></code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## Arguments:</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">sequence =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>AA, <span class="dt">collapse =</span> <span class="st">""</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">secondary_structure =<span class="st"> </span><span class="kw">paste</span>(RefDB_data<span class="op">$</span>carbonDat[[<span class="dv">1</span>]]<span class="op">$</span>SS, <span class="dt">collapse =</span> <span class="st">""</span>)</a>
@@ -117,13 +117,13 @@
 <code>from</code> and <code>to</code>: <numeric> the upper- and lower-bound of optimization range. Value assigned to <code>from</code> must be lower than <code>to</code>.</numeric>
 </li>
 </ul>
-<p>The length of the <code>sequence</code> and <code>secondary_structure</code> should be the same, if not pleasue assign <code>secondary_structure = NULL</code>, however, the peaklist groups number could be more or less than the length of the sequence. Since commonly the output of the spectra should have a little deviate from the sequence information.</p>
+<p>The length of the <code>sequence</code> and <code>secondary_structure</code> should be the same, if not please assign <code>secondary_structure = NULL</code>, however, the peaklist groups number could be more or less than the length of the sequence. Often peak lists will have fewer CA/CB pairs than the length of the protein sequence.</p>
 <p>Printing an argument object gives you some useful information: the actual format, the size, the object type, and if it’s a string.</p>
 </div>
 <div id="for-unassigned-protein-nmr-spectra" class="section level3">
 <h3 class="hasAnchor">
 <a href="#for-unassigned-protein-nmr-spectra" class="anchor"></a>For unassigned protein NMR spectra:</h3>
-<p>Next we will using the built-in data to demonstrate the arguments that will be passed in the <code><a href="../reference/unassigned_bamorc.html">unassigned_bamorc()</a></code>. The output will be slight different each time runs due to the randomness of the optimization.</p>
+<p>Next, we will use the built-in data to demonstrate the arguments that will be passed in the <code><a href="../reference/unassigned_bamorc.html">unassigned_bamorc()</a></code>. The output will be slightly different each time it runs, due to the randomness of the optimization.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">## Arguments:enerate a temperary sample NMR spectra file and</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">## later will be removed.</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">sequence =<span class="st"> "RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA"</span></a>
@@ -143,11 +143,11 @@
 <div id="the-data-processing" class="section level1">
 <h1 class="hasAnchor">
 <a href="#the-data-processing" class="anchor"></a>The data processing:</h1>
-<p>The data passed in both above functions should be pre-processed. Luckly, we provided a varity of helper functions. I’ll show you how to process the data as following.</p>
+<p>The data passed in both above functions should be pre-processed. Luckly, we provide a variety of helper functions. See the following on how to process the data.</p>
 <div id="the-sample-generating-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-sample-generating-functions" class="anchor"></a>The sample generating functions:</h2>
-<p>There are three file reading functions within the BaMORC package: <code><a href="../reference/read_raw_file.html">read_raw_file()</a></code>, <code><a href="../reference/read_nmrstar_file.html">read_nmrstar_file()</a></code>, and <code><a href="../reference/read_db_file.html">read_db_file()</a></code>. Even though, these functions should handle a wide range of the input files, however, a good file formation are highly recommanded. You can check the sample file using the <code><a href="../reference/sample_data_generator.html">sample_data_generator()</a></code> with following code:</p>
+<p>There are three file parsing functions within the BaMORC package: <code><a href="../reference/read_raw_file.html">read_raw_file()</a></code>, <code><a href="../reference/read_nmrstar_file.html">read_nmrstar_file()</a></code>, and <code><a href="../reference/read_db_file.html">read_db_file()</a></code>. These functions handle a wide range of the input files. You can check the sample file using the <code><a href="../reference/sample_data_generator.html">sample_data_generator()</a></code> for a recommended format:</p>
 <ul>
 <li>
 <p>Delimiter of white space:</p>
@@ -294,7 +294,7 @@
 <div id="estimating-econdary-structure-from-sequence" class="section level2">
 <h2 class="hasAnchor">
 <a href="#estimating-econdary-structure-from-sequence" class="anchor"></a>Estimating econdary structure from sequence:</h2>
-<p>One important part of the optmization for referencing correction value is through providing the secondary structue information basin protein sequence. This is done through the <a href="http://www.compbio.dundee.ac.uk/jpred/index.html">JPred</a> and jpredapi.</p>
+<p>Secondary structure information predicted based on the protein sequence is required for the optimization. This is predicted through the <a href="http://www.compbio.dundee.ac.uk/jpred/index.html">JPred</a> and jpredapi.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">protein_sequence &lt;-<span class="st"> "MQVWPIEGIKKFETLSYLPPLTVEDLLKQI"</span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">secondary_structure &lt;-<span class="st"> </span><span class="kw"><a href="../reference/jpred_fetcher.html">jpred_fetcher</a></span>(<span class="dt">protein_sequence =</span> protein_sequence)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"></a>
@@ -303,7 +303,7 @@
 <div id="behind-the-scenes-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#behind-the-scenes-functions" class="anchor"></a>Behind-the-scenes functions</h2>
-<p>The BaMORC algorithms relys minimize the difference betwee the actual relative cummulative frequence (RCF) of the protein sequence and estimated RCF from the chemical shifts information. The functions make the algorithm possible are showing below with examples, for detailed function descriptions, please see the reference.:</p>
+<p>The BaMORC algorithm minimizes the difference between the actual relative cummulative frequency (RCF) of the protein sequence and the estimated RCF predicted from the chemical shifts information. The statistical functions used by the algorithm are shown below with examples. For detailed function descriptions, please see the reference:</p>
 <ul>
 <li>
 <code><a href="../reference/calculate_aa_prob.html">calculate_aa_prob()</a></code>: returns the probability (density) for a certain type of amino acid based on a chi-squared statistics wtih 2 degrees of freedom.</li>
@@ -312,7 +312,7 @@
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; [1] 0.4876550 0.4756147 0.3894004</span></a></code></pre></div>
 <ul>
 <li>
-<code><a href="../reference/calculate_chi_squared_stat.html">calculate_chi_squared_stat()</a></code>: given a pair of alpha and beta carbons chemical shifts, this function will return a list of caculated chisquare statistics based on the combination of amino acid typings and secondary structures. Here we illustrate with a pair of chemical shifts from alpha and beta carbon.</li>
+<code><a href="../reference/calculate_chi_squared_stat.html">calculate_chi_squared_stat()</a></code>: given a pair of alpha and beta carbons chemical shifts, this function will return a list of calculated chi-squared statistics based on the combination of amino acid typings and secondary structures. Here we illustrate with a pair of chemical shifts from alpha and beta carbon.</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/calculate_chi_squared_stat.html">calculate_chi_squared_stat</a></span>(<span class="dt">cacb_pair =</span> <span class="kw">c</span>(<span class="dv">54</span>, <span class="dv">45</span>))</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt;     AA                H                 B                C</span></a>

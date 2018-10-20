@@ -78,28 +78,28 @@
 
     
     
-<div id="bamorc-cli-guide" class="section level1">
+<div id="bamorc-command-line-interface-cli-guide" class="section level1">
 <h1 class="hasAnchor">
-<a href="#bamorc-cli-guide" class="anchor"></a>BaMORC CLI guide</h1>
-<p>So you want to using <code>BaMORC</code> in shell no matter linux or windows? This document walks through each command line functions built-in the <code>BaMORC</code> package.</p>
+<a href="#bamorc-command-line-interface-cli-guide" class="anchor"></a>BaMORC Command Line Interface (CLI) guide</h1>
+<p>This document describes each command line function built into the <code>BaMORC</code> package.</p>
 <div id="over-all-cli-design" class="section level2">
 <h2 class="hasAnchor">
 <a href="#over-all-cli-design" class="anchor"></a>Over all CLI design</h2>
-<p>CLIs vary widely. Before diving into the actual command, it is important to understand the general patter of the CLI commands so that you can construct a complete and coherent command for utilizing <code>BaMORC</code> funcationalities.</p>
-<p>The key features of any CLI is the structre of the command. A CLI consists of the following paters:</p>
+<p>CLIs vary widely. Before diving into the actual command, it is important to understand the general pattern of the CLI commands so that you can construct a complete and coherent command for utilizing <code>BaMORC</code> functions.</p>
+<p>The key features of any CLI is the structure of the command. A CLI consists of the following patterns:</p>
 <ol style="list-style-type: decimal">
 <li>Language interpreter,</li>
 <li>A script for doing something,</li>
-<li>Arguments that need to pass in the script.</li>
+<li>Arguments needed for the script to execute.</li>
 </ol>
-<p>You need to be able to constructure a command with these components in order to perform the desired CLI call.</p>
+<p>You need to be able to construct a command with these components in order to perform the desired CLI call.</p>
 <p><code>BaMORC</code> supports two type of CLI calls: innate <code>R CMD BATCH</code>, which supports all OS platforms, and Linux CLI.</p>
 <div id="linux-cli" class="section level3">
 <h3 class="hasAnchor">
 <a href="#linux-cli" class="anchor"></a>Linux CLI</h3>
 <p>To use “BaMORC CLI”, you need to find the CLI run-script. Open terminal and type the following code:</p>
 <pre><code>&gt; R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'</code></pre>
-<p>You will see the R script location print out in the terminal as shown in following image. <img src="../man/figures/script_loc.png" height="68%" width="68%" align="center"></p>
+<p>You will see the R script location printed out in the terminal as shown in following image. <img src="../man/figures/script_loc.png" height="68%" width="68%" align="center"></p>
 <p>The standard Linux CLI follows the <code>Docopt</code> convention.</p>
 <p>CLI syntex: <code>bamorc.R &lt;job&gt; &lt;arguments&gt;</code></p>
 <div id="the-available-tasks-in-the-linux-cli" class="section level4">
@@ -108,68 +108,68 @@
 <p>Following job can be used:</p>
 <ul>
 <li>
-<code>assigned</code>: calculating reference correction value for assinged carbon 13 protein NMR spectra.</li>
+<code>assigned</code>: calculate the reference correction value for assigned carbon-13 protein NMR spectra.</li>
 <li>
-<code>unassigned</code>: calculating reference correction value for unassinged carbon 13 protein NMR spectra.</li>
+<code>unassigned</code>: calculate the reference correction value for unassigned carbon-13 protein NMR spectra.</li>
 <li>
-<code>valid_ids</code>: printing out all valid IDs for BMRB entries.</li>
+<code>valid_ids</code>: print out all the valid BMRB entry IDs.</li>
 </ul>
-<p>Valid full CLI commands are as following, we will explain the arguments in next session:</p>
+<p>Valid CLI commands are described below. We will explain the arguments in next session.</p>
 <ul>
 <li>
-<p>For assigned carbon 13 protein NMR spectra</p>
+<p>For assigned carbon-13 protein NMR spectra:</p>
 <pre><code>  bamorc.R assigned   (--table=&lt;csv&gt; | --bmrb=&lt;bmrb&gt; | --id=&lt;id&gt;)  [--ppm_range=&lt;range&gt;] [--output=&lt;output_filename&gt;] [--delimiter=&lt;delim&gt;] [--report=&lt;report_filename&gt;]</code></pre>
 </li>
 <li>
-<p>For assigned carbon 13 protein NMR spectra</p>
+<p>For assigned carbon-13 protein NMR spectra:</p>
 <pre><code>  bamorc.R unassigned (--table=&lt;csv&gt;) (--seq=&lt;sequence&gt;) [--ppm_range=&lt;range&gt;] [--output=&lt;output_filename&gt;] [--delimiter=&lt;delim&gt;] [--report=&lt;report_filename&gt;] [--ssc=&lt;path&gt;]</code></pre>
 </li>
 <li>
-<p>Printing out all valid IDs</p>
+<p>For printing out all valid IDs:</p>
 <pre><code>  bamorc.R valid_ids</code></pre>
 </li>
 </ul>
 </div>
-<div id="arguments-syntex-please-dont-leave-space-before-and-after" class="section level4">
+<div id="argument-syntax-please-dont-leave-a-space-before-or-after-the--" class="section level4">
 <h4 class="hasAnchor">
-<a href="#arguments-syntex-please-dont-leave-space-before-and-after" class="anchor"></a>Arguments syntex, please dont leave space before and after <code>=</code>:</h4>
+<a href="#argument-syntax-please-dont-leave-a-space-before-or-after-the--" class="anchor"></a>Argument syntax: please don’t leave a space before or after the <code>=</code>.</h4>
 <p>The arguments are in <code>--</code> or <code>-</code> format, for example <code>--ppm_range=&lt;value&gt;</code> and <code>-h</code>.</p>
-<p>The helper commands are: * <code>bamorc.R -h | --help</code>: printing out manual of the CLI. * <code>bamorc.R -v | --version</code>: priting out package verion.</p>
-<p>Other arguments are divided in required or optional:</p>
+<p>The helper commands are: * <code>bamorc.R -h | --help</code>: print out this CLI help information. * <code>bamorc.R -v | --version</code>: print out package version.</p>
+<p>Other arguments are divided into required or optional:</p>
 <ul>
 <li>Required arguments for assigned protein NMR spectra referencing correction: <code>--table=&lt;csv&gt;</code> or <code>--bmrb=&lt;bmrb&gt;</code> or <code>--id=&lt;id&gt;</code>, just one of them.
 <ul>
 <li>
-<code>--table=&lt;csv&gt;</code>: Input file path (can be shorten as <code>-s=&lt;csv&gt;</code>)</li>
+<code>--table=&lt;csv&gt;</code>: Input file path (can be shortened as <code>-s=&lt;csv&gt;</code>)</li>
 <li>
 <code>--bmrb</code>: file path of input BMRB file</li>
 <li>
-<code>--id=&lt;id&gt;</code>: RefDB or BMRB ID. (can be shorten as <code>-i=&lt;id&gt;</code>)</li>
+<code>--id=&lt;id&gt;</code>: RefDB or BMRB ID. (can be shortened as <code>-i=&lt;id&gt;</code>)</li>
 <li>
-<code>--seq=&lt;sequence&gt;</code>: Sequence of Protein of interest, if protein sequence file is not provided. (Can be shorten as <code>-s=&lt;sequence&gt;</code>)</li>
+<code>--seq=&lt;sequence&gt;</code>: Sequence of protein of interest, if protein sequence file is not provided. (Can be shortened as <code>-s=&lt;sequence&gt;</code>)</li>
 </ul>
 </li>
 <li>Required arguments for unassigned protein NMR spectra referencing correction: <code>--table=&lt;csv&gt;</code> and <code>--seq=&lt;sequence&gt;</code>.
 <ul>
 <li>
-<code>--table=&lt;csv&gt;</code>: Input file path (can be shorten as <code>-s=&lt;csv&gt;</code>)</li>
+<code>--table=&lt;csv&gt;</code>: Input file path (can be shortened as <code>-s=&lt;csv&gt;</code>)</li>
 <li>
-<code>--seq=&lt;sequence&gt;</code>: Sequence of Protein of interest, if protein sequence file is not provided. (Can be shorten as <code>-s=&lt;sequence&gt;</code>)</li>
+<code>--seq=&lt;sequence&gt;</code>: Sequence of protein of interest, if protein sequence file is not provided. (Can be shortened as <code>-s=&lt;sequence&gt;</code>)</li>
 </ul>
 </li>
 <li>
 <p>Optional arguments:</p>
 <ul>
 <li>
-<code>--delimiter=&lt;delim&gt;</code>: Delimiter option can be ‘comma’, ‘tab’ and ‘whitespace’. (Can be shorten as <code>-d=&lt;delim&gt;</code>)</li>
+<code>--delimiter=&lt;delim&gt;</code>: Delimiter option can be ‘comma’, ‘tab’ and ‘whitespace’. (Can be shortened as <code>-d=&lt;delim&gt;</code>)</li>
 <li>
-<code>--ppm_range=&lt;range&gt;</code>: The ppm search range for reference correction value, default value is ‘-5,5’. (Can be shorten as <code>-p=&lt;range&gt;</code>)</li>
+<code>--ppm_range=&lt;range&gt;</code>: The ppm search range for reference correction value, default value is ‘-5,5’. (Can be shortened as <code>-p=&lt;range&gt;</code>)</li>
 <li>
-<code>--output=&lt;output_file_path&gt;</code>: File path of the output from BaMORC result in csv format. (Can be shorten as <code>-o=&lt;output_file_path&gt;</code>)</li>
+<code>--output=&lt;output_file_path&gt;</code>: File path of the output from BaMORC result in csv format. (Can be shortened as <code>-o=&lt;output_file_path&gt;</code>)</li>
 <li>
-<code>--ssc=&lt;ssc_path&gt;</code>: Spin system creater, default value is <code>moseleybioinformaticslab/ssc</code>. (Can be shorten as <code>-g=&lt;ssc_path&gt;</code>)</li>
+<code>--ssc=&lt;ssc_path&gt;</code>: Spin system creater, default value is <code>moseleybioinformaticslab/ssc</code>. (Can be shortened as <code>-g=&lt;ssc_path&gt;</code>)</li>
 <li>
-<code>--report=&lt;report_file_path&gt;</code>: Correction value report output file path. (Can be shorten as <code>-r=&lt;report_file_path&gt;</code>)</li>
+<code>--report=&lt;report_file_path&gt;</code>: Correction value report output file path. (Can be shortened as <code>-r=&lt;report_file_path&gt;</code>)</li>
 </ul>
 </li>
 </ul>
@@ -199,7 +199,7 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li>
-<a href="#bamorc-cli-guide">BaMORC CLI guide</a><ul class="nav nav-pills nav-stacked">
+<a href="#bamorc-command-line-interface-cli-guide">BaMORC Command Line Interface (CLI) guide</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#over-all-cli-design">Over all CLI design</a></li>
       </ul>
 </li>
