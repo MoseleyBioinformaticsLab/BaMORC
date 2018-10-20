@@ -33,7 +33,7 @@ You need to be able to construct a command with these components in order to per
 
 ### Linux CLI
 
-To use "BaMORC CLI", you need to find the CLI run-script. Open terminal and type the following code:
+To use the "BaMORC CLI", you need to find the CLI run-script. Open terminal and type the following code:
 ```
 > R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'
 ```
@@ -112,7 +112,7 @@ Other arguments are divided into required or optional:
 
 ### R CMD BATCH (Windows-friendly) <Will be included in next version!>
 
-R language has its own CLI command pattern via the functionality of `R CMD BATCH`. At the very beginning of R history, `R CMD BATCH` was the function handle all the non-interactive calls through the shell. 
+The R language has its own CLI command pattern via the functionality of `R CMD BATCH`. At the very beginning of R history, `R CMD BATCH` was the function handle all the non-interactive calls through the shell. 
 
    The patters is simple: `R CMD BATCH [arguments-to-pass] [path-of-script.R] $` 
    
