@@ -82,9 +82,9 @@
 <h1 class="hasAnchor">
 <a href="#bamorc-command-line-interface-cli-guide" class="anchor"></a>BaMORC Command Line Interface (CLI) guide</h1>
 <p>This document describes each command line function built into the <code>BaMORC</code> package.</p>
-<div id="over-all-cli-design" class="section level2">
+<div id="overall-cli-design" class="section level2">
 <h2 class="hasAnchor">
-<a href="#over-all-cli-design" class="anchor"></a>Over all CLI design</h2>
+<a href="#overall-cli-design" class="anchor"></a>Overall CLI design</h2>
 <p>CLIs vary widely. Before diving into the actual command, it is important to understand the general pattern of the CLI commands so that you can construct a complete and coherent command for utilizing <code>BaMORC</code> functions.</p>
 <p>The key features of any CLI is the structure of the command. A CLI consists of the following patterns:</p>
 <ol style="list-style-type: decimal">
@@ -97,7 +97,7 @@
 <div id="linux-cli" class="section level3">
 <h3 class="hasAnchor">
 <a href="#linux-cli" class="anchor"></a>Linux CLI</h3>
-<p>To use “BaMORC CLI”, you need to find the CLI run-script. Open terminal and type the following code:</p>
+<p>To use the “BaMORC CLI”, you need to find the CLI run-script. Open terminal and type the following code:</p>
 <pre><code>&gt; R -e 'system.file("exec", "bamorc.R", package = "BaMORC")'</code></pre>
 <p>You will see the R script location printed out in the terminal as shown in following image. <img src="../man/figures/script_loc.png" height="68%" width="68%" align="center"></p>
 <p>The standard Linux CLI follows the <code>Docopt</code> convention.</p>
@@ -185,7 +185,7 @@
 <div id="r-cmd-batch-windows-friendly-will-be-included-in-next-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#r-cmd-batch-windows-friendly-will-be-included-in-next-version" class="anchor"></a>R CMD BATCH (Windows-friendly) &lt;Will be included in next version!&gt;</h3>
-<p>R language has its own CLI command pattern via the functionality of <code>R CMD BATCH</code>. At the very beginning of R history, <code>R CMD BATCH</code> was the function handle all the non-interactive calls through the shell.</p>
+<p>The R language has its own CLI command pattern via the functionality of <code>R CMD BATCH</code>. At the very beginning of R history, <code>R CMD BATCH</code> was the function handle all the non-interactive calls through the shell.</p>
 <p>The patters is simple: <code>R CMD BATCH [arguments-to-pass] [path-of-script.R] $</code></p>
 <p>Here arguments are in the <code>-</code> format, for example <code>-ppm_range=&lt;value&gt;</code>.</p>
 </div>
@@ -200,7 +200,7 @@
       <ul class="nav nav-pills nav-stacked">
 <li>
 <a href="#bamorc-command-line-interface-cli-guide">BaMORC Command Line Interface (CLI) guide</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#over-all-cli-design">Over all CLI design</a></li>
+<li><a href="#overall-cli-design">Overall CLI design</a></li>
       </ul>
 </li>
       </ul>
