@@ -7,3 +7,4 @@ inst/.DS_Store
 .Rhistory
 .RData
 .DS_Store
+_pkgdown.yml
