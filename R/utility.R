@@ -10,18 +10,17 @@
 #'
 #' @examples
 #' input_type = "ws" 
-#' sample_data_generator(input_type = input_type)
-#' head(read_raw_file("sample_input_ws.txt", delim="ws"))
-#' unlink("sample_input_ws.txt")
+#' sample_file_path = system.file("extdata", "sample_input_ws.txt", package = "BaMORC")
+#' head(read_raw_file(file_path=sample_file_path, delim="ws"))
 #'
 #' input_type = "csv"
-#' sample_data_generator(input_type = input_type)
-#' head(read_raw_file("sample_input.csv", delim="comma"))
+#' sample_file_path = system.file("extdata", "sample_input.csv", package = "BaMORC")
+#' head(read_raw_file(file_path=sample_file_path, delim="comma"))
 #' unlink("sample_input.csv")
 #'
 #' input_type = "sc"
-#' sample_data_generator(input_type = input_type)
-#' head(read_raw_file("sample_input_sc.txt", delim="semicolon"))
+#' sample_file_path = system.file("extdata", "sample_input_sc.txt", package = "BaMORC")
+#' head(read_raw_file(file_path=sample_file_path, delim="semicolon"))
 #' unlink("sample_input_sc.txt")
 #'
 
@@ -72,7 +71,7 @@ read_raw_file <- function(file_path, delim="comma", assigned=FALSE){
 #' \dontrun{head(read_nmrstar_file(file_path))}
 #'
 #' ## Delete downloaded BMRB file
-#' unlink("./bmr4020.str")
+#' \dontrun{unlink("./bmr4020.str")
 #'
 read_nmrstar_file <- function(file_path){
 
@@ -165,26 +164,14 @@ jpred_fetcher <- function(protein_sequence){
                 if (grepl(pattern = "finished", tolower(httr::content(httr::GET(job_url), "text")))){
                         
                         # Download results
-                        archive_url <- paste("http://www.compbio.dundee.ac.uk/jpred4", "results", jobid, paste0(jobid, ".tar.gz"), sep = "/") # where file located on-line
-                        dir.create("temp_jpred")
-                        jpred_saved_loc <- file.path(paste0("temp_jpred/", jobid, ".tar.gz")) # declare where to save
-                        download.file(archive_url, jpred_saved_loc)
-                        jpred_target_file <- paste0(jobid, ".jnet") # declare what file to get in the tar arch
-                        untar(jpred_saved_loc, files=jpred_target_file) # save the file in root
-                        
-                        # Remove downloaded tar file
-                        unlink("temp_jpred", recursive=TRUE)
+                        result_url <- paste("http://www.compbio.dundee.ac.uk/jpred4", "results", jobid, paste0(jobid, ".jnet"), sep = "/") # where file located on-line
                         
                         # Need to process the Secondary Structure result
-                        secondary_structure <- read.csv2(jpred_target_file, header = F)[[1]][1]
+                        secondary_structure <- read.csv2(result_url, header = F)[[1]][1]
                         secondary_structure <- gsub("jnetpred:|,", "", secondary_structure)
                         secondary_structure <- gsub("E", "B", secondary_structure)
                         secondary_structure <- gsub("-", "C", secondary_structure)
-                        
-                        # Remove jnet file after get the secondary structure.
-                        garbage_file <- list.files(pattern = ".jnet")
-                        file.remove(garbage_file)
-                        
+
                         message(paste("The predicted secondary structure is:", secondary_structure))
                         
                         return(secondary_structure)

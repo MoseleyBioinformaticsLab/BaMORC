@@ -5,12 +5,10 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 note
+0 errors | 0 warnings | 3 note
 
-Remove jpred api dependency.
+Remove jpredapir dependency. I remove the sample_genertor function instead I saved the external data in the inst/extdata. 
 
-* I have run R CMD check on the NUMBER downstream dependencies.
-Suggests or Enhances not in mainstream repositories:
-  jpredapir
+
 
 

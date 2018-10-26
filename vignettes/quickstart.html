@@ -331,7 +331,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>The data passed in both above functions should be pre-processed. Luckly, we provide a variety of helper functions. See the following on how to process the data.</p>
 <div id="the-sample-generating-functions" class="section level2">
 <h2>The sample generating functions:</h2>
-<p>There are three file parsing functions within the BaMORC package: <code>read_raw_file()</code>, <code>read_nmrstar_file()</code>, and <code>read_db_file()</code>. These functions handle a wide range of the input files. You can check the sample file using the <code>sample_data_generator()</code> for a recommended format:</p>
+<p>There are three file parsing functions within the BaMORC package: <code>read_raw_file()</code>, <code>read_nmrstar_file()</code>, and <code>read_db_file()</code>. These functions handle a wide range of the input files.</p>
 <ul>
 <li><p>Delimiter of white space:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">## Arguments:</span></a>
@@ -376,23 +376,23 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   X2 = col_double()</span></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; )</span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; [1] &quot;   NA, 38.7&quot;</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; [[2]]</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # A tibble: 31 x 2</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
 <a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;       X1    X2</span></a>
 <a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  1  NA    28.9</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  2  56.4  30.5</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  3  54.5  41.4</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  4  NA    28.9</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  5  55.2  39  </span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  6  NA    38.9</span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  7  NA    39.4</span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  8  NA    30.4</span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  9  62.2  69.9</span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt; 10  NA    42.1</span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt; # ... with 21 more rows</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt; # ... with 22 more rows</span></a></code></pre></div></li>
 <li><p>Delimiter of semicolon:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">## Arguments:</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">sample_file_path =<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;sample_input_sc.txt&quot;</span>, </a>

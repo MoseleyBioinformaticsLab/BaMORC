@@ -34,12 +34,9 @@ Calculates the referencing correction value for unassigned protein NMR peaklists
 }
 \examples{
 sequence = "RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA"
-sample_data_generator(input_type = "ssc_sample")
-peakList_file_loc = "./bpti_HNcoCACB.txt"
+peakList_file_loc = system.file("extdata", "bpti_HNcoCACB.txt", package = "BaMORC")
 \dontrun{unassigned_bamorc(peakList_file_loc, sequence, secondary_structure=NULL,
 from=-5, to=5, ssc="moseleybioinformaticslab/ssc",
 para="--plformat=sparky --stype=HNcoCACB --dims=H,N,CA/CB --rdims=H,N")}
 # Expected result should be around (due to randomness): 0.0007890328
-
-unlink("./bpti_HNcoCACB.txt")
 }

@@ -76,7 +76,7 @@ The data passed in both above functions should be pre-processed. Luckly, we prov
 
 ## The sample generating functions:
 
-There are three file parsing functions within the BaMORC package: `read_raw_file()`, `read_nmrstar_file()`, and `read_db_file()`. These functions handle a wide range of the input files. You can check the sample file using the `sample_data_generator()` for a recommended format:
+There are three file parsing functions within the BaMORC package: `read_raw_file()`, `read_nmrstar_file()`, and `read_db_file()`. These functions handle a wide range of the input files.
 
 * Delimiter of white space:
     ```{r}

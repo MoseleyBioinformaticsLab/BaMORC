@@ -25,18 +25,17 @@ Note: please don't leave space between sequence and chemical shifts data, otherw
 }
 \examples{
 input_type = "ws" 
-sample_data_generator(input_type = input_type)
-head(read_raw_file("sample_input_ws.txt", delim="ws"))
-unlink("sample_input_ws.txt")
+sample_file_path = system.file("extdata", "sample_input_ws.txt", package = "BaMORC")
+head(read_raw_file(file_path=sample_file_path, delim="ws"))
 
 input_type = "csv"
-sample_data_generator(input_type = input_type)
-head(read_raw_file("sample_input.csv", delim="comma"))
+sample_file_path = system.file("extdata", "sample_input.csv", package = "BaMORC")
+head(read_raw_file(file_path=sample_file_path, delim="comma"))
 unlink("sample_input.csv")
 
 input_type = "sc"
-sample_data_generator(input_type = input_type)
-head(read_raw_file("sample_input_sc.txt", delim="semicolon"))
+sample_file_path = system.file("extdata", "sample_input_sc.txt", package = "BaMORC")
+head(read_raw_file(file_path=sample_file_path, delim="semicolon"))
 unlink("sample_input_sc.txt")
 
 }
