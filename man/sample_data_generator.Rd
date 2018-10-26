@@ -4,7 +4,7 @@
 \alias{sample_data_generator}
 \title{sample_data_generator}
 \usage{
-sample_data_generator(input_type)
+sample_data_generator(input_type, output_dir = "")
 }
 \arguments{
 \item{input_type}{flag indicates what sample data will be generated}
@@ -23,17 +23,20 @@ Generate sample data file for testing purpose. Depending the input_type, the fol
 }
 \examples{
 input_type = "ws" 
-sample_data_generator(input_type = input_type)
-head(read_raw_file("sample_input_ws.txt", delim="ws"))
-unlink("sample_input_ws.txt")
+output_dir = tempdir()
+sample_data_generator(input_type = input_type, output_dir=output_dir)
+head(read_raw_file(paste0(output_dir, "/sample_input_ws.txt"), delim="ws"))
+unlink(paste0(output_dir, "/sample_input_ws.txt"))
 
 input_type = "csv"
-sample_data_generator(input_type = input_type)
-head(read_raw_file("sample_input.csv", delim="comma"))
-unlink("sample_input.csv")
+output_dir = tempdir()
+sample_data_generator(input_type = input_type, output_dir=output_dir)
+head(read_raw_file(paste0(output_dir, "/sample_input.csv"), delim="comma"))
+unlink(paste0(output_dir, "/sample_input.csv"))
 
 input_type = "sc"
-sample_data_generator(input_type = input_type)
-head(read_raw_file("sample_input_sc.txt", delim="semicolon"))
-unlink("sample_input_sc.txt")
+output_dir = tempdir()
+sample_data_generator(input_type = input_type, output_dir=output_dir)
+head(read_raw_file(paste0(output_dir, "/sample_input_sc.txt"), delim="semicolon"))
+unlink(paste0(output_dir, "/sample_input_sc.txt"))
 }

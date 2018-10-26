@@ -340,102 +340,107 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">## Arguments:enerate a temperary sample NMR spectra file and</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">## later will be removed.</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">input_type =<span class="st"> &quot;ws&quot;</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">## Running reading function</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="dt">file_path =</span> <span class="st">&quot;sample_input_ws.txt&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;ws&quot;</span>))</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Parsed with column specification:</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; cols(</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   X1 = col_double(),</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;   X2 = col_double()</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; [[2]]</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;       X1    X2</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;  1  NA    38.6</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;  2  NA    28.8</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  3  56.3  30.4</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  4  54.4  41.3</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  5  NA    28.8</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;  6  55.1  38.9</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;  7  NA    38.8</span></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;  8  NA    39.3</span></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;  9  NA    30.3</span></a>
-<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; 10  62.1  69.8</span></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt; # ... with 22 more rows</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="kw">unlink</span>(<span class="st">&quot;sample_input_ws.txt&quot;</span>)</a></code></pre></div></li>
+<a class="sourceLine" id="cb4-4" data-line-number="4">output_dir =<span class="st"> </span><span class="kw">tempdir</span>()</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type, <span class="dt">output_dir =</span> output_dir)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">## Running reading function</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="kw">paste0</span>(output_dir, <span class="st">&quot;/sample_input_ws.txt&quot;</span>), </a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">    <span class="dt">delim =</span> <span class="st">&quot;ws&quot;</span>))</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;   X1 = col_double(),</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;   X2 = col_double()</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;       X1    X2</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt; # ... with 22 more rows</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="kw">unlink</span>(<span class="kw">paste0</span>(output_dir, <span class="st">&quot;/sample_input_ws.txt&quot;</span>))</a></code></pre></div></li>
 <li><p>Delimiter of comma:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">## Arguments:enerate a temperary sample NMR spectra file and</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">## later will be removed.</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">input_type =<span class="st"> &quot;csv&quot;</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">## Running reading function</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="dt">file_path =</span> <span class="st">&quot;sample_input.csv&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;comma&quot;</span>))</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; Parsed with column specification:</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; cols(</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;   X1 = col_double(),</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;   X2 = col_double()</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; Warning in rbind(names(probs), probs_f): number of columns of result is not</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; a multiple of vector length (arg 2)</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; Warning: 1 parsing failure.</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; row # A tibble: 1 x 5 col     row col   expected  actual    file               expected   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;              actual 1    33 &lt;NA&gt;  2 columns 1 columns 'sample_input.csv' file # A tibble: 1 x 5</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; [[2]]</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; # A tibble: 33 x 2</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;       X1    X2</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  1  NA    38.6</span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  2  NA    28.8</span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  3  56.3  30.4</span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  4  54.4  41.3</span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  5  NA    28.8</span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  6  55.1  38.9</span></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  7  NA    38.8</span></a>
-<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  8  NA    39.3</span></a>
-<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  9  NA    30.3</span></a>
-<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt; 10  62.1  69.8</span></a>
-<a class="sourceLine" id="cb5-34" data-line-number="34"><span class="co">#&gt; # ... with 23 more rows</span></a>
-<a class="sourceLine" id="cb5-35" data-line-number="35"><span class="kw">unlink</span>(<span class="st">&quot;sample_input.csv&quot;</span>)</a></code></pre></div></li>
+<a class="sourceLine" id="cb5-4" data-line-number="4">output_dir =<span class="st"> </span><span class="kw">tempdir</span>()</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type, <span class="dt">output_dir =</span> output_dir)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">## Running reading function</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="kw">paste0</span>(output_dir, <span class="st">&quot;/sample_input.csv&quot;</span>), <span class="dt">delim =</span> <span class="st">&quot;comma&quot;</span>))</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;   X1 = col_double(),</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;   X2 = col_double()</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; Warning in rbind(names(probs), probs_f): number of columns of result is not</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; a multiple of vector length (arg 2)</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; Warning: 1 parsing failure.</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; row # A tibble: 1 x 5 col     row col   expected  actual   file                                      expected   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;                                     actual 1    33 &lt;NA&gt;  2 columns 1 colum… '/var/folders/56/gwqkhpgd7wj2y7k94xdc1yl… file # A tibble: 1 x 5</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; # A tibble: 33 x 2</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;       X1    X2</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb5-34" data-line-number="34"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb5-35" data-line-number="35"><span class="co">#&gt; # ... with 23 more rows</span></a>
+<a class="sourceLine" id="cb5-36" data-line-number="36"><span class="kw">unlink</span>(<span class="kw">paste0</span>(output_dir, <span class="st">&quot;/sample_input.csv&quot;</span>))</a></code></pre></div></li>
 <li><p>Delimiter of semicolon:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">## Arguments:enerate a temperary sample NMR spectra file and</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">## later will be removed.</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">input_type =<span class="st"> &quot;sc&quot;</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type)</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">## Running reading function</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="dt">file_path =</span> <span class="st">&quot;sample_input_sc.txt&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;semicolon&quot;</span>))</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; Parsed with column specification:</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; cols(</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;   X1 = col_double(),</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;   X2 = col_double()</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; [[2]]</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;       X1    X2</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;  1  NA    38.6</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  2  NA    28.8</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  3  56.3  30.4</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  4  54.4  41.3</span></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  5  NA    28.8</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  6  55.1  38.9</span></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  7  NA    38.8</span></a>
-<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  8  NA    39.3</span></a>
-<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;  9  NA    30.3</span></a>
-<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt; 10  62.1  69.8</span></a>
-<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt; # ... with 22 more rows</span></a>
-<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="kw">unlink</span>(<span class="st">&quot;sample_input_sc.txt&quot;</span>)</a></code></pre></div></li>
+<a class="sourceLine" id="cb6-4" data-line-number="4">output_dir =<span class="st"> </span><span class="kw">tempdir</span>()</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">sample_data_generator</span>(<span class="dt">input_type =</span> input_type, <span class="dt">output_dir =</span> output_dir)</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">## Running reading function</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">head</span>(<span class="kw">read_raw_file</span>(<span class="kw">paste0</span>(output_dir, <span class="st">&quot;/sample_input_sc.txt&quot;</span>), </a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="dt">delim =</span> <span class="st">&quot;semicolon&quot;</span>))</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; cols(</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;   X1 = col_double(),</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;   X2 = col_double()</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; )</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; [1] &quot;NHQDHNNFQTLPYVPCSTCEGNLACLSLCHIE&quot;</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; # A tibble: 32 x 2</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;       X1    X2</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  1  NA    38.6</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  2  NA    28.8</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  3  56.3  30.4</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  4  54.4  41.3</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  5  NA    28.8</span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  6  55.1  38.9</span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;  7  NA    38.8</span></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt;  8  NA    39.3</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt;  9  NA    30.3</span></a>
+<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; 10  62.1  69.8</span></a>
+<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt; # ... with 22 more rows</span></a>
+<a class="sourceLine" id="cb6-33" data-line-number="33"><span class="kw">unlink</span>(<span class="kw">paste0</span>(output_dir, <span class="st">&quot;/sample_input_sc.txt&quot;</span>))</a></code></pre></div></li>
 </ul>
 </div>
 <div id="the-reading-functions-will-return-sequence-and-chemical-shifts" class="section level2">
