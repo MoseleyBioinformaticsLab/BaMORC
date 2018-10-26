@@ -22,49 +22,33 @@ bamorc(sequence = sequence, secondary_structure = secondary_structure,
 #  ## Arguments:enerate a temperary sample NMR spectra file and later will be
 #  ## removed.
 #  sequence = "RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA"
-#  sample_data_generator(input_type = "ssc_sample")
-#  file_path = "./bpti_HNcoCACB.txt" # temperary sample file path.
+#  sample_file_path = system.file("extdata", "bpti_HNcoCACB.txt", package = "BaMORC")
 #  
 #  ## Running unassigned_bamorc() function:
 #  # unassigned_bamorc will take a while to run
-#  unassigned_bamorc(peakList_file_loc = file_path, sequence = sequence,
+#  unassigned_bamorc(peakList_file_loc = sample_file_path, sequence = sequence,
 #                   secondary_structure = NULL, from = -5, to = 5)
-#  
-#  ## Delete the temperary sample file.
-#  unlink("./bpti_HNcoCACB.txt")
 
 ## ------------------------------------------------------------------------
-## Arguments:enerate a temperary sample NMR spectra file and later will be 
-## removed.
-input_type = "ws" 
-output_dir = tempdir()
-sample_data_generator(input_type = input_type, output_dir=output_dir)
+## Arguments:
+sample_file_path = system.file("extdata", "sample_input_ws.txt", package = "BaMORC")
 
 ## Running reading function
-head(read_raw_file(paste0(output_dir, "/sample_input_ws.txt"), delim="ws"))
-unlink(paste0(output_dir, "/sample_input_ws.txt"))
+head(read_raw_file(sample_file_path, delim = "ws"))
 
 ## ------------------------------------------------------------------------
-## Arguments:enerate a temperary sample NMR spectra file and later will be 
-## removed.
-input_type = "csv"
-output_dir = tempdir()
-sample_data_generator(input_type = input_type, output_dir=output_dir)
+## Arguments: 
+sample_file_path = system.file("extdata", "sample_input.csv", package = "BaMORC")
 
 ## Running reading function
-head(read_raw_file(paste0(output_dir, "/sample_input.csv"), delim="comma"))
-unlink(paste0(output_dir, "/sample_input.csv"))
+head(read_raw_file(sample_file_path, delim = "comma"))
 
 ## ------------------------------------------------------------------------
-## Arguments:enerate a temperary sample NMR spectra file and later will be 
-## removed.
-input_type = "sc" 
-output_dir = tempdir()
-sample_data_generator(input_type = input_type, output_dir=output_dir)
+## Arguments:
+sample_file_path = system.file("extdata", "sample_input_sc.txt", package = "BaMORC")
 
 ## Running reading function
-head(read_raw_file(paste0(output_dir, "/sample_input_sc.txt"), delim="semicolon"))
-unlink(paste0(output_dir, "/sample_input_sc.txt"))
+head(read_raw_file(sample_file_path, delim = "semicolon"))
 
 ## ---- eval= FALSE--------------------------------------------------------
 #  ## Download a BMRB file

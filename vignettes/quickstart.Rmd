@@ -61,17 +61,12 @@ Next, we will use the built-in data to demonstrate the arguments that will be pa
 ## Arguments:enerate a temperary sample NMR spectra file and later will be 
 ## removed.
 sequence = "RPAFCLEPPYAGPGKARIIRYFYNAAAGAAQAFVYGGVRAKRNNFASAADALAACAAA"
-output_dir = tempdir()
-sample_data_generator(input_type = "ssc_sample", output_dir = output_dir)
-file_path = paste0(output_dir, "/bpti_HNcoCACB.txt") # temperary sample file path.
+sample_file_path = system.file("extdata", "bpti_HNcoCACB.txt", package = "BaMORC")
 
 ## Running unassigned_bamorc() function:
 # unassigned_bamorc will take a while to run
-unassigned_bamorc(peakList_file_loc = file_path, sequence = sequence,
+unassigned_bamorc(peakList_file_loc = sample_file_path, sequence = sequence,
                  secondary_structure = NULL, from = -5, to = 5)
-
-## Delete the temperary sample file.
-unlink(file_path)
 ```
 
 
@@ -85,41 +80,29 @@ There are three file parsing functions within the BaMORC package: `read_raw_file
 
 * Delimiter of white space:
     ```{r}
-    ## Arguments:enerate a temperary sample NMR spectra file and later will be 
-    ## removed.
-    input_type = "ws" 
-    output_dir = tempdir()
-    sample_data_generator(input_type = input_type, output_dir=output_dir)
+    ## Arguments:
+    sample_file_path = system.file("extdata", "sample_input_ws.txt", package = "BaMORC")
     
     ## Running reading function
-    head(read_raw_file(paste0(output_dir, "/sample_input_ws.txt"), delim="ws"))
-    unlink(paste0(output_dir, "/sample_input_ws.txt"))
+    head(read_raw_file(sample_file_path, delim = "ws"))
     ```
 
 * Delimiter of comma:
     ```{r}
-    ## Arguments:enerate a temperary sample NMR spectra file and later will be 
-    ## removed.
-    input_type = "csv"
-    output_dir = tempdir()
-    sample_data_generator(input_type = input_type, output_dir=output_dir)
+    ## Arguments: 
+    sample_file_path = system.file("extdata", "sample_input.csv", package = "BaMORC")
     
     ## Running reading function
-    head(read_raw_file(paste0(output_dir, "/sample_input.csv"), delim="comma"))
-    unlink(paste0(output_dir, "/sample_input.csv"))
+    head(read_raw_file(sample_file_path, delim = "comma"))
     ```
     
 * Delimiter of semicolon:
     ```{r}
-    ## Arguments:enerate a temperary sample NMR spectra file and later will be 
-    ## removed.
-    input_type = "sc" 
-    output_dir = tempdir()
-    sample_data_generator(input_type = input_type, output_dir=output_dir)
+    ## Arguments:
+    sample_file_path = system.file("extdata", "sample_input_sc.txt", package = "BaMORC")
     
     ## Running reading function
-    head(read_raw_file(paste0(output_dir, "/sample_input_sc.txt"), delim="semicolon"))
-    unlink(paste0(output_dir, "/sample_input_sc.txt"))
+    head(read_raw_file(sample_file_path, delim = "semicolon"))
     ```
 
 ## The reading functions will return sequence and chemical shifts:
