@@ -68,10 +68,10 @@ read_raw_file <- function(file_path, delim="comma", assigned=FALSE){
 #'
 #' ## Read in BMRB file and procec
 #' file_path = "bmr4020.str"
-#' \dontrun{head(read_nmrstar_file(file_path))}
+#' \dontrun{head(read_nmrstar_file(file_path)}
 #'
 #' ## Delete downloaded BMRB file
-#' \dontrun{unlink("./bmr4020.str")
+#' \dontrun{unlink("./bmr4020.str")}
 #'
 read_nmrstar_file <- function(file_path){
 

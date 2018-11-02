@@ -77,7 +77,7 @@ unassigned_bamorc <- function(peakList_file_loc, sequence, secondary_structure=N
         }
 
         fn <- function(x){
-                mse <- BaMORC::calculate_MSE(x, x, chemical_shifts, aa_freq)
+                mse <- BaMORC::calculate_mse(x, x, chemical_shifts, aa_freq)
                 return(mse)
         }
         message("Running reference correction algorithm.")

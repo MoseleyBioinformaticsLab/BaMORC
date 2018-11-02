@@ -5,9 +5,12 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 3 note
+0 errors | 0 warnings | 1 note 
 
-Remove jpredapir dependency. I remove the sample_genertor function instead I saved the external data in the inst/extdata. 
+correct the error of calculate_MSE, and double check the spelling, there's no mispelling. The suggestions from CRAN is not needed to change, they are special terms specify for NMR community.
+BaMORC (15:116)--> correct
+Biomolecular (15:529) --> correct 
+NMR (4:41, 15:56, 15:189, 15:481, 15:542) --> correct
 
 
 
